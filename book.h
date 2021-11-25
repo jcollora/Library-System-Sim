@@ -21,7 +21,7 @@
 #ifndef BOOK_H
 #define BOOK_H
 
-#include "BSTData"
+#include "BSTData.h"
 #include <string>
 
 class BSTData;
@@ -127,8 +127,7 @@ protected:
    // format of book
    string format;
 
-   // current patrons checking out the book. max size is maxCount
-   Patron** checkouts;
+
 };
 
 #endif

@@ -30,5 +30,5 @@ Book::Book() {
    count = -1;
    maxCount = -1;
    format = "Hardcover";
-   checkouts = nullptr;
+   
 }

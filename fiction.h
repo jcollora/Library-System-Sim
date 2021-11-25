@@ -11,17 +11,17 @@
 #ifndef FICTION_H
 #define FICTION_H
 
+#include "book.h"
 #include <string>
 
 using namespace std;
 
-class Book;
+class Patron;
 
 class Fiction : public Book
 
 {
 
-friend void fictionTest(); //test function   
 public:
    // -------------------------------------------------------------------------
    /** Fiction()
@@ -50,37 +50,37 @@ public:
    /** operator<()
     * Operator less than overload
     *
-    * Compares this book to right-hand book to see if this is less than rhs
+    * Compares this book to right-hand fiction book to see if this is less than rhs
     * @param rhs Book to be compared
     * @pre None.
     * @post None. const
     * @return true if this book is less than rhs, else false
     */
-   virtual bool operator<(const Book& rhs) const;
+   virtual bool operator<(const BSTData& rhs) const;
 
    // -------------------------------------------------------------------------
    /** operator>()
     * Operator greater than overload
     *
-    * Compares this book to right-hand book to see if this is greater than rhs
+    * Compares this book to right-hand fiction book to see if this is greater than rhs
     * @param rhs Book to be compared
     * @pre None.
     * @post None. const
     * @return true if this book is greater than rhs, else false
     */
-   virtual bool operator>(const Book& rhs) const;
+   virtual bool operator>(const BSTData& rhs) const;
 
    // -------------------------------------------------------------------------
    /** operator==()
     * Operator equal to overload
     *
-    * Compares this book to right-hand book to see if this is equal to rhs
+    * Compares this book to right-hand fiction book to see if this is equal to rhs
     * @param rhs Book to be compared
     * @pre None.
     * @post None. const
     * @return true if this book is equal to rhs, else false
     */
-   virtual bool operator==(const Book& rhs) const;
+   virtual bool operator==(const BSTData& rhs) const;
 
    // -------------------------------------------------------------------------
    /** create()
@@ -93,6 +93,22 @@ public:
     *
     */
    Book* create() const;
+
+private:
+   // -------------------------------------------------------------------------
+   /** compare()
+    * Compare fiction books
+    *
+    * Compare 2 fiction books. Returns an integer that reflects the comparison
+    * @pre None
+    * @post new Fiction book object exists
+    * @return negative int if left book < right.
+    * return 0 if equal, return positive int if left > right
+    */
+   int compare(const Fiction& rhs) const;
+
+   // current patrons checking out the book. max size is maxCount
+   Patron* checkouts[5];
 };
 
 #endif

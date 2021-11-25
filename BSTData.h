@@ -27,7 +27,7 @@ class BSTData {
      * @post None.
      * @return true returned when left is less than right, false otherwise
      */
-    virtual bool operator<(const BSTData&) const = 0;
+    virtual bool operator<(const BSTData& rhs) const = 0;
 
     // -------------------------------------------------------------------------
     /** operator>()
@@ -38,7 +38,7 @@ class BSTData {
      * @post None.
      * @return true returned when left is greater than right, false otherwise
      */
-    virtual bool operator>(const BSTData&) const = 0;
+    virtual bool operator>(const BSTData& rhs) const = 0;
 
     // -------------------------------------------------------------------------
     /** operator==()
@@ -49,8 +49,8 @@ class BSTData {
      * @post None.
      * @return true returned when left is equal to right, false otherwise
      */
-    virtual bool operator==(const BSTData&) const = 0;
+    virtual bool operator==(const BSTData& rhs) const = 0;
 
 };
 
-#endif BSTData
+#endif 
