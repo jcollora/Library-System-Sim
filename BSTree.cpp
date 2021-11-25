@@ -1,0 +1,646 @@
+/** @file BSTree.cpp
+ * @author Josh Helzerman
+ */
+
+#include "BSTree.h"
+#include "nodedata.h"
+#include <iostream>
+
+using namespace std;
+
+const int ARRAY_SIZE = 100;
+
+//--------------------------------------------------------------------------
+/** Constructor
+ * default constructor
+ *
+ * Creates an empty BSTree object.
+ * @pre None.
+ * @post BSTree object exists. root is instantiated to NULLPTR
+ */
+BSTree::BSTree() { root = nullptr; }
+
+//--------------------------------------------------------------------------
+/** Destructor
+ * Destructor
+ *
+ * Deletes the BSTree object by deleting all of it's nodes and the
+ * data that they point to. root is set to NULLPTR.
+ * @pre BSTree object exists
+ * @post BSTree is deleted from memory
+ */
+BSTree::~BSTree() { makeEmpty(); }
+
+//--------------------------------------------------------------------------
+/** makeEmpty
+ * Make the tree empty
+ *
+ * Delete all nodes in the tree. Set root to nullptr.
+ * @pre None.
+ * @post The tree is empty.
+ */
+void BSTree::makeEmpty()
+{
+   makeEmptyHelper(root);
+   root = nullptr;
+}
+
+//--------------------------------------------------------------------------
+/** makeEmptyHelper
+ * Helper for makeEmpty()A
+ *
+ * Recursively traverses the tree. Deleting each node in postOrder order.
+ * @param current the current node we are looking at
+ * @pre None.
+ * @post The tree is empty.
+ */
+void BSTree::makeEmptyHelper(Node* current)
+{
+   if (current == nullptr) {
+      return;
+   }
+   makeEmptyHelper(current->left);
+   makeEmptyHelper(current->right);
+
+   delete current->data;
+
+   delete current;
+}
+
+//--------------------------------------------------------------------------
+/** Copy constructor
+ * Copy constructor
+ *
+ * Copies the passed BSTree object. The new BSTree has the same structure
+ * as the copied tree.
+ * @param BSTree The BSTree to be copied. Passed as const
+ * @pre None.
+ * @post A copy of BSTree now exists.
+ */
+BSTree::BSTree(const BSTree& BSTree) { copyTree(BSTree.root, root); }
+
+//--------------------------------------------------------------------------
+/** copyTree
+ * Create copy of a tree recursively
+ *
+ * This is a helper function that creates a copy of a tree. It traverses the
+ * tree to copy using the current node pointer. At each node, it creates a
+ * new node in the copy tree and makes it equal to thecurrent tree.
+ * @param current the current node we are looking at in the tree to be copied
+ * @param copy a reference to the current node we are looking at in the copy of
+ * the tree. this allows us to create the tree as we traverse the other tree.
+ * @pre Need to have an empty tree to contain the copies and pass
+ * its root into the copy parameter.
+ * @post The new tree exists in free memory and should be assigned to a variable
+ * and deleted appropriately. the copied tree is unchanged.
+ */
+void BSTree::copyTree(const Node* current, Node*& copy)
+{
+   if (current == nullptr) {
+      copy = nullptr;
+      return;
+   }
+   copy = new Node();
+   copy->data = new NodeData(*current->data);
+   copyTree(current->left, copy->left);
+   copyTree(current->right, copy->right);
+}
+
+//--------------------------------------------------------------------------
+/** isEmpty
+ * Is the tree empty?
+ *
+ * Checks if the BSTree is empty by checking the root pointer. If root
+ * points to nullptr, then return true. else, false.
+ * @pre None.
+ * @post None. BSTree is unchanged.
+ * @return bool that is true if BSTree is empty, false otherwise.
+ */
+bool BSTree::isEmpty() const { return root == nullptr; }
+
+//--------------------------------------------------------------------------
+/** operator=
+ * Copy assignment operator
+ *
+ * Deletes the contents of the current tree. Copies the contents and
+ * structure of the right hand BST to the left hand BST.
+ * @param rhs tree to be copied
+ * @pre None.
+ * @post The current tree is now equal to the rhs tree. rhs is unchanged
+ * @return a reference to the current tree.
+ */
+BSTree& BSTree::operator=(const BSTree& rhs)
+{
+   if (this != &rhs) {
+      makeEmpty();
+      copyTree(rhs.root, root);
+   }
+
+   return *this;
+}
+
+//--------------------------------------------------------------------------
+/** operator==
+ * Equality operator
+ *
+ * If contents of the current tree and the right hand tree are equal in value
+ * and structure return true, else return false
+ * @param rhs the tree to be compared with
+ * @pre None.
+ * @post None. Both trees are unchanged.
+ * @return TRUE if both trees are equal, false otherwise.
+ */
+bool BSTree::operator==(const BSTree& rhs) const
+{
+   return equalityHelper(root, rhs.root);
+}
+
+//--------------------------------------------------------------------------
+/** equalityHelper
+ * Check equality of two trees
+ *
+ * Check equality of two trees by checking the equality of each
+ * node. node data and node structure must be the same.
+ * @param lhs The "left hand" node to be compared
+ * @param rhs The "right hand" node to be compared with the left hand node
+ * @pre None.
+ * @post Trees are unchanged.
+ * @return TRUE if all nodes are equal to eachother (values and structure
+ * of each tree are the same). Else FALSE
+ */
+bool BSTree::equalityHelper(const Node* lhs, const Node* rhs) const
+{
+   if (lhs == nullptr && rhs == nullptr) {
+      return true;
+   }
+   if (lhs == nullptr || rhs == nullptr) {
+      return false;
+   }
+   if (*lhs->data != *rhs->data) {
+      return false;
+   }
+   return equalityHelper(lhs->left, rhs->left) &&
+          equalityHelper(lhs->right, rhs->right);
+}
+
+//--------------------------------------------------------------------------
+/** operator!=
+ * Inequality operator
+ *
+ * If contents of the current tree and the right hand tree are NOT equal in
+ * value and structure return true, else return false
+ * @param rhs the tree to be compared with
+ * @pre None.
+ * @post None. Both trees are unchanged.
+ * @return TRUE if both trees are NOT equal, false otherwise.
+ */
+bool BSTree::operator!=(const BSTree& rhs) const { return !(*this == rhs); }
+
+//--------------------------------------------------------------------------
+/** insert
+ * Insert data node into tree
+ *
+ * Inserts a data node into the tree into the proper sorted position. If the
+ * data already exists in the tree, the new data will not be inserted
+ * @param data the dataNode to be inserted
+ * @pre data should be a node that holds data that can be compared with the
+ * data already in the tree.
+ * @post The tree now contains the data node given in proper sorted position
+ * @return True if datanode was inserted, false if the data already exists in
+ * the tree
+ */
+bool BSTree::insert(NodeData* dataptr)
+{
+   Node* ptr = new Node; // exception is thrown if memory is not allocated
+
+   ptr->data = dataptr;
+
+   ptr->left = ptr->right = nullptr;
+   if (isEmpty()) {
+      root = ptr;
+   } else {
+      Node* current = root;
+      bool inserted = false;
+
+      // if item is less than current item, insert in left subtree,
+      // otherwise insert in right subtree
+      while (!inserted) {
+         if (*ptr->data < *current->data) {
+            if (current->left == nullptr) { // at leaf, insert left
+               current->left = ptr;
+               dataptr = nullptr;
+               inserted = true;
+            } else
+               current = current->left; // one step left
+         } else if (*ptr->data == *current->data) {
+
+            delete ptr;
+
+            return false;
+         } else {
+            if (current->right == nullptr) { // at leaf, insert right
+               current->right = ptr;
+               dataptr = nullptr;
+               inserted = true;
+            } else
+               current = current->right; // one step right
+         }
+      }
+   }
+
+   return true;
+}
+
+//--------------------------------------------------------------------------
+/** operator<<
+ * Overloaded output operator
+ *
+ * Displays the BST in inorder traversal in an ostream object.
+ * @param os The ostream object taking the data.
+ * @param BSTree the BSTree object to be displayed
+ * @pre None.
+ * @post BSTree data is now in the ostream object.
+ * @return the ostream object now containing the BSTree data to be
+ * displayed.
+ */
+ostream& operator<<(ostream& os, const BSTree& BSTree)
+{
+   NodeData* inorderArray[ARRAY_SIZE];
+   int arrSize = BSTree.inorderHelper(BSTree.root, inorderArray, 0);
+   for (int i = 0; i < arrSize; i++) {
+      if (inorderArray[i] != nullptr) {
+         os << *inorderArray[i] << " ";
+      }
+   }
+
+   os << endl;
+
+   return os;
+}
+
+//--------------------------------------------------------------------------
+/** inorderHelper
+ * traverse BSTree inorder
+ *
+ * Traverses the BSTree inorder recursively. An array is passed into the
+ * function, this array will store the contents of the BSTree inorder as
+ * DataNode*. The array should be at least size 100.
+ * @param current The current node we are traversing
+ * @param arr The array to store the pointers to copies of nodeData in the tree
+ * inorder
+ * @param index the current index we are inserting at it arr
+ * @pre must pass an arr of nodeData* of at least size 100.
+ * @post arr is filled with pointers to nodeData in the tree, inorder. the
+ * tree is unchanged.
+ * @return the current index we are at in the array. must be incremented
+ * properly, so we return it to each previous recursive call to ensure we
+ * are at the proper element. can also be used to know how large the array will
+ * be. after the function finishes its recursion.
+ */
+int BSTree::inorderHelper(const Node* current, NodeData* arr[],
+                           int index) const
+{
+   if (current == nullptr) {
+      return index;
+   }
+   // get new index if any nodes were inserted to arr
+   index = inorderHelper(current->left, arr, index);
+   arr[index] = current->data;
+   // points directly to data, so const correctness should be enforced
+   index++; // increment index
+   // again, get new index after rhs values have been inserted
+   index = inorderHelper(current->right, arr, index);
+   // return latest index to previous recursive calls
+   return index;
+}
+//--------------------------------------------------------------------------
+/** retrieve
+ * Retrieve Node
+ *
+ * finds the specified dataNode in the tree. Returns true if the node is
+ * found, false otherwise. The node is returned via the pointer passed by
+ * reference into the function (the 2nd parameter).
+ * @param nodeToFind A dataNode equal to the node that we are looking for
+ * within the tree.
+ * @param foundNode A reference to a data node pointer. This initially
+ * contains nothing of importance to this function, but if the node is found
+ * within the tree, this pointer in this parameter will point to the node.
+ * @pre must have a node that contains the data you wish to search for in the
+ * tree (to be passed into the nodeToFind param). Must also have a node
+ * pointer (for foundNode param) to point to the node if it is found in the
+ * tree. This pointer should not be pointing to something important.
+ * And if it if is the sole pointer to something in the heap, it should not be
+ * used here.
+ * @post nodeToFind, and the tree are unchanged. foundNode will now either
+ * point to the node in the tree or will be left unchanged
+ * @return TRUE if the node was found in the tree, false otherwise.
+ */
+bool BSTree::retrieve(const NodeData& nodeToFind, NodeData*& foundNode) const
+{
+
+   const Node* found = findNode(nodeToFind, root);
+   if (found == nullptr) {
+      return false;
+   }
+   foundNode = found->data;
+   return true;
+}
+
+//--------------------------------------------------------------------------
+/** findNode
+ * Find node in tree
+ * Traverse tree recursively, looking for the node.
+ *
+ * @param nodeToFind the nodeData to find in the tree
+ * @param current the current node we are looking at in the tree
+ * @pre nodeToFind should be comparable to the nodeData in the tree
+ * @post None. Tree and nodes are unchanged.
+ * @return the node we were looking for. return nullptr if not found.
+ */
+const BSTree::Node* BSTree::findNode(const NodeData& nodeToFind,
+                                       const Node* current) const
+{
+   if (current == nullptr) {
+      return nullptr;
+   }
+   if (*current->data == nodeToFind) {
+      return current;
+   }
+
+   const Node* temp = findNode(nodeToFind, current->left);
+   if (temp == nullptr) {
+      temp = findNode(nodeToFind, current->right);
+   }
+
+   return temp;
+}
+
+//--------------------------------------------------------------------------
+/** getParent
+ * Get parent of the given node
+ *
+ * Finds the parent of a given node and stores a COPY of that parent in the
+ * passed parameter parent. Returns TRUE if parent is found, false otherwise.
+ * @param child the node that we want to find the parent of
+ * @param parent initially the contents of this node are unimportant to this
+ * function. After the function is run, this node will either be unchanged,
+ * or it will be a copy of the parent node in the tree.
+ * @pre must have a node that is equal to the node whose parent we wish to
+ * find in the tree. Must have a node to pass into the parent parameter that
+ * can be filled with a copy of the parent node.
+ * @post the tree and node are unchanged. parent contains a copy of the
+ * parent node or is unchanged if no node is found.
+ * @return true if the parent was found, false otherwise.
+ */
+bool BSTree::getParent(const NodeData& child, NodeData& parent) const
+{
+   if (root == nullptr) {
+      return false;
+   }
+   if (*root->data == child) {
+      return false;
+   }
+   const Node* found = findParentHelper(child, root);
+
+   if (found == nullptr) {
+      return false;
+   }
+   parent = *found->data;
+   return true;
+}
+
+//--------------------------------------------------------------------------
+/** findParentHelper
+ * Find parent of a node in the tree.
+ *
+ * Traverses the tree recursively looking for a parent of the given node
+ * child. If parent is found, return parent node up the call stack. else,
+ * returns nullptr.
+ * @param child The child node we are using to find the parent
+ * @param current the current node that we are looking at. assumed to not
+ * be nullptr
+ * @pre the child nodeData must be comparable with the tree's nodeData.
+ * Assumes child is not the root.
+ * @post The tree, child, and current nodes are never changed
+ * @return a pointer to the parent node. This will be nullptr if the parent
+ * node is not found.
+ */
+const BSTree::Node* BSTree::findParentHelper(const NodeData& child,
+                                               const Node* current) const
+{
+   if (current->left == nullptr && current->right == nullptr) {
+      return nullptr;
+   }
+   // check left subtree for data, return if found
+   const Node* finder = nullptr;
+   if (current->left != nullptr) {
+      if (*current->left->data == child) {
+         return current;
+      }
+      finder = findParentHelper(child, current->left);
+   }
+   // if nothing found in left subtree, check right subtree
+   if (finder == nullptr && current->right != nullptr) {
+      if (*current->right->data == child) {
+         return current;
+      }
+      finder = findParentHelper(child, current->right);
+   }
+   return finder;
+}
+
+//--------------------------------------------------------------------------
+/** getSibling
+ * Get sibling of the given node
+ *
+ * Finds the sibling of a given node and stores a COPY of that sibling in the
+ * passed parameter sibling. Returns TRUE if sibling is found, false
+ * otherwise.
+ * @param node the node that we want to find the sibling of
+ * @param sibling initially the contents of this node are unimportant to this
+ * function. After the function is run, this node will either be unchanged,
+ * or it will be a copy of the sibling node in the tree.
+ * @pre must have a node that is equal to the node whose sibling we wish to
+ * find in the tree. Must have a node to pass into the sibling parameter that
+ * can be filled with a copy of the sibling node.
+ * @post the tree and node are unchanged. sibling contains a copy of the
+ * sibling node or is unchanged if no node is found.
+ * @return true if the sibling was found, false otherwise.
+ */
+bool BSTree::getSibling(const NodeData& node, NodeData& sibling) const
+{
+   if (root == nullptr) {
+      return false;
+   }
+   if (*root->data == node) {
+      return false;
+   }
+   const Node* parent = findParentHelper(node, root);
+
+   if (parent == nullptr) {
+      return false;
+   }
+   if (*parent->left->data == node) {
+      sibling = *parent->right->data;
+   } else {
+      sibling = *parent->left->data;
+   }
+   return true;
+}
+
+//--------------------------------------------------------------------------
+/** displaySideways
+ * Display the tree sideways
+ *
+ * prints the tree directly to cout as if it had been rotated 90 degrees.
+ * @pre None.
+ * @post None. the tree is unchanged. cout (the ostream object) will
+ * be used to display output during the function.
+ */
+void BSTree::displaySideways() const { sidewaysHelper(root, 0); }
+
+//--------------------------------------------------------------------------
+/** sidwaysHelper
+ * Print the tree sideways
+ *
+ * A helper function called by displaySideways that traverses the tree and
+ * prints data from nodes in a way taht makes the tree look like it was
+ * rotated 90 degrees.
+ * @param current The current node
+ * @param level the current level
+ * @pre None.
+ * @post cout may or may not have a new value printed to it
+ */
+void BSTree::sidewaysHelper(Node* current, int level) const
+{
+   if (current != nullptr) {
+      level++;
+      sidewaysHelper(current->right, level);
+
+      // indent for readability, same number of spaces per depth level
+      for (int i = level; i >= 0; i--) {
+         cout << "      ";
+      }
+      if (current != nullptr) {
+         cout << *current->data << endl; // display information of object
+      }
+      sidewaysHelper(current->left, level);
+   }
+}
+
+//--------------------------------------------------------------------------
+/** arrayToBSTree
+ * turn array into BSTree
+ *
+ * Builds a balanced bSTree from a sorted array of NodeData*. Leaves the
+ * array with nullptrs.
+ * @param arr An array of nodeData*
+ * @pre must pass an array of nodeData*
+ * @post The current BSTree now contains the nodeDatas from the array,
+ * balanced. The old tree was deleted.
+ */
+void BSTree::arrayToBSTree(NodeData* arr[])
+{
+   makeEmpty();
+   int count = 0;
+   while (arr[count] != nullptr && count < 100) {
+      count++;
+   }
+
+   arrayToBSTreeHelper(arr, root, 0, count - 1);
+}
+
+//--------------------------------------------------------------------------
+/** arrayToBSTreeHelper
+ * Helper function for arrayToBSTree
+ *
+ * Builds a BST by taking the center of the array as a root, then makes it's
+ * left and right subtrees halfway from mid to end and halfway from mid to start
+ * and etcetra. Like a binary search, but where N nodes are reached. N being the
+ * llength of the array with good values. The array is emptied and the current
+ * tree is replaced by the balanced tree from this array
+ * @param arr An array of nodeData*
+ * @param current The current node we are building
+ * @param start the starting index for this subtree
+ * @param end the ending index for this subtree
+ * @pre start > 0. end < size of arr. arr should point to nodeData objects in
+ * free store
+ * @post all arr pointers are nullptr. The tree is now balanced and contains all
+ * nodes from the array
+ */
+void BSTree::arrayToBSTreeHelper(NodeData* arr[], Node*& current, int start,
+                                  int end)
+{
+   if (end < start || start > end) {
+      return;
+   }
+   int currentIndex = (start + end) / 2;
+   if (arr[currentIndex] == nullptr) {
+      return;
+   }
+   current = new Node();
+
+   current->data = arr[currentIndex];
+   arr[currentIndex] = nullptr;
+   current->left = nullptr;
+   current->right = nullptr;
+   arrayToBSTreeHelper(arr, current->left, start, currentIndex - 1);
+   arrayToBSTreeHelper(arr, current->right, currentIndex + 1, end);
+}
+
+//--------------------------------------------------------------------------
+/** bstreeToArray
+ * Turn BSTree into an Array
+ *
+ * Fills a passed array of NodeData* using an inorder traversal of the tree.
+ * Afterwards, the tree is empty.
+ * @param arr The array to hold the nodeData from the tree
+ * @pre Must pass an array of NodeData* of at least size 100 into the
+ * function.
+ * @post The array will now hold all nodeData from the tree inorder. The tree
+ * is now empty.
+ */
+void BSTree::bstreeToArray(NodeData* arr[])
+{
+
+   inorderHelper2(root, arr, 0);
+   makeEmpty();
+}
+
+//--------------------------------------------------------------------------
+/** inorderHelper2
+ * traverse BSTree inorder
+ *
+ * Traverses the BSTree inorder recursively. An array is passed into the
+ * function, this array will store the contents of the BSTree inorder as
+ * DataNode*. The array should be size 100.
+ * @param current The current node we are traversing
+ * @param arr The array to store the pointers to copies of nodeData in the tree
+ * inorder
+ * @param index the current index we are inserting at it arr
+ * @pre must pass an arr of nodeData* of at least size 100.
+ * @post arr is filled with pointers to nodeData in the tree, inorder. the tree
+ * no longer contains nodedata.
+ * @return the current index we are at in the array. must be incremented
+ * properly, so we return it to each previous recursive call to ensure we
+ * are at the proper element. can also be used to know how large the array will
+ * be. after the function finishes its recursion.
+ */
+int BSTree::inorderHelper2(Node* current, NodeData* arr[], int index)
+{
+   if (current == nullptr) {
+      return index;
+   }
+   // get new index if any nodes were inserted to arr
+   index = inorderHelper2(current->left, arr, index);
+   arr[index] = current->data;
+   current->data = nullptr; // this line is the only difference from
+                            // inorderHelper
+
+   // points directly to data, so const correctness should be enforced
+   index++; // increment index
+   // again, get new index after rhs values have been inserted
+   index = inorderHelper2(current->right, arr, index);
+
+   return index;
+}
