@@ -32,3 +32,22 @@ Book::Book() {
    format = "Hardcover";
    
 }
+
+void Book::addBook() {
+   if (count < maxCount) {
+      count++;
+   }
+}
+
+bool Book::removeBook() {
+   if (count > 0) {
+      count--;
+      return true;
+   }
+   return false;
+}
+
+bool Book::checkAvailability() const {
+   return count > 0;
+}
+

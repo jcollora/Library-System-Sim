@@ -8,6 +8,7 @@
  * class
  */
 
+#include "BSTData.h"
 #include "fiction.h"
 #include "book.h"
 
@@ -43,6 +44,11 @@ bool Fiction::operator==(const BSTData& rhs) const {
    const Fiction& right = static_cast<const Fiction&>(rhs);
    return compare(right) == 0;
 }
-   const Fiction& right = static_cast<const Fiction&>(rhs);
-   return compare(right) == 0;
+
+string Fiction::displayBook() const {
+   return title; //placeholder!!!!!
+}
+
+Book* Fiction::create() const {
+   return new Fiction();
 }

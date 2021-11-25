@@ -91,7 +91,7 @@ public:
     * @post None. const function
     * @return String representing book data
     */
-   virtual string displayBook() const;
+   virtual string displayBook() const = 0;
 
    // -------------------------------------------------------------------------
    /** create()
