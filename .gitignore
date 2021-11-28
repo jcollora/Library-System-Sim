@@ -1,2 +1,6 @@
 .vscode/launch.json
 .vscode/tasks.json
+nodedata.cpp
+nodedata.h
+.vscode/settings.json
+main.exe

@@ -29,9 +29,12 @@ Book::Book() {
    month = 0;
    count = -1;
    maxCount = -1;
-   format = "Hardcover";
+   format = 'H';
+   type = '0';
    
 }
+
+Book::~Book() { }
 
 void Book::addBook() {
    if (count < maxCount) {
@@ -49,5 +52,9 @@ bool Book::removeBook() {
 
 bool Book::checkAvailability() const {
    return count > 0;
+}
+
+char Book::getType() const {
+   return type;
 }
 

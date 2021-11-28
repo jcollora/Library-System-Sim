@@ -47,6 +47,17 @@ public:
    Book();
 
    // -------------------------------------------------------------------------
+    /** ~Book()
+     * Destructor
+     * 
+     * Deletes book from memory. It's empty, but apparently helps to delete
+     * strings
+     * @pre None.
+     * @post Book instance is deleted
+    */
+    virtual ~Book();
+
+   // -------------------------------------------------------------------------
    /** addBook()
     * Add a copy of the book to the collection
     *
@@ -80,18 +91,7 @@ public:
     */
    bool checkAvailability() const;
 
-   // -------------------------------------------------------------------------
-   /** displayBook()
-    * Display book information
-    *
-    * Display book information in easy-to-read columns.
-    * Displayed in order: Title, author, type, month published, year published
-    * Virtual function, can be overridden
-    * @pre None.
-    * @post None. const function
-    * @return String representing book data
-    */
-   virtual string displayBook() const = 0;
+
 
    // -------------------------------------------------------------------------
    /** create()
@@ -104,6 +104,17 @@ public:
     *
     */
    virtual Book* create() const = 0;
+
+   // -------------------------------------------------------------------------
+   /** getType()
+    * get book type
+    * 
+    * Return the type of book
+    * @pre None
+    * @post None. const
+    * @return char representing book type
+   */
+   char getType() const; 
 
 protected:
    // author of book
@@ -125,7 +136,10 @@ protected:
    int maxCount;
 
    // format of book
-   string format;
+   char format;
+
+   // book type;
+   char type;
 
 
 };
