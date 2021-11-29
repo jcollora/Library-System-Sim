@@ -77,7 +77,7 @@ public:
 private:
    // Array of subclasses of Book object to classify each book as its correct
    //  type.
-   Book* bookTypes[26] {};
+   const Book* bookTypes[26] {};
 
 };
 

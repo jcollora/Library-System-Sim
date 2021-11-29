@@ -34,7 +34,7 @@ BookFactory::BookFactory() {
 }
 
 BookFactory::~BookFactory() {
-   for (Book* ptr : bookTypes) {
+   for (const Book* ptr : bookTypes) {
       if (ptr != nullptr) {
          delete ptr;
       }
