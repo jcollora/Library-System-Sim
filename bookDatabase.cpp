@@ -20,6 +20,7 @@ using namespace std;
 BookDatabase::BookDatabase() {
    
    for (int i = 0; i < HASH_SIZE; i++) {
+      bookLibrary.resize(HASH_SIZE);
       bookLibrary[i] = new BSTree(); //make it fixed size using final const HASH_SIZE?
    }
 }
