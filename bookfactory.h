@@ -22,8 +22,11 @@
 
 #include "book.h"
 #include <iostream>
+#include "constants.h"
 
 using namespace std;
+
+
 
 class BookFactory
 {
@@ -77,7 +80,7 @@ public:
 private:
    // Array of subclasses of Book object to classify each book as its correct
    //  type.
-   const Book* bookTypes[26] {};
+   const Book* bookTypes[HASH_SIZE] {};
 
 };
 

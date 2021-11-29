@@ -27,9 +27,10 @@
 using namespace std;
 
 BookFactory::BookFactory() {
-   bookTypes['F' - 65] = new Fiction();
-   bookTypes['P' - 65] = new Periodical();
-   bookTypes['C' - 65] = new Children();
+   // type's Ascii value - hash_start ascii value (defined in constants.h)
+   bookTypes[TYPE_FICTION - HASH_START] = new Fiction();
+   bookTypes[TYPE_PERIODICAL - HASH_START] = new Periodical();
+   bookTypes[TYPE_CHILDREN - HASH_START] = new Children();
 
 }
 
@@ -45,8 +46,8 @@ BookFactory::~BookFactory() {
 Book* BookFactory::createBook(istream& is) const {
    char type = is.get();
    
-   int index = type - 65;
-   if (index < 0 || index > 25) {
+   int index = type - HASH_START;
+   if (index < 0 || index >= HASH_SIZE) {
       return nullptr; //character is out of range
    }
    if (bookTypes[index] == nullptr) {
@@ -67,7 +68,7 @@ Book* BookFactory::createBook(istream& is) const {
 
 int BookFactory::getHash(const Book& book) const {
    char type = book.getType();
-   return type - 65;
+   return type - HASH_START;
 }
 
 

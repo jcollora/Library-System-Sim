@@ -11,19 +11,23 @@
 #include "BSTree.h"
 #include "book.h"
 #include "BookDatabase.h"
+#include <vector>
+
+ 
 
 using namespace std;
 
 BookDatabase::BookDatabase() {
-   for (BSTree* tree : bookLibrary) {
-      tree = new BSTree();
+   
+   for (int i = 0; i < HASH_SIZE; i++) {
+      bookLibrary[i] = new BSTree(); //make it fixed size using final const HASH_SIZE?
    }
 }
 
 BookDatabase::~BookDatabase() {
-   for (BSTree* tree : bookLibrary) {
+   for (int i = 0; i < HASH_SIZE; i++) {
       
-      delete tree;
+      delete bookLibrary[i];
       
    }
    

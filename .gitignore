@@ -5,3 +5,6 @@ nodedata.h
 .vscode/settings.json
 main.exe
 .vscode/c_cpp_properties.json
+bookDatabase.exe
+a.out
+bookfactory.exe

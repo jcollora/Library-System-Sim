@@ -13,8 +13,12 @@
 #include "BSTree.h"
 #include "book.h"
 #include "bookfactory.h"
+#include <vector>
+#include "constants.h"
 
 using namespace std;
+
+
 
 class BookDatabase
 {
@@ -80,7 +84,7 @@ class BookDatabase
     private:
     //below are all the class memeber variables used in this class
     
-   BSTree* bookLibrary[26] {};
+   vector<BSTree*> bookLibrary;
 
    BookFactory bookFactory;
 
