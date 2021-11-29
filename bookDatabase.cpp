@@ -20,6 +20,15 @@ BookDatabase::BookDatabase() {
    }
 }
 
+BookDatabase::~BookDatabase() {
+   for (BSTree* tree : bookLibrary) {
+      
+      delete tree;
+      
+   }
+   
+}
+
 bool BookDatabase::insertNewBook(istream& is) {
    Book* newBook = bookFactory.createBook(is);
    if (newBook == nullptr) {

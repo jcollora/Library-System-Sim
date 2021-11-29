@@ -20,7 +20,7 @@ class BookDatabase
 {
     public:
 
-    // -------------------------------------------------------------------------
+    // ------------------------------------------------------------------------
     /** BookDatabase()
     * Default Constructor
     *
@@ -31,7 +31,17 @@ class BookDatabase
     */
     BookDatabase();
 
-    //--------------------------------------------------------------------------
+    // ------------------------------------------------------------------------
+    /** ~BookDatabase()
+     * Destructor
+     * 
+     * Destructs instance as well as BSTrees in array
+     * @pre None
+     * @post this instance and all BSTree instances in the array are deleted
+    */
+    ~BookDatabase();
+
+    //-------------------------------------------------------------------------
     /** insertNewBook()
     * Insert Method
     *
@@ -43,7 +53,7 @@ class BookDatabase
     */
     bool insertNewBook(istream& is);
     
-    //--------------------------------------------------------------------------
+    //-------------------------------------------------------------------------
     /** getBook(String bookId)
     * 
     * Return a book object based on the information that is passed in if it is in a BST
