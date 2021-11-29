@@ -1,4 +1,4 @@
-/** @file book.h
+/** @file book.cpp
  *
  * Description:
  *   - A book object represents a unique book and the number of copies available
