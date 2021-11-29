@@ -28,8 +28,8 @@ using namespace std;
 
 BookFactory::BookFactory() {
    bookTypes['F' - 65] = new Fiction();
-   //bookTypes['P' - 65] = new Periodical();
-   //bookTypes['C' - 65] = new Children();
+   bookTypes['P' - 65] = new Periodical();
+   bookTypes['C' - 65] = new Children();
 
 }
 
@@ -39,7 +39,7 @@ BookFactory::~BookFactory() {
          delete ptr;
       }
    }
-   delete [] bookTypes;
+   
 }
 
 Book* BookFactory::createBook(istream& is) const {
