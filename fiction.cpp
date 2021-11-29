@@ -62,7 +62,16 @@ bool Fiction::operator>=(const BSTData& rhs) const {
    return compare(right) >= 0;
 }
 
-
+BSTData& Fiction::operator=(const BSTData& rhs) {
+   const Fiction& right = static_cast<const Fiction&>(rhs);
+   if (this != &right) {
+      author = right.author;
+      title = right.title;
+      year = right.year;
+      
+   }
+   return *this;
+}
 
 Book* Fiction::create() const {
    return new Fiction();
