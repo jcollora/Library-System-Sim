@@ -14,13 +14,14 @@
 #include "book.h"
 #include <iostream>
 
+
 using namespace std;
 
 Fiction::Fiction()
 {
    maxCount = 5;
    count = maxCount;
-   type = 'F'; //ACII = 70
+   type = TYPE_FICTION; //ACII = 70
 
 }
 

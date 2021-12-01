@@ -13,6 +13,7 @@
 
 #include "book.h"
 #include <string>
+#include "constants.h"
 
 using namespace std;
 

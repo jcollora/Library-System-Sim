@@ -14,13 +14,15 @@
 #ifndef BOOKDATABASE_H
 #define BOOKDATABASE_H
 
-#include "BSTree.h"
-#include "book.h"
+
+
+
 #include "bookfactory.h"
-#include <vector>
 #include "constants.h"
 
 using namespace std;
+
+class BSTree;
 
 class BookDatabase
 {
@@ -84,7 +86,7 @@ public:
 
 private:
     // vector of BSTrees each representing book subclass
-    vector<BSTree*> bookLibrary;
+    BSTree* bookShelf[HASH_SIZE];
 
     // tool that creates new book objects 
     BookFactory bookFactory;

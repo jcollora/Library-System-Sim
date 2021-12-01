@@ -23,21 +23,23 @@ using namespace std;
 
 Library* LibraryBuilder::createLibrary(istream& books, istream& patrons) {
    Library* newLib = new Library();
-   BookDatabase* newbookDB = new BookDatabase();
-   do {
-      newbookDB->insertNewBook(books);
+   BookDatabase* newBookDB = new BookDatabase();
+   while (!books.eof()) {
+      newBookDB->insertNewBook(books);
+      newBookDB->displayAll();
+      
 
-   } while (!books.eof());
+   }
 
-   PatronDatabase* newpatronDB = new PatronDatabase();
+   PatronDatabase* newPatronDB = new PatronDatabase();
 
-   do {
-      newpatronDB->insertNewPatron(patrons);
+   while (!patrons.eof()) {
+      newPatronDB->insertNewPatron(patrons);
 
-   } while (!patrons.eof());
+   }
 
-   newLib->bookDB = newbookDB;
-   newLib->patronDB = newpatronDB;
+   newLib->bookDB = newBookDB;
+   newLib->patronDB = newPatronDB;
 
    return newLib;
 

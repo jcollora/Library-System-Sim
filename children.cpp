@@ -13,12 +13,14 @@
 #include "book.h"
 #include <string>
 
+
 using namespace std;
 
 Children::Children() 
 {
     maxCount = 5;
     count = maxCount;
+    type = TYPE_CHILDREN;
 }
 
 int Children::compare(const Children& rhs) const {

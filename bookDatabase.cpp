@@ -12,21 +12,22 @@
 #include "book.h"
 #include "bookDatabase.h"
 #include <vector>
+#include "constants.h"
 
 using namespace std;
 
 BookDatabase::BookDatabase() {
    
    for (int i = 0; i < HASH_SIZE; i++) {
-      bookLibrary.resize(HASH_SIZE);
-      bookLibrary[i] = new BSTree(); //make it fixed siz e using final const HASH_SIZE?
+      
+      bookShelf[i] = new BSTree(); //make it fixed siz e using final const HASH_SIZE?
    }
 }
 
 BookDatabase::~BookDatabase() {
    for (int i = 0; i < HASH_SIZE; i++) {
       
-      delete bookLibrary[i];
+      delete bookShelf[i];
       
    }
 }
@@ -37,7 +38,7 @@ bool BookDatabase::insertNewBook(istream& is) {
       return false;
    }
    int index = bookFactory.getHash(*newBook);
-   return bookLibrary[index]->insert(newBook);
+   return bookShelf[index]->insert(newBook);
 
 }
 
@@ -49,14 +50,15 @@ Book* BookDatabase::getBook(istream& is) const {
    BSTData* bookFound = nullptr;
 
    int index = bookFactory.getHash(*bookToFind);
-   bookLibrary[index]->retrieve(*bookToFind, bookFound);
+   bookShelf[index]->retrieve(*bookToFind, bookFound);
 
    return (Book*)bookFound;
 
 }
 
 void BookDatabase::displayAll() const {
-   for (BSTree* tree : bookLibrary) {
-      cout << tree;
+   for (BSTree* tree : bookShelf) {
+      tree->displaySideways();
    }
+   cout << endl << "----------------------" << endl;
 }

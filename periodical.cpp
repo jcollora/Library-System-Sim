@@ -18,6 +18,7 @@ Periodical::Periodical()
 {
     maxCount = 5;
     count = maxCount;
+    type = TYPE_PERIODICAL;
 }
 
 int Periodical::compare(const Periodical& rhs) const {

@@ -149,10 +149,13 @@ bool BSTree::insert(BSTData* dataptr)
  */
 ostream& operator<<(ostream& os, const BSTree& BSTree)
 {
-   //INPUT STUFF HERE
+   
 
    return os;
 }
+
+
+
 
 //--------------------------------------------------------------------------
 /** retrieve
