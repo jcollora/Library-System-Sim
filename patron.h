@@ -190,6 +190,17 @@ public:
      */
     virtual bool setData(istream& is);
 
+      // -------------------------------------------------------------------------
+    /** display 
+     * display data
+     * 
+     * returns the data inside node as a string
+     * @pre None
+     * @post None
+     * @return string representing data inside node
+    */
+    virtual string display() const;
+
  private:
     // -------------------------------------------------------------------------
     /** compare()

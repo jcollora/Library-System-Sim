@@ -15,11 +15,13 @@
 #ifndef LIBRARY_H
 #define LIBRARY_H
 
-#include "bookDatabase.h"
-#include "patronDatabase.h"
-#include "commandQueue.h"
-#include "commandFactory.h"
+
 #include <iostream>
+
+class CommandQueue;
+class CommandFactory;
+class BookDatabase;
+class PatronDatabase;
 
 using namespace std;
 

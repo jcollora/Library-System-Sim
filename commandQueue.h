@@ -12,13 +12,15 @@
  *   -Can handle invalid inputs or conditions smoothly
  */
 
-#ifndef ASS4_COMMANDQUEUE_H
-#define ASS4_COMMANDQUEUE_H
+#ifndef COMMANDQUEUE_H
+#define COMMANDQUEUE_H
 
-#include "libraryCommand.h"
+
 
 
 using namespace std;
+
+class LibraryCommand;
 
 class CommandQueue
 {

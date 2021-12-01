@@ -91,11 +91,14 @@ BSTData& Patron::operator=(const BSTData& rhs) {
     return *this;
 }
 
-virtual bool setData(istream& is) {
+bool Patron::setData(istream& is) {
 
 
     return true;
 }
 
+string Patron::display() const {
 
+    return "";
+}
 

@@ -12,18 +12,19 @@
  *   -Delegates initializing a command to the command object.
  */
 
-#ifndef ASS4_COMMANDFACTORY_H
-#define ASS4_COMMANDFACTORY_H
+#ifndef COMMANDFACTORY_H
+#define COMMANDFACTORY_H
 
-#include "commandQueue.h"
 
-#include "library.h"
-#include "libraryCommand.h"
+
+
+
 #include <iostream>
 
 using namespace std;
 
 class Library;
+class commandQueue;
 
 class CommandFactory
 {
