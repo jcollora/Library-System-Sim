@@ -149,6 +149,8 @@ public:
     * @return true if line of data was read, false if no line or bad format
     */
    virtual bool setData(istream& is);
+
+   friend ostream& operator<<(ostream& os, const BSTData& data);
    
 private:
    // -------------------------------------------------------------------------

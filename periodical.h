@@ -150,6 +150,8 @@ public:
     */
    virtual bool setData(istream& is);
 
+   friend ostream& operator<<(ostream& os, const BSTData& data);
+
 private:
    // -------------------------------------------------------------------------
    /** compare()

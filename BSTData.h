@@ -123,6 +123,8 @@ public:
     */
     virtual string display() const = 0;
 
+
+    friend ostream& operator<<(ostream& os, const BSTData& data);
 };
 
 #endif 

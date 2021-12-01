@@ -11,6 +11,7 @@
 #include "BSTData.h"
 #include "periodical.h"
 #include "book.h"
+#include <iomanip>
 
 using namespace std;
 
@@ -112,4 +113,16 @@ bool Periodical::setData(istream& is) {
 
 string Periodical::display() const {
    return title; //NEEDS WORK
+}
+
+ostream& operator<<(ostream& os, const BSTData& data)
+{
+   const Periodical& book = static_cast<const Periodical&>(data);
+   os.setf(ios::left, ios::adjustfield);
+   os << setw(COUNT_MAX_LENGTH) << book.count
+      << setw(TITLE_MAX_LENGTH) << book.title.substr(0, TITLE_MAX_LENGTH)
+      << setw(AUTHOR_MAX_LENGTH) << book.author.substr(0, AUTHOR_MAX_LENGTH)
+      << setw(YEAR_MAX_LENGTH) << book.year;
+
+   return os;
 }

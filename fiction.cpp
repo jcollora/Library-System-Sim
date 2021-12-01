@@ -13,6 +13,7 @@
 #include "fiction.h"
 #include "book.h"
 #include <iostream>
+#include <iomanip>
 
 
 using namespace std;
@@ -120,4 +121,16 @@ bool Fiction::setData(istream& is) {
 
 string Fiction::display() const {
    return title; //NEEDS WORK
+}
+
+ostream& operator<<(ostream& os, const BSTData& data)
+{
+   const Fiction& book = static_cast<const Fiction&>(data);
+   os.setf(ios::left, ios::adjustfield);
+   os << setw(COUNT_MAX_LENGTH) << book.count
+      << setw(TITLE_MAX_LENGTH) << book.title.substr(0, TITLE_MAX_LENGTH)
+      << setw(AUTHOR_MAX_LENGTH) << book.author.substr(0, AUTHOR_MAX_LENGTH)
+      << setw(YEAR_MAX_LENGTH) << book.year;
+
+   return os;
 }
