@@ -40,7 +40,6 @@ BookFactory::~BookFactory() {
          delete ptr;
       }
    }
-   
 }
 
 Book* BookFactory::createBook(istream& is) const {
@@ -56,8 +55,6 @@ Book* BookFactory::createBook(istream& is) const {
 
    Book* newBook = bookTypes[index]->create();
 
-   
-
    if (!newBook->setData(is)) { //improper input
       delete newBook;
       return nullptr;
@@ -70,7 +67,3 @@ int BookFactory::getHash(const Book& book) const {
    char type = book.getType();
    return type - HASH_START;
 }
-
-
-
-

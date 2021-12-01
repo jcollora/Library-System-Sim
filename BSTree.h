@@ -1,5 +1,12 @@
 /** @file BSTree.h
  * @author Josh Helzerman
+ * 
+ * Description:
+ *   - ...
+ *  
+ * Implementation:
+ *   - ...
+ * 
  */
 
 #ifndef BSTREE_H
@@ -47,8 +54,6 @@ public:
     * @post BSTree object exists. root is instantiated to NULLPTR
     */
    BSTree();
-
-   
 
    //--------------------------------------------------------------------------
    /** Destructor
@@ -122,8 +127,6 @@ public:
     */
    bool retrieve(const BSTData& nodeToFind, BSTData*& foundNode) const;
 
-   
-
    //--------------------------------------------------------------------------
    /** displaySideways
     * Display the tree sideways
@@ -134,8 +137,6 @@ public:
     * be used to display output during the function.
     */
    void displaySideways() const;
-
-   
 
    //--------------------------------------------------------------------------
    /** arrayToBSTree
@@ -166,12 +167,8 @@ private:
       Node* right;
    };
 
-   //--------------------------------------------------------------------------
-
    // the root of the tree
    Node* root;
-
-   
 
    //--------------------------------------------------------------------------
    /** sidwaysHelper
@@ -186,7 +183,6 @@ private:
     * @post cout may or may not have a new value printed to it
     */
    void sidewaysHelper(Node* current, int level) const;
-
    
    //--------------------------------------------------------------------------
    /** makeEmptyHelper
@@ -198,7 +194,6 @@ private:
     * @post The tree is empty.
     */
    void makeEmptyHelper(Node* current);
-
 
    //--------------------------------------------------------------------------
    /** findNode
@@ -231,10 +226,8 @@ private:
     * @post all arr pointers are nullptr. The tree is now balanced and contains
     * all nodes from the array
     */
-   void arrayToBSTreeHelper(BSTData* arr[], Node*& current, int start,
-                            int end);
+   void arrayToBSTreeHelper(BSTData* arr[], Node*& current, int start, int end);
 
-   
 };
 
 #endif

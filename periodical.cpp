@@ -1,4 +1,5 @@
 /** @file periodical.cpp
+ * @author Joseph Collora and Josh Helzerman
  *
  * Description:
  *   - A Periodical book type
@@ -70,8 +71,6 @@ BSTData& Periodical::operator=(const BSTData& rhs) {
    return *this;
 }
 
-
-
 Book* Periodical::create() const {
    return new Periodical();
 }
@@ -90,7 +89,6 @@ bool Periodical::setData(istream& is) {
    } else {
       is.unget();
    }
-   
    
    getline(is, author, ',');
    if (author.empty()) {
@@ -113,7 +111,6 @@ bool Periodical::setData(istream& is) {
    getline(is, line); //clear line for next data input
 
    return true;
-
 
 }
 

@@ -67,9 +67,6 @@ void BSTree::makeEmptyHelper(Node* current)
    delete current;
 }
 
-
-
-
 //--------------------------------------------------------------------------
 /** isEmpty
  * Is the tree empty?
@@ -157,7 +154,6 @@ ostream& operator<<(ostream& os, const BSTree& BSTree)
    return os;
 }
 
-
 //--------------------------------------------------------------------------
 /** retrieve
  * Retrieve Node
@@ -182,8 +178,6 @@ ostream& operator<<(ostream& os, const BSTree& BSTree)
  */
 bool BSTree::retrieve(const BSTData& nodeToFind, BSTData*& foundNode) const
 {
-
-
    const Node* found = findNode(nodeToFind, root);
    if (found == nullptr) {
       return false;
@@ -220,9 +214,6 @@ const BSTree::Node* BSTree::findNode(const BSTData& nodeToFind,
 
    return temp;
 }
-
-
-
 
 //--------------------------------------------------------------------------
 /** displaySideways

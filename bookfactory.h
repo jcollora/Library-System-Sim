@@ -1,20 +1,19 @@
 /** @file bookfactory.h
- * @author Omar Ahmed
- *
+ * @author Joseph Collora and Josh Helzerman
+ * 
  * Description:
  *   - A BookFactory object represents the factory class that creates Book
- *  objects in their different subtypes to be stored in the books database.
+ *     objects in their different subtypes to be stored in the books database.
  *   - Can create a book and correctly classify it as the right type using
- * string data provided by the LibraryBuilder.
+ *     string data provided by the LibraryBuilder.
  *   - Holds three types of books: Fiction, Periodicals, and Children.
- *
  *
  * Implementation:
  *   - This a factory class following the factory design pattern.
  *   - Contains one function used to create and classify a book using
- * string data.
+ *     string data.
  *   - Classifies each type of book and creates the correct sub-class of
- * book for each string passed in.
+ *     book for each string passed in.
  */
 
 #ifndef BOOKFACTORY_H
@@ -26,8 +25,6 @@
 
 using namespace std;
 
-
-
 class BookFactory
 {
 public:
@@ -38,7 +35,7 @@ public:
     * Constructs BookFactory instance, instantiates hashmap
     * @pre None.
     * @post BookFactory exists
-   */
+    */
    BookFactory();
 
    // -------------------------------------------------------------------------
@@ -49,7 +46,7 @@ public:
     * @pre None.
     * @post this BookFactory, its hashmap, and the Books it pointed to are 
     * deleted
-   */
+    */
    ~BookFactory();
 
    // -------------------------------------------------------------------------
@@ -74,7 +71,7 @@ public:
     * @pre None
     * @post None
     * @return int representing hash key/index of book type
-   */
+    */
    int getHash(const Book& book) const;
 
 private:

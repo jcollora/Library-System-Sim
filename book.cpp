@@ -21,7 +21,6 @@
 
 using namespace std;
 
-
 Book::Book() {
    author = "";
    title = "";
@@ -57,4 +56,3 @@ bool Book::checkAvailability() const {
 char Book::getType() const {
    return type;
 }
-

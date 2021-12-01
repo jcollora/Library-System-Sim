@@ -1,4 +1,5 @@
 /** @file children.cpp
+ * @author Joseph Collora and Josh Helzerman
  *
  * Description:
  *   - A children book type
@@ -48,8 +49,6 @@ bool Children::operator!=(const BSTData& rhs) const {
    return compare(right) != 0;
 }
 
-
-
 Book* Children::create() const {
    return new Children();
 }
@@ -90,7 +89,6 @@ bool Children::setData(istream& is) {
       is.unget();
    }
    
-   
    getline(is, author, ',');
    if (author.empty()) {
       getline(is, line);
@@ -112,7 +110,6 @@ bool Children::setData(istream& is) {
    getline(is, line); //clear line for next data input
 
    return true;
-
 
 }
 

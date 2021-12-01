@@ -1,5 +1,5 @@
 /** @file bookDatabase.cpp
- *  @author Mogul Solutions
+ * @author Joseph Collora and Josh Helzerman
  *
  * Description:
  *   BookDatabase holds all of the children, periodical, and fiction books that
@@ -12,8 +12,6 @@
 #include "book.h"
 #include "BookDatabase.h"
 #include <vector>
-
- 
 
 using namespace std;
 
@@ -31,7 +29,6 @@ BookDatabase::~BookDatabase() {
       delete bookLibrary[i];
       
    }
-   
 }
 
 bool BookDatabase::insertNewBook(istream& is) {

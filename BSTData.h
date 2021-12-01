@@ -1,5 +1,5 @@
 /** @file BSTData.h
- *  @author Joseph Collora
+ * @author Joseph Collora and Josh Helzerman
  * 
  *  Description:
  *  - Interface for objects that defines comparison operators to compare data
@@ -19,10 +19,9 @@
 
 using namespace std;
 
-class BSTData {
-    public:
-
-
+class BSTData 
+{
+public:
     // -------------------------------------------------------------------------
     /** operator<()
      *  Less Than Operator
@@ -123,7 +122,6 @@ class BSTData {
      * @return string representing data inside node
     */
     virtual string display() const = 0;
-
 
 };
 

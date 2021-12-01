@@ -1,13 +1,16 @@
 /** @file bookDatabase.h
- *  @author Mogul Solutions
+ * @author Joseph Collora and Josh Helzerman
  *
  * Description:
- *      Library class is an object that includes pointers to both the patron and
- *      the book database. The class processes all of the commands that are come
- *      from an input data stream
+ *   - Library class is an object that includes pointers to both the patron and
+ *     the book database. 
+ *   - The class processes all of the commands that are come
+ *     from an input data stream
+ *  
+ * Implementation:
+ *   - ...
  *   
- *
- */
+ */ 
 
 #ifndef LIBRARY_H
 #define LIBRARY_H
@@ -26,10 +29,7 @@ class Library {
     // -------------------------------------------------------------------------
     /** Library()
     * Default Constructor
-    *
     * Constructs a Library object with default values for the patron database
-    * 
-    * 
     * @pre None.
     * @post Library object exists
     */
@@ -37,10 +37,8 @@ class Library {
 
     // -------------------------------------------------------------------------
     /** processComands()
-    *
     * This method is responsible for processing all of the library commands that
     * are provided by the ifstream
-    * 
     * @pre None.
     * @param ifstream an input file stream
     *                 a stream of data used for reading input from a file
@@ -54,8 +52,8 @@ class Library {
     //this memebr class is the d-base that holds all of the patrons for library
     PatronDatabase *patronDB;
 
+    // Factory for creating commands and queue for execution order
     CommandQueue* commandQueue;
-
     CommandFactory* commandFactory;
 };
 

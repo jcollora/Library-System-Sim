@@ -1,6 +1,6 @@
 /** @file periodical.h
- * @author Josh Helzerman and Joseph Collora
- *
+ * @author Joseph Collora and Josh Helzerman
+ * 
  * Description:
  *   - A Periodical book type
  *
@@ -30,6 +30,18 @@ public:
     * @post Periodical book object exists
     */
    Periodical();
+
+   // -------------------------------------------------------------------------
+   /** create()
+    * Create Periodical book
+    *
+    * Creates a Periodical book instance
+    * @pre None
+    * @post new Periodical book object exists
+    * @return reference to new children's book
+    *
+    */
+   Book* create() const;
 
    // -------------------------------------------------------------------------
    /** display()
@@ -80,77 +92,62 @@ public:
     */
    virtual bool operator==(const BSTData& rhs) const;
 
+   // --------------------------------------------------------------------------
+   /** operator!=
+    * Inequality Operator
+    * 
+    * Determines if right and left items are not equivelent
+    * @pre Both items being compared exist
+    * @post None.
+    * @return false returned when left is equal to right, true otherwise
+    */
+   virtual bool operator!=(const BSTData& rhs) const;
+
    // -------------------------------------------------------------------------
-   /** create()
-    * Create Periodical book
-    *
-    * Creates a Periodical book instance
-    * @pre None
-    * @post new Periodical book object exists
-    * @return reference to new children's book
-    *
+   /** operator<=()
+    *  Less than or equal operator
+    * 
+    * Determines if the right and left items are equivelent or less than
+    * @pre Both items being compared exist
+    * @post None.
+    * @return true returned when left is equal to right or
+    * if left is less than right, false otherwise
     */
-   Book* create() const;
+   virtual bool operator<=(const BSTData& rhs) const;
 
-    // -------------------------------------------------------------------------
-    /** operator!=
-     * Inequality Operator
-     * 
-     * Determines if right and left items are not equivelent
-     * @pre Both items being compared exist
-     * @post None.
-     * @return false returned when left is equal to right, true otherwise
+   // --------------------------------------------------------------------------
+   /** operator>=()
+    *  greater than or equal operator
+    * 
+    * Determines if the right and left items are equivelent or greater than
+    * @pre Both items being compared exist
+    * @post None.
+    * @return true returned when left is equal to right or
+    * if left is greater than right, false otherwise
     */
-    virtual bool operator!=(const BSTData& rhs) const;
+   virtual bool operator>=(const BSTData& rhs) const;
 
-    // -------------------------------------------------------------------------
-    /** operator<=()
-     *  Less than or equal operator
-     * 
-     * Determines if the right and left items are equivelent or less than
-     * @pre Both items being compared exist
-     * @post None.
-     * @return true returned when left is equal to right or
-     * if left is less than right, false otherwise
-     */
-    virtual bool operator<=(const BSTData& rhs) const;
-
-    // -------------------------------------------------------------------------
-    /** operator>=()
-     *  greater than or equal operator
-     * 
-     * Determines if the right and left items are equivelent or greater than
-     * @pre Both items being compared exist
-     * @post None.
-     * @return true returned when left is equal to right or
-     * if left is greater than right, false otherwise
-     */
-    virtual bool operator>=(const BSTData& rhs) const;
-
-    // -------------------------------------------------------------------------
-    /** operator=()
-     * Copy assignment operator
-     * 
-     * Copy data from right hand item to left hand item.
-     * @pre Items should not be the same item
-     * @post left item contains data from rhs, right item is const
-     * @return reference to left item
+   // -------------------------------------------------------------------------
+   /** operator=()
+    * Copy assignment operator
+    * 
+    * Copy data from right hand item to left hand item.
+    * @pre Items should not be the same item
+    * @post left item contains data from rhs, right item is const
+    * @return reference to left item
     */
-    virtual BSTData& operator=(const BSTData& rhs);
+   virtual BSTData& operator=(const BSTData& rhs);
 
-
-
-    // -------------------------------------------------------------------------
-    /** setData()
-     * input data into node
-     * 
-     * Take data from inputStream and put into node members
-     * @pre must have a properly formatted input file
-     * @post line of input is read. BSTData contains line data
-     * @return true if line of data was read, false if no line or bad format
+   // -------------------------------------------------------------------------
+   /** setData()
+    * input data into node
+    * 
+    * Take data from inputStream and put into node members
+    * @pre must have a properly formatted input file
+    * @post line of input is read. BSTData contains line data
+    * @return true if line of data was read, false if no line or bad format
     */
-    virtual bool setData(istream& is);
-
+   virtual bool setData(istream& is);
 
 private:
    // -------------------------------------------------------------------------
