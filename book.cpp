@@ -53,6 +53,6 @@ bool Book::checkAvailability() const {
    return count > 0;
 }
 
-char Book::getType() const {
+string Book::getType() const {
    return type;
 }

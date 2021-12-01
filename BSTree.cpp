@@ -150,11 +150,19 @@ bool BSTree::insert(BSTData* dataptr)
 ostream& operator<<(ostream& os, const BSTree& BSTree)
 {
    
-
+   BSTree.inorderHelper(os, BSTree.root);
+   
    return os;
 }
 
-
+void BSTree::inorderHelper(ostream&os, const Node* node) const {
+   if (node == nullptr) {
+      return;
+   }
+   inorderHelper(os, node->left);
+   os << node->data->display() << endl;
+   inorderHelper(os, node->right);
+}
 
 
 //--------------------------------------------------------------------------

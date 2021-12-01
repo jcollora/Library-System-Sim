@@ -26,7 +26,7 @@ Library* LibraryBuilder::createLibrary(istream& books, istream& patrons) {
    BookDatabase* newBookDB = new BookDatabase();
    while (!books.eof()) {
       newBookDB->insertNewBook(books);
-      newBookDB->displayAll();
+      newBookDB->displayAll(); //test code. delete this
       
 
    }

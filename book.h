@@ -111,7 +111,7 @@ public:
     * @post None. const
     * @return char representing book type
     */
-   char getType() const; 
+   string getType() const; 
 
 protected:
    // author of book
@@ -136,7 +136,7 @@ protected:
    char format;
 
    // book type;
-   char type;
+   string type;
 
 
 };

@@ -74,6 +74,8 @@ public:
     */
    int getHash(const Book& book) const;
 
+   string getType(char type) const;
+
 private:
    // Array of subclasses of Book object to classify each book as its correct
    //  type.

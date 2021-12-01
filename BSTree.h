@@ -228,6 +228,8 @@ private:
     */
    void arrayToBSTreeHelper(BSTData* arr[], Node*& current, int start, int end);
 
+   void inorderHelper(ostream& os, const Node* node) const;
+
 };
 
 #endif

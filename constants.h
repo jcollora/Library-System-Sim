@@ -6,9 +6,10 @@
 #define HASH_SIZE 26
 #define HASH_START 65
 
-#define TYPE_FICTION 'F'
-#define TYPE_CHILDREN 'C'
-#define TYPE_PERIODICAL 'P'
+#define TYPE_FICTION "FICTION"
+#define TYPE_CHILDREN "CHILDREN"
+#define TYPE_PERIODICAL "PERIODICAL"
+
 
 
 #endif

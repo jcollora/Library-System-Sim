@@ -28,9 +28,9 @@ using namespace std;
 
 BookFactory::BookFactory() {
    // type's Ascii value - hash_start ascii value (defined in constants.h)
-   bookTypes[TYPE_FICTION - HASH_START] = new Fiction();
-   bookTypes[TYPE_PERIODICAL - HASH_START] = new Periodical();
-   bookTypes[TYPE_CHILDREN - HASH_START] = new Children();
+   bookTypes[TYPE_FICTION[0] - HASH_START] = new Fiction();
+   bookTypes[TYPE_PERIODICAL[0] - HASH_START] = new Periodical();
+   bookTypes[TYPE_CHILDREN[0] - HASH_START] = new Children();
 
 }
 
@@ -43,7 +43,8 @@ BookFactory::~BookFactory() {
 }
 
 Book* BookFactory::createBook(istream& is) const {
-   char type = is.get();
+   char type = toupper(is.get());
+   
    string line;
    int index = type - HASH_START;
    if (index < 0 || index >= HASH_SIZE) {
@@ -66,6 +67,8 @@ Book* BookFactory::createBook(istream& is) const {
 }
 
 int BookFactory::getHash(const Book& book) const {
-   char type = book.getType();
-   return type - HASH_START;
+   string type = book.getType();
+   return type[0] - HASH_START;
 }
+
+
