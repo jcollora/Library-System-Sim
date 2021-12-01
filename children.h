@@ -1,5 +1,5 @@
 /** @file children.h
- * @author Josh Helzerman and Joseph Collora
+ * @author Joseph Collora and Josh Helzerman
  *
  * Description:
  *   - A children book type
@@ -32,7 +32,19 @@ public:
    Children();
 
    // -------------------------------------------------------------------------
-   /** displayBook()
+   /** create()
+    * Create childrens book
+    *
+    * Creates a childrens book instance
+    * @pre None
+    * @post new childrens book object exists
+    * @return reference to new children's book
+    *
+    */
+   Book* create() const;
+
+   // -------------------------------------------------------------------------
+   /** display()
     * Display book information
     *
     * Display book information in easy-to-read columns.
@@ -42,7 +54,7 @@ public:
     * @post None. const function
     * @return String representing book data
     */
-   virtual string displayBook() const;
+   virtual string display() const;
 
    // -------------------------------------------------------------------------
    /** operator<()
@@ -79,17 +91,63 @@ public:
     * @return true if this book is equal to rhs, else false
     */
    virtual bool operator==(const BSTData& rhs) const;
+
    // -------------------------------------------------------------------------
-   /** create()
-    * Create childrens book
-    *
-    * Creates a childrens book instance
-    * @pre None
-    * @post new childrens book object exists
-    * @return reference to new children's book
-    *
+   /** operator!=
+    * Inequality Operator
+    * 
+    * Determines if right and left items are not equivelent
+    * @pre Both items being compared exist
+    * @post None.
+    * @return false returned when left is equal to right, true otherwise
     */
-   Book* create() const;
+   virtual bool operator!=(const BSTData& rhs) const;
+
+   // -------------------------------------------------------------------------
+   /** operator<=()
+    *  Less than or equal operator
+    * 
+    * Determines if the right and left items are equivelent or less than
+    * @pre Both items being compared exist
+    * @post None.
+    * @return true returned when left is equal to right or
+    * if left is less than right, false otherwise
+    */
+   virtual bool operator<=(const BSTData& rhs) const;
+
+   // -------------------------------------------------------------------------
+   /** operator>=()
+    *  greater than or equal operator
+    * 
+    * Determines if the right and left items are equivelent or greater than
+    * @pre Both items being compared exist
+    * @post None.
+    * @return true returned when left is equal to right or
+    * if left is greater than right, false otherwise
+    */
+   virtual bool operator>=(const BSTData& rhs) const;
+
+   // -------------------------------------------------------------------------
+   /** operator=()
+    * Copy assignment operator
+    * 
+    * Copy data from right hand item to left hand item.
+    * @pre Items should not be the same item
+    * @post left item contains data from rhs, right item is const
+    * @return reference to left item
+    */
+   virtual BSTData& operator=(const BSTData& rhs);
+
+   // -------------------------------------------------------------------------
+   /** setData()
+    * input data into node
+    * 
+    * Take data from inputStream and put into node members
+    * @pre must have a properly formatted input file
+    * @post line of input is read. BSTData contains line data
+    * @return true if line of data was read, false if no line or bad format
+    */
+   virtual bool setData(istream& is);
    
 private:
    // -------------------------------------------------------------------------

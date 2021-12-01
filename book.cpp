@@ -1,4 +1,4 @@
-/** @file book.h
+/** @file book.cpp
  *
  * Description:
  *   - A book object represents a unique book and the number of copies available
@@ -20,7 +20,6 @@
 #include "book.h"
 
 using namespace std;
-
 
 Book::Book() {
    author = "";
@@ -57,4 +56,3 @@ bool Book::checkAvailability() const {
 char Book::getType() const {
    return type;
 }
-

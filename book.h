@@ -1,20 +1,19 @@
 /** @file book.h
- * @author Josh Helzerman
+ * @author Joseph Collora and Josh Helzerman
  *
  * Description:
  *   - A book object represents a unique book and the number of copies available
- * for that book at any given time
+ *     for that book at any given time
  *   - Can be queried to display its information
  *   - Can be queried to see if there are any available copies
  *   - Can be compared with other books
  *   - number of available books can be changed
  *
- *
  * Implementation:
  *   - This is an abstract class
  *   - Some functions are virtual and some are pure virtual
  *   - One book object can represent multiple copies of the same book using the
- * count member variable
+ *     count member variable
  *   - count can be decreased or increased
  */
 
@@ -55,7 +54,7 @@ public:
      * @pre None.
      * @post Book instance is deleted
     */
-    virtual ~Book();
+   virtual ~Book();
 
    // -------------------------------------------------------------------------
    /** addBook()
@@ -91,8 +90,6 @@ public:
     */
    bool checkAvailability() const;
 
-
-
    // -------------------------------------------------------------------------
    /** create()
     * Create book (for factory)
@@ -113,7 +110,7 @@ public:
     * @pre None
     * @post None. const
     * @return char representing book type
-   */
+    */
    char getType() const; 
 
 protected:

@@ -6,3 +6,7 @@ nodedata.h
 main.exe
 book
 main
+.vscode/c_cpp_properties.json
+bookDatabase.exe
+a.out
+bookfactory.exe

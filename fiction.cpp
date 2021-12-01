@@ -1,4 +1,5 @@
 /** @file fiction.cpp
+ * @author Joseph Collora and Josh Helzerman
  *
  * Description:
  *   - A Fiction book type
@@ -92,7 +93,6 @@ bool Fiction::setData(istream& is) {
       is.unget();
    }
    
-   
    getline(is, author, ',');
    if (author.empty()) {
       getline(is, line);
@@ -114,7 +114,6 @@ bool Fiction::setData(istream& is) {
    getline(is, line); //clear line for next data input
 
    return true;
-
 
 }
 

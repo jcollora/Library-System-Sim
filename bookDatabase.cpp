@@ -1,5 +1,5 @@
 /** @file bookDatabase.cpp
- *  @author Mogul Solutions
+ * @author Joseph Collora and Josh Helzerman
  *
  * Description:
  *   BookDatabase holds all of the children, periodical, and fiction books that
@@ -11,22 +11,24 @@
 #include "BSTree.h"
 #include "book.h"
 #include "BookDatabase.h"
+#include <vector>
 
 using namespace std;
 
 BookDatabase::BookDatabase() {
-   for (BSTree* tree : bookLibrary) {
-      tree = new BSTree();
+   
+   for (int i = 0; i < HASH_SIZE; i++) {
+      bookLibrary.resize(HASH_SIZE);
+      bookLibrary[i] = new BSTree(); //make it fixed siz e using final const HASH_SIZE?
    }
 }
 
 BookDatabase::~BookDatabase() {
-   for (BSTree* tree : bookLibrary) {
+   for (int i = 0; i < HASH_SIZE; i++) {
       
-      delete tree;
+      delete bookLibrary[i];
       
    }
-   
 }
 
 bool BookDatabase::insertNewBook(istream& is) {
