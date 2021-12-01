@@ -1,4 +1,4 @@
-/** @file bookDatabase.h
+/** @file library.h
  * @author Joseph Collora and Josh Helzerman
  *
  * Description:
@@ -26,6 +26,8 @@ class PatronDatabase;
 using namespace std;
 
 class Library {
+
+    friend class LibraryBuilder;
     
     public:
     // -------------------------------------------------------------------------
@@ -38,6 +40,15 @@ class Library {
     Library();
 
     // -------------------------------------------------------------------------
+    /** ~Library()
+    * Destructor
+    * Deletes the libary and its member variables
+    * @pre None.
+    * @post Library object and member variables deleted
+    */
+    ~Library();
+
+    // -------------------------------------------------------------------------
     /** processComands()
     * This method is responsible for processing all of the library commands that
     * are provided by the ifstream
@@ -46,7 +57,7 @@ class Library {
     *                 a stream of data used for reading input from a file
     * @post commands are executed based on the parameter
     */
-    void processCommands(fstream& is);
+    void processCommands(istream& is);
     
     private:
     //this member class is the d-base that holds all of the books for library
@@ -55,8 +66,8 @@ class Library {
     PatronDatabase *patronDB;
 
     // Factory for creating commands and queue for execution order
-    CommandQueue* commandQueue;
-    CommandFactory* commandFactory;
+    //CommandQueue* commandQueue;
+    //CommandFactory* commandFactory;
 };
 
 #endif

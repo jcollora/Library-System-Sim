@@ -14,13 +14,30 @@
 #include "libraryBuilder.h"
 #include <iostream>
 #include "library.h"
+#include "bookDatabase.h"
+#include "patronDatabase.h"
 
 
 
 using namespace std;
 
-Library* LibraryBuilder::createLibrary(ifstream& books, ifstream& patrons) {
+Library* LibraryBuilder::createLibrary(istream& books, istream& patrons) {
    Library* newLib = new Library();
+   BookDatabase* newbookDB = new BookDatabase();
+   do {
+      newbookDB->insertNewBook(books);
+
+   } while (!books.eof());
+
+   PatronDatabase* newpatronDB = new PatronDatabase();
+
+   do {
+      newpatronDB->insertNewPatron(patrons);
+
+   } while (!patrons.eof());
+
+   newLib->bookDB = newbookDB;
+   newLib->patronDB = newpatronDB;
 
    return newLib;
 

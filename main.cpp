@@ -7,9 +7,13 @@ using namespace std;
 #include "bookDatabase.h"
 #include "BSTree.h"
 #include "fiction.h"
+#include "libraryBuilder.h"
+#include "library.h"
+#include <iostream>
 
 int main() {
-   BookDatabase bookDB;
+   LibraryBuilder build;
+   Library* lib = build.createLibrary();
 
    return 0;
 }

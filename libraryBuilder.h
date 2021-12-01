@@ -21,7 +21,7 @@ using namespace std;
 
 class Library;
 
-class libraryBuilder 
+class LibraryBuilder 
 {
 public:
     // -------------------------------------------------------------------------
@@ -38,7 +38,7 @@ public:
      *         patron and book
      * 
      */
-    Library* createLibrary(ifstream& books, ifstream& patrons);
+    Library* createLibrary(istream& books, istream& patrons);
 
 
 };

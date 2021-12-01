@@ -19,10 +19,10 @@
 using namespace std;
 
 #include "constants.h"
+
 #include "BSTData.h"
-#include "library.h"
 
-
+#include <iostream>
 #include <string>
 #include <vector>
 #include <unordered_set>
@@ -225,7 +225,7 @@ public:
     vector<const LibraryCommand*> commandHistory;
 
     // current books checkout out by patron. DOES NOT ALLOW FOR DUPLICATES
-    unordered_set<const Book&> currentCheckouts;
+    unordered_set<const Book*> currentCheckouts;
 };
 
 #endif 

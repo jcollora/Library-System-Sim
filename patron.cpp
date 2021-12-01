@@ -17,7 +17,12 @@
 
 using namespace std;
 
+Patron::Patron() {
 
+}
+Patron::~Patron() {
+    
+}
 
 bool Patron::addBook(const Book* book) {
     
