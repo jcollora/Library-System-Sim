@@ -91,17 +91,12 @@ bool Periodical::setData(istream& is) {
       is.unget();
    }
    
-   getline(is, author, ',');
-   if (author.empty()) {
-      getline(is, line);
-      return false;
-   }
-   is.get();
    getline(is, title, ',');
-      if (title.empty()) {
+   if (title.empty()) {
       getline(is, line);
       return false;
    }
+   is >> month; 
  
    is >> year;
    if ( year < 0) {

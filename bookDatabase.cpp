@@ -59,6 +59,8 @@ Book* BookDatabase::getBook(istream& is) const {
 void BookDatabase::displayAll() const {
    for (BSTree* tree : bookShelf) {
       tree->displaySideways();
+      
+      cout << endl << "----------------------" << endl;
    }
-   cout << endl << "----------------------" << endl;
+   
 }

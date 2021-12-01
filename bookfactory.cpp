@@ -44,12 +44,14 @@ BookFactory::~BookFactory() {
 
 Book* BookFactory::createBook(istream& is) const {
    char type = is.get();
-   
+   string line;
    int index = type - HASH_START;
    if (index < 0 || index >= HASH_SIZE) {
+      getline(is, line);
       return nullptr; //character is out of range
    }
    if (bookTypes[index] == nullptr) {
+      getline(is, line);
       return nullptr; //no booktype exists
    }
 
