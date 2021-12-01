@@ -123,9 +123,9 @@ string Fiction::display() const {
    return title; //NEEDS WORK
 }
 
-ostream& operator<<(ostream& os, const BSTData& data)
+ostream& operator<<(ostream& os, const Fiction& book)
 {
-   const Fiction& book = static_cast<const Fiction&>(data);
+   //const Fiction& book = static_cast<const Fiction&>(data);
    os.setf(ios::left, ios::adjustfield);
    os << setw(COUNT_MAX_LENGTH) << book.count
       << setw(TITLE_MAX_LENGTH) << book.title.substr(0, TITLE_MAX_LENGTH)

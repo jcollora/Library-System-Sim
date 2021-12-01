@@ -150,7 +150,7 @@ public:
     */
    virtual bool setData(istream& is);
 
-   friend ostream& operator<<(ostream& os, const BSTData& data);
+   friend ostream& operator<<(ostream& os, const Fiction& book);
 
 private:
    // -------------------------------------------------------------------------

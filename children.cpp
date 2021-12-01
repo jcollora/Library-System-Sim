@@ -122,9 +122,9 @@ bool Children::setData(istream& is)
 
 string Children::display() const { return ""; }
 
-ostream& operator<<(ostream& os, const BSTData& data)
+ostream& operator<<(ostream& os, const Children& book)
 {
-   const Children& book = static_cast<const Children&>(data);
+   //const Children& book = static_cast<const Children&>(data);
    os.setf(ios::left, ios::adjustfield);
    os << setw(COUNT_MAX_LENGTH) << book.count
       << setw(TITLE_MAX_LENGTH) << book.title.substr(0, TITLE_MAX_LENGTH)
