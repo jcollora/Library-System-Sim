@@ -23,13 +23,13 @@
 class PatronDatabase
 {
 public:
+    /** 
     // -------------------------------------------------------------------------
     /** PatronDatabase()
      * Default Constructor
      * Constructs a PatronDatabase object with default values
      * @pre None.
      * @post PatronDatabase object exists
-     */
     PatronDatabase();
 
     // -------------------------------------------------------------------------
@@ -38,8 +38,7 @@ public:
      * Destroys all instances of new "BSTrees"
      * @pre Current instance of PatronDatabase exists
      * @post All new allocations of memory are deleted
-     */
-    ~PatronDatabase();
+    ~PatronDatabase(); */
 
     //--------------------------------------------------------------------------
     /** createPatron(Patron customer)

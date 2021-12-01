@@ -29,7 +29,28 @@ using namespace std;
 class Patron : public BSTData 
 {
 public:
-    // constr / destr need these
+    // -------------------------------------------------------------------------
+   /** Patron()
+     * Default Constructor
+     *
+     * Creates a Patron object. Member variables are instantiated to default
+     * values. Book requires a book factory in order to be properly instantiated
+     * with data
+     * @pre None.
+     * @post Patron object exists with default member variables
+    */
+   Patron();
+
+   // -------------------------------------------------------------------------
+    /** ~Patron()
+     * Destructor
+     * 
+     * Deletes Patron from memory. It's empty, but apparently helps to delete
+     * strings
+     * @pre None.
+     * @post Patron instance is deleted
+    */
+   virtual ~Patron();
 
     // -------------------------------------------------------------------------
     /** addBook()
@@ -73,6 +94,88 @@ public:
     string displayPatronHistory() const;
 
 // -------------------------------------------------------------------------
+   /** operator<()
+    * Operator less than overload
+    *
+    * Compares this patron to right-hand patron to see if this is less than rhs
+    * @param rhs patron to be compared
+    * @pre None.
+    * @post None. const
+    * @return true if this patron is less than rhs, else false
+    */
+   virtual bool operator<(const BSTData& rhs) const;
+
+   // -------------------------------------------------------------------------
+   /** operator>()
+    * Operator greater than overload
+    *
+    * Compares this patron to right-hand patron to see if this is greater than 
+    * rhs
+    * @param rhs patron to be compared
+    * @pre None.
+    * @post None. const
+    * @return true if this patron is greater than rhs, else false
+    */
+   virtual bool operator>(const BSTData& rhs) const;
+
+   // -------------------------------------------------------------------------
+   /** operator==()
+    * Operator equal to overloadd
+    *
+    * Compares this patron to right-hand patron to see if this is equal to rhs
+    * @param rhs patron to be compared
+    * @pre None.
+    * @post None. const
+    * @return true if this patron is equal to rhs, else false
+    */
+   virtual bool operator==(const BSTData& rhs) const;
+
+   // -------------------------------------------------------------------------
+   /** operator!=
+    * Inequality Operator
+    * 
+    * Determines if right and left items are not equivelent
+    * @pre Both items being compared exist
+    * @post None.
+    * @return false returned when left is equal to right, true otherwise
+    */
+   virtual bool operator!=(const BSTData& rhs) const;
+
+   // -------------------------------------------------------------------------
+   /** operator<=()
+    *  Less than or equal operator
+    * 
+    * Determines if the right and left items are equivelent or less than
+    * @pre Both items being compared exist
+    * @post None.
+    * @return true returned when left is equal to right or
+    * if left is less than right, false otherwise
+    */
+   virtual bool operator<=(const BSTData& rhs) const;
+
+   // -------------------------------------------------------------------------
+   /** operator>=()
+    *  greater than or equal operator
+    * 
+    * Determines if the right and left items are equivelent or greater than
+    * @pre Both items being compared exist
+    * @post None.
+    * @return true returned when left is equal to right or
+    * if left is greater than right, false otherwise
+    */
+   virtual bool operator>=(const BSTData& rhs) const;
+
+   // -------------------------------------------------------------------------
+   /** operator=()
+    * Copy assignment operator
+    * 
+    * Copy data from right hand item to left hand item.
+    * @pre Items should not be the same item
+    * @post left item contains data from rhs, right item is const
+    * @return reference to left item
+    */
+   virtual BSTData& operator=(const BSTData& rhs);
+// -------------------------------------------------------------------------
     /** setData()
      * input data into node
      * 
@@ -84,6 +187,18 @@ public:
     virtual bool setData(istream& is);
 
  private:
+    // -------------------------------------------------------------------------
+    /** compare()
+     * Compare patrons
+     *
+     * Compare 2 patrons. Returns an integer that reflects the comparison
+     * @pre None
+     * @post new patron object exists
+     * @return negative int if left patron < right.
+     * return 0 if equal, return positive int if left > right
+    */
+    int compare(const Patron& rhs) const;
+
     // id of the patron
     int id;
 
