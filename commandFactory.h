@@ -23,6 +23,8 @@
 
 using namespace std;
 
+class Library;
+
 class CommandFactory
 {
 

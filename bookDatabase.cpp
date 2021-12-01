@@ -10,7 +10,7 @@
 
 #include "BSTree.h"
 #include "book.h"
-#include "BookDatabase.h"
+#include "bookDatabase.h"
 #include <vector>
 
 using namespace std;

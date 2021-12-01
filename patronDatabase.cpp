@@ -26,4 +26,6 @@ bool PatronDatabase::insertNewPatron(istream& is) {
 
 Patron* PatronDatabase::getPatron(string patronId) const {
     // string id? or other patron...
+
+    
 }

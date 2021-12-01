@@ -19,6 +19,7 @@ using namespace std;
 #include "commandFactory.h"
 #include "patronDatabase.h"
 #include <iostream>
+#include "library.h"
 
 class libraryBuilder 
 {
@@ -37,7 +38,7 @@ public:
      *         patron and book
      * 
      */
-    Library createLibrary(ifstream& books, ifstream& patrons);
+    Library* createLibrary(ifstream& books, ifstream& patrons);
 
 private:
     // Factory for books component of library

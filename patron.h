@@ -20,11 +20,15 @@ using namespace std;
 
 #include "constants.h"
 #include "BSTData.h"
-#include "book.h"
-#include "libraryCommand.h"
+#include "library.h"
+
+
 #include <string>
 #include <vector>
 #include <unordered_set>
+
+class LibraryCommand;
+class Book;
 
 class Patron : public BSTData 
 {

@@ -17,6 +17,9 @@
 #include "library.h"
 #include "patronDatabase.h"
 
+class Library;
+class PatronDatabase;
+
 using namespace std;
 
 class LibraryCommand

@@ -13,16 +13,22 @@
  * 
  */
 #include "patron.h"
+#include "book.h"
 
 using namespace std;
 
-// constructor
 
-// destructor
 
-// addbook
+bool Patron::addBook(const Book* book) {
+    
+    return true;
+}
 
-// removebook
+
+
+bool removeBook(const Book* book) {
+    return true;
+}
 
 string Patron::displayPatron() const {
     return firstName + " " + lastName; // Finish during commands
@@ -41,21 +47,55 @@ int Patron::compare(const Patron& rhs) const {
     }
     // check command history
     // check current checkouts
+    return comparison;
 }
 
-// <
+bool Patron::operator<(const BSTData& rhs) const {
 
-// >
+    return true;
+}
 
-// ==
 
-// !=
+bool Patron::operator>(const BSTData& rhs) const {
 
-// <=
+    return true;
+}
 
-// =>
 
-// setData
+bool Patron::operator==(const BSTData& rhs) const {
+
+    return true;
+}
+
+
+bool Patron::operator!=(const BSTData& rhs) const {
+
+    return true;
+}
+
+
+bool Patron::operator<=(const BSTData& rhs) const {
+
+    return true;
+}
+
+
+bool Patron::operator>=(const BSTData& rhs) const {
+
+    return true;
+}
+
+BSTData& Patron::operator=(const BSTData& rhs) {
+
+
+    return *this;
+}
+
+virtual bool setData(istream& is) {
+
+
+    return true;
+}
 
 
 
