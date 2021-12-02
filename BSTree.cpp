@@ -160,7 +160,7 @@ void BSTree::inorderHelper(ostream&os, const Node* node) const {
       return;
    }
    inorderHelper(os, node->left);
-   os << node->data->display() << endl;
+   os << *node->data << endl;
    inorderHelper(os, node->right);
 }
 
