@@ -40,22 +40,8 @@ public:
     * @pre None
     * @post new childrens book object exists
     * @return reference to new children's book
-    *
     */
    Book* create() const;
-
-   // -------------------------------------------------------------------------
-   /** display()
-    * Display book information
-    *
-    * Display book information in easy-to-read columns.
-    * Displayed in order: Title, author, type, month published, year published
-    * Virtual function, can be overridden
-    * @pre None.
-    * @post None. const function
-    * @return String representing book data
-    */
-   virtual ostream& display(ostream& os) const;
 
    // -------------------------------------------------------------------------
    /** operator<()
@@ -63,7 +49,7 @@ public:
     *
     * Compares this book to right-hand book to see if this is less than rhs
     * @param rhs Book to be compared
-    * @pre None.
+    * @pre Compare function works
     * @post None. const
     * @return true if this book is less than rhs, else false
     */
@@ -75,7 +61,7 @@ public:
     *
     * Compares this book to right-hand book to see if this is greater than rhs
     * @param rhs Book to be compared
-    * @pre None.
+    * @pre Compare function works
     * @post None. const
     * @return true if this book is greater than rhs, else false
     */
@@ -98,7 +84,7 @@ public:
     * Inequality Operator
     * 
     * Determines if right and left items are not equivelent
-    * @pre Both items being compared exist
+    * @pre Compare function works
     * @post None.
     * @return false returned when left is equal to right, true otherwise
     */
@@ -109,7 +95,7 @@ public:
     *  Less than or equal operator
     * 
     * Determines if the right and left items are equivelent or less than
-    * @pre Both items being compared exist
+    * @pre Compare function works
     * @post None.
     * @return true returned when left is equal to right or
     * if left is less than right, false otherwise
@@ -121,7 +107,7 @@ public:
     *  greater than or equal operator
     * 
     * Determines if the right and left items are equivelent or greater than
-    * @pre Both items being compared exist
+    * @pre Compare function works
     * @post None.
     * @return true returned when left is equal to right or
     * if left is greater than right, false otherwise
@@ -149,8 +135,31 @@ public:
     * @return true if line of data was read, false if no line or bad format
     */
    virtual bool setData(istream& is);
+   
+   // -------------------------------------------------------------------------
+   /** display()
+    * Display book information
+    *
+    * Display book information in easy-to-read columns.
+    * Displayed in order: Title, author, type, month published, year published
+    * Virtual function, can be overridden
+    * @pre None.
+    * @post None. const function
+    * @return String representing book data
+    */
+   virtual ostream& display(ostream& os) const;
 
-  virtual ostream& displayHeader(ostream&) const;
+   // -------------------------------------------------------------------------
+   /** displayHeader()
+    * Header Display
+    * 
+    * Displays the header preceeding other displays
+    * @param ostream outstream containing header string
+    * @pre None.
+    * @post None.
+    * @return ostream& 
+    */
+   virtual ostream& displayHeader(ostream&) const;
    
 private:
    // -------------------------------------------------------------------------
