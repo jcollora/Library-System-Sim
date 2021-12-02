@@ -13,6 +13,7 @@
 #include "book.h"
 #include <string>
 #include <iomanip>
+#include <string>
 
 using namespace std;
 
@@ -121,16 +122,15 @@ bool Children::setData(istream& is)
    return true;
 }
 
-string Children::display() const { return ""; }
-
-ostream& operator<<(ostream& os, const Children& book)
-{
-   //const Children& book = static_cast<const Children&>(data);
+ostream& Children::display(ostream& os) const {
+      //const Children& book = static_cast<const Children&>(data);
    os.setf(ios::left, ios::adjustfield);
-   os << setw(COUNT_MAX_LENGTH) << book.count
-      << setw(TITLE_MAX_LENGTH) << book.title.substr(0, TITLE_MAX_LENGTH)
-      << setw(AUTHOR_MAX_LENGTH) << book.author.substr(0, AUTHOR_MAX_LENGTH)
-      << setw(YEAR_MAX_LENGTH) << book.year;
+   os << setw(COUNT_MAX_LENGTH) << count
+      << setw(TITLE_MAX_LENGTH) << title.substr(0, TITLE_MAX_LENGTH)
+      << setw(AUTHOR_MAX_LENGTH) << author.substr(0, AUTHOR_MAX_LENGTH)
+      << setw(YEAR_MAX_LENGTH) << year;
 
    return os;
 }
+
+

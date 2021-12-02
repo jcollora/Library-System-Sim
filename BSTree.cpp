@@ -160,7 +160,8 @@ void BSTree::inorderHelper(ostream&os, const Node* node) const {
       return;
    }
    inorderHelper(os, node->left);
-   os << *node->data << endl;
+   node->data->display(os);
+   cout << endl;
    inorderHelper(os, node->right);
 }
 
@@ -260,7 +261,8 @@ void BSTree::sidewaysHelper(Node* current, int level) const
          cout << "      ";
       }
       if (current != nullptr) {
-         cout << current->data->display() << endl; // display information of object
+         current->data->display(cout); // display information of object
+         cout << endl;
       }
       sidewaysHelper(current->left, level);
    }

@@ -199,7 +199,7 @@ public:
      * @post None
      * @return string representing data inside node
     */
-    virtual string display() const;
+    virtual ostream& display(ostream& os) const;
 
  private:
     // -------------------------------------------------------------------------

@@ -102,8 +102,8 @@ bool Patron::setData(istream& is) {
     return true;
 }
 
-string Patron::display() const {
+ostream& Patron::display(ostream& os) const {
 
-    return "";
+    return os;
 }
 

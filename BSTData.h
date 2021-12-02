@@ -19,6 +19,9 @@
 
 using namespace std;
 
+
+
+
 class BSTData 
 {
 public:
@@ -121,10 +124,12 @@ public:
      * @post None
      * @return string representing data inside node
     */
-    virtual string display() const = 0;
+    virtual ostream& display(ostream& os) const = 0;
 
 
-    friend ostream& operator<<(ostream& os, const BSTData& data);
+    
 };
+
+
 
 #endif 

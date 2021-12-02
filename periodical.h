@@ -55,7 +55,7 @@ public:
     * @post None. const function
     * @return String representing book data
     */
-   virtual string display() const;
+   virtual ostream& display(ostream& os) const;
 
    // -------------------------------------------------------------------------
    /** operator<()
