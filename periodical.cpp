@@ -20,6 +20,7 @@ Periodical::Periodical()
     maxCount = 5;
     count = maxCount;
     type = TYPE_PERIODICAL;
+    typeCode = PERIODICAL_CODE;
 }
 
 int Periodical::compare(const Periodical& rhs) const {

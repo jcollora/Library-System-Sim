@@ -21,6 +21,7 @@ Children::Children()
    maxCount = 5;
    count = maxCount;
    type = TYPE_CHILDREN;
+   typeCode = CHILDREN_CODE;
 }
 
 int Children::compare(const Children& rhs) const

@@ -138,7 +138,7 @@ protected:
    // book type;
    string type;
 
-
+   char typeCode;
 };
 
 #endif

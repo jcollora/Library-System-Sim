@@ -14,6 +14,7 @@
 #include "book.h"
 #include <iostream>
 #include <iomanip>
+#include "constants.h"
 
 
 using namespace std;
@@ -23,6 +24,7 @@ Fiction::Fiction()
    maxCount = 5;
    count = maxCount;
    type = TYPE_FICTION; //ACII = 70
+   typeCode = FICTION_CODE;
 
 }
 

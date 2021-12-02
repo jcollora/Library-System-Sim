@@ -23,14 +23,15 @@
 #include "children.h"
 #include <iostream>
 #include "bookfactory.h"
+#include "constants.h"
 
 using namespace std;
 
 BookFactory::BookFactory() {
    // type's Ascii value - hash_start ascii value (defined in constants.h)
-   bookTypes[TYPE_FICTION[0] - HASH_START] = new Fiction();
-   bookTypes[TYPE_PERIODICAL[0] - HASH_START] = new Periodical();
-   bookTypes[TYPE_CHILDREN[0] - HASH_START] = new Children();
+   bookTypes[FICTION_CODE - HASH_START] = new Fiction();
+   bookTypes[PERIODICAL_CODE - HASH_START] = new Periodical();
+   bookTypes[CHILDREN_CODE - HASH_START] = new Children();
 
 }
 
