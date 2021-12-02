@@ -125,9 +125,7 @@ public:
      * @return string representing data inside node
     */
     virtual ostream& display(ostream& os) const = 0;
-
-
-    
+  
 };
 
 
