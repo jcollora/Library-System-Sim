@@ -215,7 +215,7 @@ public:
     int compare(const Patron& rhs) const;
 
     // id of the patron
-    int id;
+    string id;
 
     // name of the patron
     string lastName;

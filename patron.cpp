@@ -14,6 +14,7 @@
  */
 #include "patron.h"
 #include "book.h"
+#include <string>
 
 using namespace std;
 
@@ -44,60 +45,78 @@ string Patron::displayPatronHistory() const {
 }
 
 int Patron::compare(const Patron& rhs) const {
-    int comparison = id - rhs.id;
-    if (comparison == 0) {
-      string c = firstName + " " + lastName;
-      string c2 = rhs.firstName + " " + rhs.lastName;
-      comparison = c.compare(c2);
-    }
-    // check command history
-    // check current checkouts
+    int comparison = id.compare(rhs.id);
+    
+
     return comparison;
 }
 
 bool Patron::operator<(const BSTData& rhs) const {
-
-    return true;
+    const Patron& right = static_cast<const Patron&>(rhs);
+    return compare(right) < 0;
 }
 
 
 bool Patron::operator>(const BSTData& rhs) const {
-
-    return true;
+    const Patron& right = static_cast<const Patron&>(rhs);
+    return compare(right) > 0;
 }
 
 
 bool Patron::operator==(const BSTData& rhs) const {
-
-    return true;
+    const Patron& right = static_cast<const Patron&>(rhs);
+    return compare(right) == 0;
 }
 
 
 bool Patron::operator!=(const BSTData& rhs) const {
-
-    return true;
+    const Patron& right = static_cast<const Patron&>(rhs);
+    return compare(right) != 0;  
 }
 
 
 bool Patron::operator<=(const BSTData& rhs) const {
-
-    return true;
+    const Patron& right = static_cast<const Patron&>(rhs);
+    return compare(right) <= 0;
 }
 
 
 bool Patron::operator>=(const BSTData& rhs) const {
 
-    return true;
+    const Patron& right = static_cast<const Patron&>(rhs);
+    return compare(right) >= 0;
 }
 
 BSTData& Patron::operator=(const BSTData& rhs) {
-
+    const Patron& right = static_cast<const Patron&>(rhs);
+   if (this != &right) {
+      id = right.id;
+      lastName = right.lastName;
+      firstName = right.firstName;
+      commandHistory = right.commandHistory;
+      currentCheckouts = right.currentCheckouts;
+      
+   }
 
     return *this;
 }
 
 bool Patron::setData(istream& is) {
+    if (is.eof()) {
+        return false;
+    }
+    is >> id;
+        if (is.eof()) {
+        return false;
+    }
+    is >> lastName;
+        if (is.eof()) {
+        return false;
+    }
+    is >> firstName;
 
+    string line;
+    getline(is, line);
 
     return true;
 }
@@ -106,4 +125,6 @@ ostream& Patron::display(ostream& os) const {
 
     return os;
 }
+
+
 
