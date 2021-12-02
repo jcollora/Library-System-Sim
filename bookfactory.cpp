@@ -1,5 +1,5 @@
 /** @file bookfactory.cpp
- * @author Omar Ahmed
+ * @author Joseph Collora and Josh Helzerman
  *
  * Description:
  *   - A BookFactory object represents the factory class that creates Book
