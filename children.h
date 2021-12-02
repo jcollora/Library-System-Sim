@@ -150,7 +150,7 @@ public:
     */
    virtual bool setData(istream& is);
 
-  
+  virtual ostream& displayHeader(ostream&) const;
    
 private:
    // -------------------------------------------------------------------------

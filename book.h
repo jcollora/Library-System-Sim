@@ -113,6 +113,8 @@ public:
     */
    string getType() const; 
 
+   virtual ostream& displayHeader(ostream&) const = 0;
+
 protected:
    // author of book
    string author;

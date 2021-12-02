@@ -26,11 +26,11 @@ Library* LibraryBuilder::createLibrary(istream& books, istream& patrons) {
    BookDatabase* newBookDB = new BookDatabase();
    while (!books.eof()) {
       newBookDB->insertNewBook(books);
-      newBookDB->displayAll(); //test code. delete this
+      
       
 
    }
-
+   newBookDB->displayAll(); //test code. delete this
    PatronDatabase* newPatronDB = new PatronDatabase();
 
    while (!patrons.eof()) {

@@ -123,12 +123,25 @@ bool Fiction::setData(istream& is) {
 
 ostream& Fiction::display(ostream& os) const {
       os.setf(ios::left, ios::adjustfield);
-   os << setw(COUNT_MAX_LENGTH) << count
-      << setw(TITLE_MAX_LENGTH) << title.substr(0, TITLE_MAX_LENGTH)
-      << setw(AUTHOR_MAX_LENGTH) << author.substr(0, AUTHOR_MAX_LENGTH)
-      << setw(YEAR_MAX_LENGTH) << year;
+   os << setw(COUNT_BUFFER) << count
+      << setw(AUTHOR_BUFFER) << author.substr(0, AUTHOR_MAX_LENGTH)
+      << setw(TITLE_BUFFER) << title.substr(0, TITLE_MAX_LENGTH)
+      << setw(YEAR_BUFFER) << year;
 
    return os;
+}
+
+ostream& Fiction::displayHeader(ostream& os) const {
+         os.setf(ios::left, ios::adjustfield);
+
+         os << type << " BOOKS" << endl;
+         os << setw(COUNT_BUFFER) << "AVAIL"
+      << setw(AUTHOR_BUFFER) << "AUTHOR"
+      << setw(TITLE_BUFFER) << "TITLE"
+      << setw(YEAR_BUFFER) << "YEAR";
+
+      return os;
+         
 }
 
 

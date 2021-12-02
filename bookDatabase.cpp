@@ -13,6 +13,7 @@
 #include "bookDatabase.h"
 #include <vector>
 #include "constants.h"
+#include <iomanip>
 
 using namespace std;
 
@@ -58,7 +59,16 @@ Book* BookDatabase::getBook(istream& is) const {
 
 void BookDatabase::displayAll() const {
    for (BSTree* tree : bookShelf) {
-      cout << tree;
+      if (!tree->isEmpty()) {
+         cout << endl;
+         
+         const BSTData* data =  tree->getRoot();
+         const Book* book = static_cast<const Book*>(data);
+         book->displayHeader(cout);
+         cout << endl;
+
+      }
+      cout << *tree;
    }
    
 }

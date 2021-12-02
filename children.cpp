@@ -125,12 +125,23 @@ bool Children::setData(istream& is)
 ostream& Children::display(ostream& os) const {
       //const Children& book = static_cast<const Children&>(data);
    os.setf(ios::left, ios::adjustfield);
-   os << setw(COUNT_MAX_LENGTH) << count
-      << setw(TITLE_MAX_LENGTH) << title.substr(0, TITLE_MAX_LENGTH)
-      << setw(AUTHOR_MAX_LENGTH) << author.substr(0, AUTHOR_MAX_LENGTH)
-      << setw(YEAR_MAX_LENGTH) << year;
+   os << setw(COUNT_BUFFER) << count
+      << setw(TITLE_BUFFER) << title.substr(0, TITLE_MAX_LENGTH)
+      << setw(AUTHOR_BUFFER) << author.substr(0, AUTHOR_MAX_LENGTH)
+      << setw(YEAR_BUFFER) << year;
 
    return os;
 }
 
+ostream& Children::displayHeader(ostream& os) const {
+         os.setf(ios::left, ios::adjustfield);
 
+         os << type << " BOOKS" << endl;
+       os << setw(COUNT_BUFFER) << "AVAIL"
+      << setw(TITLE_BUFFER) << "TITLE"
+      << setw(AUTHOR_BUFFER) << "AUTHOR"
+      << setw(YEAR_BUFFER) << "YEAR";
+
+      return os;
+         
+}

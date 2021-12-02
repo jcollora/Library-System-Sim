@@ -328,3 +328,6 @@ void BSTree::arrayToBSTreeHelper(BSTData* arr[], Node*& current, int start,
    arrayToBSTreeHelper(arr, current->right, currentIndex + 1, end);
 }
 
+const BSTData* BSTree::getRoot() const {
+   return root->data;
+}

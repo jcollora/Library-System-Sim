@@ -151,6 +151,8 @@ public:
     */
    void arrayToBSTree(BSTData* arr[]);
 
+   const BSTData* getRoot() const;
+
 private:
    //--------------------------------------------------------------------------
    /** Node struct

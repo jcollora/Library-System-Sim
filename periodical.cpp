@@ -114,12 +114,27 @@ bool Periodical::setData(istream& is) {
 
 ostream& Periodical::display(ostream& os) const {
       os.setf(ios::left, ios::adjustfield);
-   os << setw(COUNT_MAX_LENGTH) << count
-      << setw(TITLE_MAX_LENGTH) << title.substr(0, TITLE_MAX_LENGTH)
-      << setw(AUTHOR_MAX_LENGTH) << author.substr(0, AUTHOR_MAX_LENGTH)
-      << setw(YEAR_MAX_LENGTH) << year;
+   os << setw(COUNT_BUFFER) << count
+      << setw(MONTH_BUFFER) << month
+      << setw(YEAR_BUFFER) << year
+      << setw(TITLE_BUFFER) << title.substr(0, TITLE_MAX_LENGTH);
+      
+      
 
    return os;
+}
+
+ostream& Periodical::displayHeader(ostream& os) const {
+         os.setf(ios::left, ios::adjustfield);
+
+         os << type << " BOOKS" << endl;
+       os << setw(COUNT_BUFFER) << "AVAIL"
+      << setw(MONTH_BUFFER) << "MONTH"
+      << setw(YEAR_BUFFER) << "YEAR"
+      << setw(TITLE_BUFFER) << "TITLE";
+
+      return os;
+         
 }
 
 

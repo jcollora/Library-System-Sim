@@ -150,7 +150,7 @@ public:
     */
    virtual bool setData(istream& is);
 
-   friend ostream& operator<<(ostream& os, const Periodical& book);
+   virtual ostream& displayHeader(ostream&) const;
 
 private:
    // -------------------------------------------------------------------------
