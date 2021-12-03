@@ -45,19 +45,6 @@ public:
    Book* create() const;
 
    // -------------------------------------------------------------------------
-   /** display()
-    * Display book information
-    *
-    * Display book information in easy-to-read columns.
-    * Displayed in order: Title, author, type, month published, year published
-    * Virtual function, can be overridden
-    * @pre None.
-    * @post None. const function
-    * @return String representing book data
-    */
-   virtual ostream& display(ostream& os) const;
-
-   // -------------------------------------------------------------------------
    /** operator<()
     * Operator less than overload
     *
@@ -98,6 +85,7 @@ public:
     * Inequality Operator
     * 
     * Determines if right and left items are not equivelent
+    * @param rhs Book to be compared
     * @pre Both items being compared exist
     * @post None.
     * @return false returned when left is equal to right, true otherwise
@@ -109,6 +97,7 @@ public:
     *  Less than or equal operator
     * 
     * Determines if the right and left items are equivelent or less than
+    * @param rhs Book to be compared
     * @pre Both items being compared exist
     * @post None.
     * @return true returned when left is equal to right or
@@ -121,6 +110,7 @@ public:
     *  greater than or equal operator
     * 
     * Determines if the right and left items are equivelent or greater than
+    * @param rhs Book to be compared
     * @pre Both items being compared exist
     * @post None.
     * @return true returned when left is equal to right or
@@ -133,6 +123,7 @@ public:
     * Copy assignment operator
     * 
     * Copy data from right hand item to left hand item.
+    * @param rhs Book who's data will be duplicated
     * @pre Items should not be the same item
     * @post left item contains data from rhs, right item is const
     * @return reference to left item
@@ -144,12 +135,37 @@ public:
     * input data into node
     * 
     * Take data from inputStream and put into node members
+    * @param is stream line of data for book
     * @pre must have a properly formatted input file
     * @post line of input is read. BSTData contains line data
     * @return true if line of data was read, false if no line or bad format
     */
    virtual bool setData(istream& is);
 
+   // -------------------------------------------------------------------------
+   /** display()
+    * Display book information
+    *
+    * Display book information in easy-to-read columns.
+    * Displayed in order: Title, author, type, month published, year published
+    * Virtual function, can be overridden
+    * @param ostream outstream for book information
+    * @pre None.
+    * @post None. const function
+    * @return ostream&
+    */
+   virtual ostream& display(ostream& os) const;
+
+   // -------------------------------------------------------------------------
+   /** displayHeader()
+    * Header Display
+    * 
+    * Displays the header preceeding other displays
+    * @param ostream outstream for header
+    * @pre None.
+    * @post None.
+    * @return ostream& 
+    */
    virtual ostream& displayHeader(ostream&) const;
 
 private:
@@ -158,6 +174,7 @@ private:
     * Compare periodical books
     *
     * Compare 2 periodical books. Returns an integer that reflects the comparison
+    * @param rhs Book to be compared
     * @pre None
     * @post new periodical book object exists
     * @return negative int if left book < right.
