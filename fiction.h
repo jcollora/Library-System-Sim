@@ -174,6 +174,7 @@ private:
     * Compare fiction books
     *
     * Compare 2 fiction books. Returns an integer that reflects the comparison
+    * @param rhs Book to be compared
     * @pre None
     * @post new Fiction book object exists
     * @return negative int if left book < right.

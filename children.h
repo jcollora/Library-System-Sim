@@ -173,6 +173,7 @@ private:
     * Compare children books
     *
     * Compare 2 children books. Returns an integer that reflects the comparison
+    * @param rhs Book to be compared
     * @pre None
     * @post new children book object exists
     * @return negative int if left book < right.
