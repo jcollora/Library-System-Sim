@@ -8,14 +8,13 @@
  *     and retrieve a book
  * 
  * Implementation:
- *   -  ...
+ *   -  Contains an array of pointers to BSTrees, each element reprisents a 
+ *      hashed value corresponding to booktype
+ *   -  Uses a "Book Factory" to produce books to insert
  *
  */
 #ifndef BOOKDATABASE_H
 #define BOOKDATABASE_H
-
-
-
 
 #include "bookfactory.h"
 #include "constants.h"
