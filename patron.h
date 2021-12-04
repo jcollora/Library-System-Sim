@@ -24,8 +24,8 @@ using namespace std;
 
 #include <iostream>
 #include <string>
-#include <vector>
-#include <unordered_set>
+#include <unordered_map>
+#include <forward_list>
 
 class LibraryCommand;
 class Book;
@@ -68,7 +68,7 @@ public:
      * will add itself to the patron command history if success)
      * @return True only if patron does not already have the book
      */
-    bool addBook(const Book* book);
+    bool addBook(Book* book);
 
     // -------------------------------------------------------------------------
     /** removeBook()
@@ -79,7 +79,7 @@ public:
      *  command adds itself to patron)
      * @return true only if Patron had the book checked out
      */
-   bool removeBook(const Book* book);
+   bool removeBook(Book* book);
 
     // -------------------------------------------------------------------------
     /** displayPatron()
@@ -169,6 +169,8 @@ public:
     */
    virtual bool operator>=(const BSTData& rhs) const;
 
+   
+
    // -------------------------------------------------------------------------
    /** operator=()
     * Copy assignment operator
@@ -201,6 +203,10 @@ public:
     */
     virtual ostream& display(ostream& os) const;
 
+    string getID() const;
+
+    void addCommand(LibraryCommand* command);
+
  private:
     // -------------------------------------------------------------------------
     /** compare()
@@ -221,11 +227,11 @@ public:
     string lastName;
     string firstName;
 
-    // patron command history vector of commands in history
-    vector<const LibraryCommand*> commandHistory;
+    // patron command history singly linked list
+    forward_list<const LibraryCommand*> commandHistory;
 
-    // current books checkout out by patron. DOES NOT ALLOW FOR DUPLICATES
-    unordered_set<const Book*> currentCheckouts;
+    //  
+    unordered_map<const Book*, int> currentCheckouts;
 };
 
 #endif 
