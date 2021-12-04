@@ -41,6 +41,7 @@ Library* LibraryBuilder::createLibrary(istream& books, istream& patrons) {
       }
 
    }
+   
 
    newLib->bookDB = newBookDB;
    newLib->patronDB = newPatronDB;

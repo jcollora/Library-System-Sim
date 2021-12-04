@@ -26,9 +26,17 @@ PatronDatabase::~PatronDatabase() {
 }
 
 bool PatronDatabase::insertNewPatron(istream& is) {
-    Patron* insert;
-    bool inserted = insert->setData(is);
-    return inserted;
+    Patron* newPatron = new Patron();
+    
+    if (!newPatron->setData(is)) {
+        delete newPatron;
+        return false;
+    }
+    if(!patronBST->insert(newPatron)) {
+        return false;
+    }
+
+    return true;
 }
 
 Patron* PatronDatabase::getPatron(string patronId) const {
