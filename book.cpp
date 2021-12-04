@@ -31,7 +31,8 @@ using namespace std;
  * @pre None.
  * @post Book object exists with default member variables
  */
-Book::Book() {
+Book::Book()
+{
    author = "";
    title = "";
    year = 0;
@@ -40,19 +41,18 @@ Book::Book() {
    maxCount = -1;
    format = 'H';
    type = '0';
-   
 }
 
 // -------------------------------------------------------------------------
 /** ~Book()
  * Destructor
- * 
+ *
  * Deletes book from memory. It's empty, but apparently helps to delete
  * strings
  * @pre None.
  * @post Book instance is deleted
  */
-Book::~Book() { }
+Book::~Book() {}
 
 // -------------------------------------------------------------------------
 /** addBook()
@@ -63,10 +63,13 @@ Book::~Book() { }
  * @pre None.
  * @post count is incremented
  */
-void Book::addBook() {
+bool Book::addBook()
+{
    if (count < maxCount) {
       count++;
+      return true;
    }
+   return false;
 }
 
 // -------------------------------------------------------------------------
@@ -79,12 +82,33 @@ void Book::addBook() {
  * @post count--
  * @return true if book was available, false otherwise
  */
-bool Book::removeBook() {
+bool Book::removeBook()
+{
    if (count > 0) {
       count--;
       return true;
    }
    return false;
+}
+
+bool Book::addPatron(const Patron* patron)
+{
+   if (checkouts[patron] >= maxCount) {
+
+      return false;
+   }
+   checkouts[patron]++;
+   return true;
+}
+
+bool Book::removePatron(const Patron* patron)
+{
+   if (checkouts[patron] <= 0) {
+
+      return false;
+   }
+   checkouts[patron]--;
+   return true;
 }
 
 // -------------------------------------------------------------------------
@@ -96,19 +120,17 @@ bool Book::removeBook() {
  * @post None. CONST FUNCTION
  * @return if count > 0, return true, else false
  */
-bool Book::checkAvailability() const {
-   return count > 0;
-}
+bool Book::checkAvailability() const { return count > 0; }
 
 // -------------------------------------------------------------------------
 /** getType()
  * get book type
- * 
+ *
  * Return the type of book
  * @pre None
  * @post None. const
  * @re
  */
-string Book::getType() const {
-   return type;
-}
+string Book::getType() const { return type; }
+
+string Book::getTitle() const { return title; }

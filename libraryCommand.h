@@ -71,6 +71,9 @@ protected:
    // pointer to library object that this command exists in
    Library* library;
 
+   PatronDatabase* patronDB;
+   BookDatabase* bookDB;
+
    /** getBookDB()
     * get Book database
     *
@@ -98,6 +101,9 @@ protected:
     * @return pointer to the PatronDatabase inside of library
     */
    PatronDatabase* getPatronDB() const;
+
+  
+      
 };
 
 #endif

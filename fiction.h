@@ -183,7 +183,7 @@ private:
    int compare(const Fiction& rhs) const;
 
    // current patrons checking out the book. max size is maxCount
-   Patron* checkouts[5];
+   
 };
 
 #endif

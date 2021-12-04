@@ -16,6 +16,7 @@
 #include <iomanip>
 #include "constants.h"
 
+class Patron;
 
 using namespace std;
 
@@ -33,6 +34,7 @@ Fiction::Fiction()
    count = maxCount;
    type = TYPE_FICTION; //ACII = 70
    typeCode = FICTION_CODE;
+   
 }
 
 // -------------------------------------------------------------------------

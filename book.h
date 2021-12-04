@@ -22,6 +22,7 @@
 
 #include "BSTData.h"
 #include <string>
+#include <unordered_map>
 
 class BSTData;
 class Patron;
@@ -79,6 +80,10 @@ public:
     */
    bool removeBook();
 
+   bool addPatron(const Patron* patron);
+
+   bool removePatron(const Patron* patron);
+
    // -------------------------------------------------------------------------
    /** checkAvailability()
     * Check if book is avaiable
@@ -125,6 +130,8 @@ public:
     */
    virtual ostream& displayHeader(ostream&) const = 0;
 
+   string Book::getTitle() const;
+
 protected:
    // author of book
    string author;
@@ -151,6 +158,9 @@ protected:
    string type;
 
    char typeCode;
+
+   // map of patrons holding a book and the number of books they hold
+   unordered_map<const Patron*, int> checkouts;
 };
 
 #endif
