@@ -66,7 +66,7 @@ public:
     * @pre None.
     * @post count is incremented
     */
-   void addBook();
+   bool addBook();
 
    // -------------------------------------------------------------------------
    /** removeBook()
@@ -130,7 +130,7 @@ public:
     */
    virtual ostream& displayHeader(ostream&) const = 0;
 
-   string Book::getTitle() const;
+   string getTitle() const;
 
 protected:
    // author of book

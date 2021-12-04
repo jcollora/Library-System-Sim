@@ -16,12 +16,11 @@
 #include "patron.h"
 #include "constants.h"
 #include "book.h"
+#include "bookDatabase.h"
 
 ReturnBook::ReturnBook()
 {
-   patron = nullptr;
-   book = nullptr;
-   library = nullptr;
+
    type = TYPE_RETURN;
    commandCode = RETURN_CODE;
 }

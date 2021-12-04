@@ -21,6 +21,7 @@
 class Library;
 class PatronDatabase;
 class BookDatabase;
+class Book;
 
 using namespace std;
 
@@ -67,7 +68,7 @@ public:
     * @return string is not formmatedd correctly return false,
     * else return true
     */
-   virtual bool initialize(string data) = 0;
+   virtual bool initialize(istream& is) = 0;
 
    string getType() const;
 
@@ -90,33 +91,6 @@ protected:
    // ID of book this command uses
    Book* book;
 
-   /** getBookDB()
-    * get Book database
-    *
-    * retrieves the book database from the library object.
-    * LibraryCommand is a friend of Library object, so it
-    * can access these private member variables. These references
-    * are used by LibraryCommand's children to edit the DB and
-    * their objects.
-    * @pre None.
-    * @post None.
-    * @return pointer to the BookDatabase inside of library
-    */
-   BookDatabase* getBookDB() const;
-
-   /** getPatronDB()
-    * get Patron database
-    *
-    * retrieves the Patron database from the library object.
-    * LibraryCommand is a friend of Library object, so it
-    * can access these private member variables. These references
-    * are used by LibraryCommand's children to edit the DB and
-    * their objects.
-    * @pre None.
-    * @post None.
-    * @return pointer to the PatronDatabase inside of library
-    */
-   PatronDatabase* getPatronDB() const;
 
    
 };

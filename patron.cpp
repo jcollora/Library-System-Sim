@@ -16,6 +16,7 @@
 #include "book.h"
 #include <string>
 #include <iomanip>
+#include "libraryCommand.h"
 
 using namespace std;
 
@@ -134,7 +135,7 @@ ostream& Patron::display(ostream& os) const
 {
    os.setf(ios::left, ios::adjustfield);
    os << id << " " << lastName << ", " << firstName << ":" << endl;
-   for (commandHistory* comm : commandHistory) {
+   for (const LibraryCommand* comm : commandHistory) {
       comm->display(os);
       os << endl;
    }

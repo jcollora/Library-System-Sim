@@ -15,6 +15,15 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include "book.h"
+
+LibraryCommand::LibraryCommand() {
+   patron = nullptr;
+   book = nullptr;
+   library = nullptr;
+   type = "";
+   commandCode = 0;
+}
 
 string LibraryCommand::getType() const { return type; }
 
