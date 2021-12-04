@@ -14,11 +14,13 @@
 #ifndef LIBRARYCOMMAND_H
 #define LIBRARYCOMMAND_H
 
-#include "library.h"
+
 #include "patronDatabase.h"
+#include <iostream>
 
 class Library;
 class PatronDatabase;
+class BookDatabase;
 
 using namespace std;
 
@@ -67,12 +69,26 @@ public:
     */
    virtual bool initialize(string data) = 0;
 
+   string getType() const;
+
+   virtual void display(ostream& os) const;
+
 protected:
    // pointer to library object that this command exists in
    Library* library;
 
    PatronDatabase* patronDB;
    BookDatabase* bookDB;
+
+   char commandCode;
+
+   string type;
+
+   // ID of patron this command uses
+   Patron* patron;
+
+   // ID of book this command uses
+   Book* book;
 
    /** getBookDB()
     * get Book database
@@ -102,8 +118,7 @@ protected:
     */
    PatronDatabase* getPatronDB() const;
 
-  
-      
+   
 };
 
 #endif

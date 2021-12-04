@@ -14,11 +14,16 @@
 #include <iostream>
 #include <string>
 #include "patron.h"
+#include "constants.h"
+#include "book.h"
 
 ReturnBook::ReturnBook()
 {
    patron = nullptr;
    book = nullptr;
+   library = nullptr;
+   type = TYPE_RETURN;
+   commandCode = RETURN_CODE;
 }
 
 LibraryCommand* ReturnBook::create() const { return new ReturnBook(); }

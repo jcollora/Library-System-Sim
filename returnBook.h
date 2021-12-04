@@ -65,11 +65,7 @@ public:
    virtual bool initialize(istream& is);
 
 private:
-   // ID of patron this command uses
-   Patron* patron;
 
-   // ID of book this command uses
-   Book* book;
 };
 
 #endif

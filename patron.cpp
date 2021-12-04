@@ -15,6 +15,7 @@
 #include "patron.h"
 #include "book.h"
 #include <string>
+#include <iomanip>
 
 using namespace std;
 
@@ -129,10 +130,17 @@ bool Patron::setData(istream& is)
    return true;
 }
 
-ostream& Patron::display(ostream& os) const { 
-    os << patron
+ostream& Patron::display(ostream& os) const
+{
+   os.setf(ios::left, ios::adjustfield);
+   os << id << " " << lastName << ", " << firstName << ":" << endl;
+   for (commandHistory* comm : commandHistory) {
+      comm->display(os);
+      os << endl;
+   }
 
-    return os; }
+   return os;
+}
 
 string Patron::getID() const { return id; }
 
