@@ -113,6 +113,16 @@ public:
     */
    string getType() const; 
 
+   // -------------------------------------------------------------------------
+   /** displayHeader()
+    * Header Display
+    * 
+    * Displays the header preceeding other displays
+    * @param ostream outstream containing header string
+    * @pre None.
+    * @post None.
+    * @return ostream& 
+    */
    virtual ostream& displayHeader(ostream&) const = 0;
 
 protected:
