@@ -25,6 +25,9 @@ using namespace std;
 class BSTData 
 {
 public:
+
+    virtual ~BSTData();
+    
     // -------------------------------------------------------------------------
     /** operator<()
      *  Less Than Operator

@@ -32,6 +32,9 @@ int main() {
    istream books();
    Library* lib = build.createLibrary(inBooks, inPatrons);
 
+
+   delete lib;
+
    return 0;
 }
 

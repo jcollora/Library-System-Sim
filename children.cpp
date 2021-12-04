@@ -25,6 +25,8 @@ Children::Children()
    typeCode = CHILDREN_CODE;
 }
 
+Children::~Children() {}
+
 int Children::compare(const Children& rhs) const
 {
    int compare = title.compare(rhs.title);

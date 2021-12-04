@@ -32,6 +32,8 @@ public:
     */
    Children();
 
+   virtual ~Children();
+
    // -------------------------------------------------------------------------
    /** create()
     * Create childrens book
