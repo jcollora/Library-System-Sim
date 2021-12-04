@@ -27,24 +27,6 @@ ReturnBook::ReturnBook()
 
 LibraryCommand* ReturnBook::create() const { return new ReturnBook(); }
 
-bool ReturnBook::initialize(istream& is)
-{
-   string patronID, line;
-   is >> patronID;
-   patron = patronDB->getPatron(patronID);
-   is.get();
-   if (patron == nullptr) {
-      getline(is, line);
-      return false;
-   }
-   book = bookDB->getBook(is);
-   if (book == nullptr) {
-      getline(is, line);
-      return false;
-   }
-   getline(is, line);
-   return true;
-}
 
 void ReturnBook::execute()
 {

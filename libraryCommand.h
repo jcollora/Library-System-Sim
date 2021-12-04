@@ -68,7 +68,7 @@ public:
     * @return string is not formmatedd correctly return false,
     * else return true
     */
-   virtual bool initialize(istream& is) = 0;
+   virtual bool initialize(istream& is);
 
    string getType() const;
 

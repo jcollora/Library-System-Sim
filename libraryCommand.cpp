@@ -16,6 +16,8 @@
 #include <string>
 #include <iomanip>
 #include "book.h"
+#include "bookDatabase.h"
+#include "patron.h"
 
 LibraryCommand::LibraryCommand() {
    patron = nullptr;
@@ -27,8 +29,29 @@ LibraryCommand::LibraryCommand() {
 
 string LibraryCommand::getType() const { return type; }
 
-void LibraryCommand::display(ostream& os) const{
+void LibraryCommand::display(ostream& os) const{ 
+   
    os.setf(ios::left, ios::adjustfield);
    os << "  " << setw(COMMAND_BUFFER) << type;
    book->display(os);
+}
+
+
+bool LibraryCommand::initialize(istream& is)
+{
+   string patronID, line;
+   is >> patronID;
+   patron = patronDB->getPatron(patronID);
+   is.get();
+   if (patron == nullptr) {
+      getline(is, line);
+      return false;
+   }
+   book = bookDB->getBook(is);
+   if (book == nullptr) {
+      getline(is, line);
+      return false;
+   }
+   getline(is, line);
+   return true;
 }

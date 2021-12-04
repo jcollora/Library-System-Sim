@@ -53,18 +53,9 @@ public:
     */
    virtual LibraryCommand* create() const;
 
-   /** initialize()
-    * initialize command with data
-    *
-    * Uses a string to put data into the command
-    * @pre string must be formatted properly
-    * @post the command now contains the data from the string
-    * @return string is not formmatedd correctly return false,
-    * else return true
-    */
-   virtual bool initialize(istream& is);
 
-private:
+
+
 
 };
 
