@@ -28,7 +28,7 @@ using namespace std;
 #include <forward_list>
 
 class LibraryCommand;
-class Book;
+
 
 class Patron : public BSTData 
 {
