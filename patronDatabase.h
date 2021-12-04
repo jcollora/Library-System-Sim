@@ -15,10 +15,13 @@
 #define PATRONDATABASE_H
 
 #include "constants.h"
-#include "BSTree.h"
-#include "patron.h"
-#include <iostream>
+#include <istream>
 #include <vector>
+
+using namespace std;
+
+class Patron;
+class BSTree;
 
 class PatronDatabase
 {
@@ -30,6 +33,8 @@ public:
      * Constructs a PatronDatabase object with default values
      * @pre None.
      * @post PatronDatabase object exists
+     * 
+     */
     PatronDatabase();
 
     // -------------------------------------------------------------------------
@@ -38,7 +43,8 @@ public:
      * Destroys all instances of new "BSTrees"
      * @pre Current instance of PatronDatabase exists
      * @post All new allocations of memory are deleted
-    ~PatronDatabase(); */
+     */
+    ~PatronDatabase(); 
 
     //--------------------------------------------------------------------------
     /** createPatron(Patron customer)
@@ -64,7 +70,7 @@ public:
 private:
     //the variable below is a class member variable
     //this is a BST of patrons
-    BSTree patronBST;
+    BSTree* patronBST;
 
 };
 

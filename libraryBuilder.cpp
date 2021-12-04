@@ -36,7 +36,9 @@ Library* LibraryBuilder::createLibrary(istream& books, istream& patrons) {
    PatronDatabase* newPatronDB = new PatronDatabase();
 
    while (!patrons.eof()) {
-      newPatronDB->insertNewPatron(patrons);
+      if(!newPatronDB->insertNewPatron(patrons)) {
+         cout << "ERROR"; //define this better
+      }
 
    }
 

@@ -20,7 +20,18 @@
 
 using namespace std;
 
-Patron::Patron() {}
+Patron::Patron() {
+   id = "";
+   lastName = "";
+   firstName = "";
+   
+}
+
+Patron::Patron(string newID) {
+   id = newID;
+
+}
+
 Patron::~Patron() {}
 
 bool Patron::addBook(Book* book)

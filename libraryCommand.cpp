@@ -30,6 +30,9 @@ LibraryCommand::LibraryCommand() {
 string LibraryCommand::getType() const { return type; }
 
 void LibraryCommand::display(ostream& os) const{ 
+   if (book == nullptr) {
+      return;
+   }
    
    os.setf(ios::left, ios::adjustfield);
    os << "  " << setw(COMMAND_BUFFER) << type;

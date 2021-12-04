@@ -13,10 +13,17 @@
  */
 #include "patronDatabase.h"
 #include "patron.h"
+#include "BSTree.h"
 
 using namespace std;
 
-// const/destr unneccessary?
+PatronDatabase::PatronDatabase() {
+    patronBST = new BSTree();
+}
+
+PatronDatabase::~PatronDatabase() {
+    delete patronBST;
+}
 
 bool PatronDatabase::insertNewPatron(istream& is) {
     Patron* insert;
@@ -25,7 +32,11 @@ bool PatronDatabase::insertNewPatron(istream& is) {
 }
 
 Patron* PatronDatabase::getPatron(string patronId) const {
-    // string id? or other patron...
+    Patron patronFinder(patronId);
+    BSTData* foundPatron = nullptr;
+    patronBST->retrieve(patronFinder, foundPatron);
+    
+    
 
-    return new Patron();
+    return (Patron*)foundPatron;
 }
