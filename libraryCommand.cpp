@@ -30,10 +30,12 @@
 LibraryCommand::LibraryCommand() {
    patron = nullptr;
    book = nullptr;
-   library = nullptr;
+   
    type = "";
    commandCode = 0;
 }
+
+LibraryCommand::~LibraryCommand() {}
 
 /** initialize()
  * initialize command with data

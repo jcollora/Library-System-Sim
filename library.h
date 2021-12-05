@@ -24,7 +24,7 @@ class CommandQueue;
 class CommandFactory;
 class BookDatabase;
 class PatronDatabase;
-class LibraryCommands;
+class LibraryCommand;
 
 using namespace std;
 

@@ -38,6 +38,8 @@ public:
     */
    LibraryCommand();
 
+   virtual ~LibraryCommand();
+
    // -------------------------------------------------------------------------
    /** execute()
     * Execute LibraryCommand

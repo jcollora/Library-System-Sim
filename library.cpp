@@ -71,7 +71,7 @@ void Library::processCommands(istream& is) {
    executeCommands(commandQueue);
 }
 
-void executeCommands(queue<LibraryCommand*>& commands) {
+void Library::executeCommands(queue<LibraryCommand*>& commands) {
    while (!commands.empty()) {
       LibraryCommand* comm = commands.front();
       commands.pop();

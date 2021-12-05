@@ -54,7 +54,11 @@ CommandFactory::CommandFactory(BookDatabase* books, PatronDatabase* patrons) {
  * @post Returns CommandFactory to memory, nothing else
  */
 CommandFactory::~CommandFactory() {
-
+   for (const LibraryCommand* comm : commandTypes) {
+      if (comm != nullptr) {
+         delete comm;
+      }
+   }
 }
 
 // -------------------------------------------------------------------------
