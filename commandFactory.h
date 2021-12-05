@@ -1,24 +1,20 @@
-/**
- * @file commandFactory.h
- * @author Mogul Solutions
+/** @file commandFactory.h
+ * @author Joseph Collora and Josh Helzerman
  *
  * Description:
- *   -Uses an input stream to read text and create commands based off it
- *   -The factory is associated with a library which commands are made for
+ *   - Uses an input stream to read text and create commands based off it
+ *   - The factory is associated with a library which commands are made for
  *
  * Assumptions/Implementation:
- *   -If the factory is destroyed, nothing else is deleted with it
- *   -Fetches the command to be made using CommandTypeHashmap
- *   -Delegates initializing a command to the command object.
+ *   - If the factory is destroyed, nothing else is deleted with it
+ *   - Fetches the command to be made using CommandTypeHashmap
+ *   - Delegates initializing a command to the command object.
  */
 
 #ifndef COMMANDFACTORY_H
 #define COMMANDFACTORY_H
 
-
-
-
-
+#include "commandQueue.h"
 #include <iostream>
 
 using namespace std;
@@ -28,8 +24,8 @@ class commandQueue;
 
 class CommandFactory
 {
-
 public:
+   // -------------------------------------------------------------------------
    /** CommandFactory
     * Command Factory Constructor
     *
@@ -40,6 +36,7 @@ public:
     */
    CommandFactory(Library* library);
 
+   // -------------------------------------------------------------------------
    /** ~CommandFactory
     * Command Factory Destructor
     *
@@ -49,6 +46,7 @@ public:
     */
    ~CommandFactory();
 
+   // -------------------------------------------------------------------------
    /** createCommands
     * Create Commands
     *
@@ -59,10 +57,14 @@ public:
     * @post CommandQueue is initialized and filled. Library unchanged.
     * @return A filled CommandQueue object
     */
-   CommandQueue* createCommands(ifstream file);
+   CommandQueue* createCommands(istream& file);
 
 private:
+   // pointer to the current library object
    Library* library;
+
+   // hash-map to determine command type to build
+   //..
 };
 
 #endif

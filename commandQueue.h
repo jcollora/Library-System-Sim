@@ -1,22 +1,18 @@
-/**
- * @file commandQueue.h
- * @author Mogul Solutions
+/** @file commandQueue.h
+ * @author Joseph Collora and Josh Helzerman
  *
  * Description:
- *   -Stores a queue of commands, allowing them to be added or executed
- *   -Allows detection if the queue is empty using isEmpty
+ *   - Stores a queue of commands, allowing them to be added or executed
+ *   - Allows detection if the queue is empty using isEmpty
  *
  * Assumptions/Implementation:
- *   -Uses a linked list implementation to store the queue
- *   -When this queue is deleted, all nodes and commands are deleted with it
- *   -Can handle invalid inputs or conditions smoothly
+ *   - Uses a linked list implementation to store the queue
+ *   - When this queue is deleted, all nodes and commands are deleted with it
+ *   - Can handle invalid inputs or conditions smoothly
  */
 
 #ifndef COMMANDQUEUE_H
 #define COMMANDQUEUE_H
-
-
-
 
 using namespace std;
 
@@ -24,8 +20,8 @@ class LibraryCommand;
 
 class CommandQueue
 {
-
 public:
+   // -------------------------------------------------------------------------
    /** CommandQueue
     * Command Queue Constructor
     *
@@ -34,7 +30,8 @@ public:
     * @post front and back are set to nullptr
     */
    CommandQueue();
-
+   
+   // -------------------------------------------------------------------------
    /** ~CommandQueue
     * Command Queue Destructor
     *
@@ -45,6 +42,7 @@ public:
     */
    ~CommandQueue();
 
+   // -------------------------------------------------------------------------
    /** enqueue
     * Enqueue Command
     *
@@ -56,6 +54,7 @@ public:
     */
    bool enqueue(LibraryCommand* command);
 
+   // -------------------------------------------------------------------------
    /** executeNext
     * Execute Next Command
     *
@@ -66,6 +65,7 @@ public:
     */
    bool executeNext();
 
+   // -------------------------------------------------------------------------
    /** isEmpty
     * Check if Empty
     *
@@ -77,7 +77,7 @@ public:
    bool isEmpty() const;
 
 private:
-
+   // List? forward list? 
 };
 
 #endif
