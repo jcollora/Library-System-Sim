@@ -31,7 +31,7 @@ LibraryCommand* DisplayPatronHistory::create() const {
    return new DisplayPatronHistory();
 }
 
-bool DisplayPatronHistory::initialize(istream& is) {
+bool DisplayPatronHistory::initialize(istream& is) { //put errors here
    string patronID, line;
    is >> patronID;
    patron = patronDB->getPatron(patronID);

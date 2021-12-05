@@ -13,6 +13,16 @@
 
 #include "commandFactory.h"
 
+#include <forward_list>
+#include "libraryCommand.h"
+#include "constants.h"
+#include <iostream>
+#include "checkoutBook.h"
+#include "returnBook.h"
+#include "displayLibrary.h"
+#include "displayPatronHistory.h"
+
+
 using namespace std;
 
 // -------------------------------------------------------------------------
@@ -24,7 +34,14 @@ using namespace std;
  * @pre None
  * @post Stores private pointer to library
  */
-CommandFactory::CommandFactory(Library* library) {
+CommandFactory::CommandFactory(BookDatabase* books, PatronDatabase* patrons) {
+   bookDB = books;
+   patronDB = patrons;
+
+   commandTypes[CHECKOUT_CODE] = new CheckoutBook();
+   commandTypes[RETURN_CODE] = new ReturnBook();
+   commandTypes[DISPLAY_LIB_CODE] = new DisplayLibrary();
+   commandTypes[DISPLAY_PAT_CODE] = new DisplayPatronHistory();
 
 }
 
@@ -51,8 +68,17 @@ CommandFactory::~CommandFactory() {
  * @post CommandQueue is initialized and filled. Library unchanged.
  * @return A filled CommandQueue object
 */
-CommandFactory::CommandQueue* createCommands(istream& file) {
+LibraryCommand* CommandFactory::createCommand(istream& is) {
+   LibraryCommand* comm = nullptr;
+   char type = is.get();
+   comm = commandTypes[type - HASH_START]->create();
+   if (comm == nullptr) { //ERROR: command type doesnt exist
+      return comm;
+   }
+   is.get();
+   comm->initialize(is);
 
+   return comm;
 
 }
 

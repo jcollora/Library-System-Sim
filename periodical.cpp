@@ -189,7 +189,7 @@ BSTData& Periodical::operator=(const BSTData& rhs) {
  * @post line of input is read. BSTData contains line data
  * @return true if line of data was read, false if no line or bad format
  */
-bool Periodical::setData(istream& is) {
+bool Periodical::setData(istream& is) { //ERRORS
    string line; 
    
    is.get();

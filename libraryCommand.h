@@ -18,7 +18,7 @@
 #include "patronDatabase.h"
 #include <iostream>
 
-class Library;
+
 class PatronDatabase;
 class BookDatabase;
 class Book;
@@ -92,8 +92,7 @@ public:
    virtual void display(ostream& os) const;
 
 protected:
-   // pointer to library object that this command exists in
-   Library* library;
+
 
    // patron and book databases
    PatronDatabase* patronDB;

@@ -18,10 +18,13 @@
 
 #include <iostream>
 
+#include <queue>
+
 class CommandQueue;
 class CommandFactory;
 class BookDatabase;
 class PatronDatabase;
+class LibraryCommands;
 
 using namespace std;
 
@@ -53,7 +56,7 @@ class Library {
     * This method is responsible for processing all of the library commands that
     * are provided by the ifstream
     * @pre None.
-    * @param ifstream an input file stream
+    * @param is an input file stream
     *                 a stream of data used for reading input from a file
     * @post commands are executed based on the parameter
     */
@@ -66,8 +69,11 @@ class Library {
     PatronDatabase *patronDB;
 
     // Factory for creating commands and queue for execution order
-    //CommandQueue* commandQueue;
-    //CommandFactory* commandFactory;
+
+    CommandFactory* commandFactory;
+
+    void executeCommands(queue<LibraryCommand*>& commands);
+
 };
 
 #endif

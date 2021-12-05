@@ -14,10 +14,10 @@
 
 #include "library.h"
 #include "commandFactory.h"
-#include "commandQueue.h"
+#include "libraryCommand.h"
 #include "bookDatabase.h"
 #include "patronDatabase.h"
-
+#include <queue>
 #include <iostream>
 
 using namespace std;
@@ -32,8 +32,8 @@ using namespace std;
 Library::Library() {
    bookDB = nullptr;
    patronDB = nullptr;
-   //commandQueue = nullptr;
-   //commandFactory = nullptr;
+   
+   commandFactory = new CommandFactory(bookDB, patronDB);
 }
 
 // -------------------------------------------------------------------------
@@ -46,8 +46,8 @@ Library::Library() {
 Library::~Library() {
    delete bookDB;
    delete patronDB;
-   //delete commandQueue;
-   //delete commandFactory;
+   
+   delete commandFactory;
 }
 
 // -------------------------------------------------------------------------
@@ -60,5 +60,21 @@ Library::~Library() {
  * @post commands are executed based on the parameter
  */
 void Library::processCommands(istream& is) {
+   queue<LibraryCommand*> commandQueue;
+   while (!is.eof()) {
+      LibraryCommand* comm = commandFactory->createCommand(is);
+      if (comm != nullptr) {
+         commandQueue.push(comm);
+      }
+   }
 
+   executeCommands(commandQueue);
+}
+
+void executeCommands(queue<LibraryCommand*>& commands) {
+   while (!commands.empty()) {
+      LibraryCommand* comm = commands.front();
+      commands.pop();
+      comm->execute();
+   }
 }

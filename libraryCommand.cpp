@@ -44,7 +44,7 @@ LibraryCommand::LibraryCommand() {
  * @return string is not formmatedd correctly return false,
  * else return true
  */
-bool LibraryCommand::initialize(istream& is)
+bool LibraryCommand::initialize(istream& is) //put errors here
 {
    string patronID, line;
    is >> patronID;

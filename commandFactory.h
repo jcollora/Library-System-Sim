@@ -14,13 +14,16 @@
 #ifndef COMMANDFACTORY_H
 #define COMMANDFACTORY_H
 
-#include "commandQueue.h"
+
 #include <iostream>
+#include "constants.h"
 
 using namespace std;
 
-class Library;
-class commandQueue;
+class BookDatabase;
+class PatronDatabase;
+class CommandQueue;
+class LibraryCommand;
 
 class CommandFactory
 {
@@ -34,7 +37,7 @@ public:
     * @pre None
     * @post Stores private pointer to library
     */
-   CommandFactory(Library* library);
+   CommandFactory(BookDatabase* books, PatronDatabase* patrons);
 
    // -------------------------------------------------------------------------
    /** ~CommandFactory
@@ -57,14 +60,16 @@ public:
     * @post CommandQueue is initialized and filled. Library unchanged.
     * @return A filled CommandQueue object
     */
-   CommandQueue* createCommands(istream& file);
+   LibraryCommand* createCommand(istream& is);
 
 private:
-   // pointer to the current library object
-   Library* library;
+   
+   BookDatabase* bookDB;
+
+   PatronDatabase* patronDB;
 
    // hash-map to determine command type to build
-   //..
+   const LibraryCommand* commandTypes[HASH_SIZE] {};
 };
 
 #endif

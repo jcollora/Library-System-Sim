@@ -240,7 +240,7 @@ BSTData& Patron::operator=(const BSTData& rhs) {
  * @post line of input is read. BSTData contains line data
  * @return true if line of data was read, false if no line or bad format
  */
-bool Patron::setData(istream& is) {
+bool Patron::setData(istream& is) { //put errors HERE
    if (is.eof()) {
       return false;
    }

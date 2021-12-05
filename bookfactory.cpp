@@ -54,7 +54,7 @@ BookFactory::BookFactory() {
  */
 BookFactory::~BookFactory() {
    for (const Book* ptr : bookTypes) {
-      if (ptr != nullptr) {
+      if (ptr != nullptr) { 
          delete ptr;
       }
    }
@@ -76,11 +76,11 @@ Book* BookFactory::createBook(istream& is) const {
    
    string line;
    int index = type - HASH_START;
-   if (index < 0 || index >= HASH_SIZE) {
+   if (index < 0 || index >= HASH_SIZE) { //ERROR
       getline(is, line);
       return nullptr; //character is out of range
    }
-   if (bookTypes[index] == nullptr) {
+   if (bookTypes[index] == nullptr) { //ERROR
       getline(is, line);
       return nullptr; //no booktype exists
    }
