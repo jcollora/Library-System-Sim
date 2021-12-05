@@ -19,6 +19,14 @@
 #include "bookDatabase.h"
 #include "patron.h"
 
+// -------------------------------------------------------------------------
+/** LibraryCommand()
+ * Defaul Constructor
+ *
+ * Constructs a LibraryCommand object.
+ * @pre None.
+ * @post LibraryCommand object exists
+ */
 LibraryCommand::LibraryCommand() {
    patron = nullptr;
    book = nullptr;
@@ -27,19 +35,15 @@ LibraryCommand::LibraryCommand() {
    commandCode = 0;
 }
 
-string LibraryCommand::getType() const { return type; }
-
-void LibraryCommand::display(ostream& os) const{ 
-   if (book == nullptr) {
-      return;
-   }
-   
-   os.setf(ios::left, ios::adjustfield);
-   os << "  " << setw(COMMAND_BUFFER) << type;
-   book->display(os);
-}
-
-
+/** initialize()
+ * initialize command with data
+ *
+ * Uses a string to put data into the command
+ * @pre string must be formatted properly
+ * @post the command now contains the data from the string
+ * @return string is not formmatedd correctly return false,
+ * else return true
+ */
 bool LibraryCommand::initialize(istream& is)
 {
    string patronID, line;
@@ -57,4 +61,34 @@ bool LibraryCommand::initialize(istream& is)
    }
    getline(is, line);
    return true;
+}
+
+// -------------------------------------------------------------------------
+/** getType()
+ * get command type
+ * 
+ * Return the type of book
+ * @pre None
+ * @post None. const
+ * @return char representing command type
+ */
+string LibraryCommand::getType() const { return type; }
+
+// -------------------------------------------------------------------------
+/** display()
+ * Display book information
+ *
+ * Display command information in east to read columns
+ * @param ostream outstream containing commands to display
+ * @pre None.
+ * @post None. const function
+ */
+void LibraryCommand::display(ostream& os) const{ 
+   if (book == nullptr) {
+      return;
+   }
+   
+   os.setf(ios::left, ios::adjustfield);
+   os << "  " << setw(COMMAND_BUFFER) << type;
+   book->display(os);
 }

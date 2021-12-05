@@ -70,19 +70,39 @@ public:
     */
    virtual bool initialize(istream& is);
 
+   // -------------------------------------------------------------------------
+   /** getType()
+   * get command type
+   * 
+   * Return the type of book
+   * @pre None
+   * @post None. const
+   * @return char representing command type
+   */
    string getType() const;
 
+   // -------------------------------------------------------------------------
+   /** display()
+   * Display book information
+   *
+   * Display command information in east to read columns
+   * @param ostream outstream containing commands to display
+   * @pre None.
+   */ 
    virtual void display(ostream& os) const;
 
 protected:
    // pointer to library object that this command exists in
    Library* library;
 
+   // patron and book databases
    PatronDatabase* patronDB;
    BookDatabase* bookDB;
 
+   // character indicating command
    char commandCode;
 
+   // Command Type
    string type;
 
    // ID of patron this command uses
