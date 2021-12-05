@@ -7,7 +7,7 @@ To Do List:
 - Complete commandFactory + comments
 - Complete commandQueue + comments
 - Thorough Testing (+valgrind)
-- Review JavaDocs
+- clang format
 
 Extra Documentation:
 - ...
