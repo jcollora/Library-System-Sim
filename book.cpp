@@ -82,8 +82,7 @@ bool Book::addBook()
  * @post count--
  * @return true if book was available, false otherwise
  */
-bool Book::removeBook()
-{
+bool Book::removeBook() {
    if (count > 0) {
       count--;
       return true;
@@ -91,8 +90,17 @@ bool Book::removeBook()
    return false;
 }
 
-bool Book::addPatron(const Patron* patron)
-{
+// -------------------------------------------------------------------------
+/** addPatron()
+ * add patron
+ * 
+ * adds the given patron from the list of patrons checking out
+ * @param patron patron pointer to the desired patron to add
+ * @pre patron pointer is not nullptr
+ * @post patron item is added to the current list of patrons checking out
+ * @return bool indicating status of the add
+ */
+bool Book::addPatron(const Patron* patron) {
    if (checkouts[patron] >= maxCount) {
 
       return false;
@@ -101,8 +109,17 @@ bool Book::addPatron(const Patron* patron)
    return true;
 }
 
-bool Book::removePatron(const Patron* patron)
-{
+// -------------------------------------------------------------------------
+/** removePatron
+ * remvove patron 
+ * 
+ * removes the given patron from the list of of patrons checking out
+ * @param patron patron pointer to the desired patron to remove
+ * @pre patron pointer is not nullptr
+ * @post patron item is removed from the current list of patron checkouts
+ * @return bool indicating status of the add
+ */
+bool Book::removePatron(const Patron* patron) {
    if (checkouts[patron] <= 0) {
 
       return false;
@@ -133,4 +150,13 @@ bool Book::checkAvailability() const { return count > 0; }
  */
 string Book::getType() const { return type; }
 
+// -------------------------------------------------------------------------
+/** getTitle()
+ * get book title
+ * 
+ * Return the title of current book
+ * @pre None
+ * @post None. const
+ * @return string representing book title
+ */
 string Book::getTitle() const { return title; }
