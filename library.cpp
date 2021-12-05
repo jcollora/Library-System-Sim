@@ -20,11 +20,15 @@
 
 #include <iostream>
 
-
-
 using namespace std;
 
-
+// -------------------------------------------------------------------------
+/** Library()
+ * Default Constructor
+ * Constructs a Library object with default values for the patron database
+ * @pre None.
+ * @post Library object exists
+ */
 Library::Library() {
    bookDB = nullptr;
    patronDB = nullptr;
@@ -32,6 +36,13 @@ Library::Library() {
    //commandFactory = nullptr;
 }
 
+// -------------------------------------------------------------------------
+/** ~Library()
+ * Destructor
+ * Deletes the libary and its member variables
+ * @pre None.
+ * @post Library object and member variables deleted
+ */
 Library::~Library() {
    delete bookDB;
    delete patronDB;
@@ -39,6 +50,15 @@ Library::~Library() {
    //delete commandFactory;
 }
 
+// -------------------------------------------------------------------------
+/** processComands()
+ * This method is responsible for processing all of the library commands that
+ * are provided by the ifstream
+ * @pre None.
+ * @param ifstream an input file stream
+ *                 a stream of data used for reading input from a file
+ * @post commands are executed based on the parameter
+ */
 void Library::processCommands(istream& is) {
 
 }
