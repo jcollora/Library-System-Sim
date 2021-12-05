@@ -16,7 +16,6 @@
 
 using namespace std;
 
-
 #include <iostream>
 
 class Library;
@@ -24,11 +23,6 @@ class Library;
 class LibraryBuilder 
 {
 public:
-
-
-
-
-
     // -------------------------------------------------------------------------
     /** createLibrary()
      * Create Library Object
@@ -41,10 +35,8 @@ public:
      * @post None.
      * @return Library object that includes two populated databases 
      *         patron and book
-     * 
      */
     Library* createLibrary(istream& books, istream& patrons);
-
 
 };
 
