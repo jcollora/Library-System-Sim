@@ -31,20 +31,13 @@ LibraryCommand* CheckoutBook::create() const {
 }
 
 void CheckoutBook::execute() {
-   if (!book->addPatron(patron)) {
-      cout << "ERROR: Patron " << patron->getID()
-           << " cannot checkout book if all copies are" << 
-           " checked out by that patron. book titled:  "
-           << book->getTitle() << endl;
-      
-      return;
-   }
+   
 
    if (!book->removeBook()) {
       cout << "ERROR: Patron " << patron->getID()
            << "Can't checkout book, library contains no books left titled: "
            << book->getTitle() << endl;
-      book->removePatron(patron);
+
       return;
    }
    patron->addBook(book);

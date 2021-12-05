@@ -24,7 +24,7 @@ using namespace std;
 #include <iostream>
 #include <string>
 #include <unordered_map>
-#include <forward_list>
+#include <list>
 
 class LibraryCommand;
 class Book;
@@ -243,7 +243,7 @@ public:
    string firstName;
 
    // patron command history singly linked list
-   forward_list<const LibraryCommand*> commandHistory;
+   list<const LibraryCommand*> commandHistory;
 
    // patron current book checkouts unordered map (for multiple checkouts)
    unordered_map<const Book*, int> currentCheckouts;

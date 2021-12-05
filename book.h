@@ -22,7 +22,7 @@
 
 #include "BSTData.h"
 #include <string>
-#include <unordered_map>
+
 
 class BSTData;
 class Patron;
@@ -80,29 +80,7 @@ public:
     */
    bool removeBook();
 
-   // -------------------------------------------------------------------------
-   /** addPatron()
-    * add patron
-    * 
-    * adds the given patron from the list of patrons checking out
-    * @param patron patron pointer to the desired patron to add
-    * @pre patron pointer is not nullptr
-    * @post patron item is added to the current list of patrons checking out
-    * @return bool indicating status of the add
-    */
-   bool addPatron(const Patron* patron);
 
-   // -------------------------------------------------------------------------
-   /** removePatron
-    * remvove patron 
-    * 
-    * removes the given patron from the list of of patrons checking out
-    * @param patron patron pointer to the desired patron to remove
-    * @pre patron pointer is not nullptr
-    * @post patron item is removed from the current list of patron checkouts
-    * @return bool indicating status of the add
-    */
-   bool removePatron(const Patron* patron);
 
    // -------------------------------------------------------------------------
    /** checkAvailability()
@@ -188,8 +166,7 @@ protected:
 
    char typeCode;
 
-   // map of patrons holding a book and the number of books they hold
-   unordered_map<const Patron*, int> checkouts;
+
 };
 
 #endif

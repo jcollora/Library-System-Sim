@@ -17,6 +17,7 @@
 #include <string>
 #include <iomanip>
 #include "libraryCommand.h"
+#include <list>
 
 using namespace std;
 
@@ -304,5 +305,5 @@ string Patron::getID() const { return id; }
  */
 void Patron::addCommand(LibraryCommand* command) {
    // insert at the end of the command history singly linked list
-   commandHistory.insert_after(commandHistory.end(), command);
+   commandHistory.push_back(command);
 }

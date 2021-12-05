@@ -88,7 +88,10 @@ LibraryCommand* CommandFactory::createCommand(istream& is) {
    comm = commandTypes[index]->create();
 
    is.get();
-   comm->initialize(is);
+   if (!comm->initialize(is)) {
+      delete comm;
+      return nullptr;
+   }
 
    return comm;
 

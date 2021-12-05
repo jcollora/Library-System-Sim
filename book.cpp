@@ -19,6 +19,7 @@
 
 #include "book.h"
 
+
 using namespace std;
 
 // -------------------------------------------------------------------------
@@ -41,6 +42,8 @@ Book::Book()
    maxCount = -1;
    format = 'H';
    type = '0';
+  
+   
 }
 
 // -------------------------------------------------------------------------
@@ -90,43 +93,7 @@ bool Book::removeBook() {
    return false;
 }
 
-// -------------------------------------------------------------------------
-/** addPatron()
- * add patron
- * 
- * adds the given patron from the list of patrons checking out
- * @param patron patron pointer to the desired patron to add
- * @pre patron pointer is not nullptr
- * @post patron item is added to the current list of patrons checking out
- * @return bool indicating status of the add
- */
-bool Book::addPatron(const Patron* patron) {
-   if (checkouts[patron] >= maxCount) {
 
-      return false;
-   }
-   checkouts[patron]++;
-   return true;
-}
-
-// -------------------------------------------------------------------------
-/** removePatron
- * remvove patron 
- * 
- * removes the given patron from the list of of patrons checking out
- * @param patron patron pointer to the desired patron to remove
- * @pre patron pointer is not nullptr
- * @post patron item is removed from the current list of patron checkouts
- * @return bool indicating status of the add
- */
-bool Book::removePatron(const Patron* patron) {
-   if (checkouts[patron] <= 0) {
-
-      return false;
-   }
-   checkouts[patron]--;
-   return true;
-}
 
 // -------------------------------------------------------------------------
 /** checkAvailability()

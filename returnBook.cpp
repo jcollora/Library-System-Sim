@@ -33,24 +33,20 @@ LibraryCommand* ReturnBook::create() const { return new ReturnBook(bookDB, patro
 
 void ReturnBook::execute()
 {
-   if (!book->removePatron(patron)) {
-      cout << "ERROR: Patron " << patron->getID()
-           << " cannot return book they didn't check out titled: "
-           << book->getTitle() << endl;
-   }
+   
    
    if (!book->addBook()) {
       cout << "ERROR: Patron " << patron->getID()
            << "Can't return book, library contains max books titled: "
            << book->getTitle() << endl;
-      book->addPatron(patron); //undo removePatron
+      
       return;
    }
    if (!patron->removeBook(book)) {
       cout << "ERROR: Patron " << patron->getID()
            << "Does not hold the book they want to return titled: " 
            << book->getTitle() << endl;
-      book->addPatron(patron); //undo removePatron
+      
       book->removeBook(); // undo addBook
       return;
    }

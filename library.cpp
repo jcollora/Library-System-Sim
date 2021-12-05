@@ -66,7 +66,8 @@ void Library::processCommands(istream& is) {
       LibraryCommand* comm = commandFactory->createCommand(is);
       if (comm != nullptr) {
          commandQueue.push(comm);
-      }
+      } 
+
    }
 
    executeCommands(commandQueue);
