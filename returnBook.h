@@ -31,7 +31,7 @@ public:
     * @pre None.
     * @post ReturnBook command object exists
     */
-   ReturnBook();
+   ReturnBook(BookDatabase* books, PatronDatabase* patrons);
 
    // -------------------------------------------------------------------------
    /** execute()

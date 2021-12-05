@@ -19,13 +19,15 @@
 
 using namespace std;
 
-CheckoutBook::CheckoutBook() {
+CheckoutBook::CheckoutBook(BookDatabase* books, PatronDatabase* patrons) {
+   bookDB = books;
+   patronDB = patrons;
    type = TYPE_CHECKOUT;
    commandCode = CHECKOUT_CODE;
 }
 
 LibraryCommand* CheckoutBook::create() const {
-   return new CheckoutBook();
+   return new CheckoutBook(bookDB, patronDB);
 }
 
 void CheckoutBook::execute() {

@@ -12,6 +12,9 @@
 #include "periodical.h"
 #include "book.h"
 #include <iomanip>
+#include <sstream>
+
+#include <regex>
 
 using namespace std;
 
@@ -190,8 +193,8 @@ BSTData& Periodical::operator=(const BSTData& rhs) {
  * @return true if line of data was read, false if no line or bad format
  */
 bool Periodical::setData(istream& is) { //ERRORS
+
    string line; 
-   
    is.get();
    char form = is.get();
    if (is.peek() == ' ') {
@@ -203,21 +206,27 @@ bool Periodical::setData(istream& is) { //ERRORS
    } else {
       is.unget();
    }
-   
-   getline(is, title, ',');
-   if (title.empty()) {
-      getline(is, line);
-      return false;
-   }
-   is >> month; 
- 
-   is >> year;
-   if ( year < 0) {
-      getline(is, line);
-      return false;
+
+   getline(is, line);
+   regex commandReg("\\d{4}\\s\\d\\d?\\s.+");
+   stringstream data;
+   if (regex_match(line, commandReg)) { //command
+      
+      
+      data.str(line);
+       data >> year;
+       data >> month;
+       getline(data, title, ',');
+
+   } else {
+      data.str(line);
+      getline(data, title, ',');
+      data >> month;
+      data >> year;
    }
 
-   getline(is, line); //clear line for next data input
+   
+   
 
    return true;
 

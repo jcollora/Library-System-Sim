@@ -31,7 +31,7 @@ public:
     * @pre None.
     * @post CheckoutBook command object exists
     */
-   CheckoutBook();
+   CheckoutBook(BookDatabase* books, PatronDatabase* patrons);
 
    // -------------------------------------------------------------------------
    /** execute()

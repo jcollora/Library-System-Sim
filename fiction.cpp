@@ -15,6 +15,9 @@
 #include <iostream>
 #include <iomanip>
 #include "constants.h"
+#include <sstream>
+
+#include <regex>
 
 class Patron;
 
@@ -210,24 +213,19 @@ bool Fiction::setData(istream& is) {
    }
    
    getline(is, author, ',');
-   if (author.empty()) {
-      getline(is, line);
-      return false;
-   }
    is.get();
    getline(is, title, ',');
-      if (title.empty()) {
-      getline(is, line);
-      return false;
-   }
- 
-   is >> year;
-   if ( year < 0) {
-      getline(is, line);
-      return false;
-   }
+   
+   getline(is, line);
 
-   getline(is, line); //clear line for next data input
+   regex yearRule("\\s\\d{4}");
+   stringstream data;
+   if (regex_match(line, yearRule)) {
+      data.str(line);
+      data >> year;
+   }
+   
+   
 
    return true;
 

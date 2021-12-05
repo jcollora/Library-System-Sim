@@ -32,6 +32,14 @@ int main() {
    istream books();
    Library* lib = build.createLibrary(inBooks, inPatrons);
 
+   ifstream inCommands("data4commands.txt");
+   if (!inCommands) {
+      cout << "Commands file could not be opened." << endl;
+      return 1;
+   }
+
+   lib->processCommands(inCommands);
+
 
    delete lib;
 

@@ -16,6 +16,7 @@
 #include "library.h"
 #include "bookDatabase.h"
 #include "patronDatabase.h"
+#include "commandFactory.h"
 
 using namespace std;
 
@@ -40,17 +41,19 @@ Library* LibraryBuilder::createLibrary(istream& books, istream& patrons) {
       newBookDB->insertNewBook(books);      
    }
    
-   newBookDB->displayAll(); //test code. delete this
+   
    PatronDatabase* newPatronDB = new PatronDatabase();
 
    while (!patrons.eof()) {
       if(!newPatronDB->insertNewPatron(patrons)) {
-         cout << "ERROR"; //define this better
+         
       }
    }
+   
 
    newLib->bookDB = newBookDB;
    newLib->patronDB = newPatronDB;
+   newLib->commandFactory = new CommandFactory(newBookDB, newPatronDB);
 
    return newLib;
 

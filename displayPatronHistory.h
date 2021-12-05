@@ -30,7 +30,7 @@ public:
     * @pre None.
     * @post DisplayPatronHistory command object exists
     */
-   DisplayPatronHistory();
+   DisplayPatronHistory(BookDatabase* books, PatronDatabase* patrons);
 
    // -------------------------------------------------------------------------
    /** execute()

@@ -32,8 +32,9 @@ using namespace std;
 Library::Library() {
    bookDB = nullptr;
    patronDB = nullptr;
+   commandFactory = nullptr;
    
-   commandFactory = new CommandFactory(bookDB, patronDB);
+   
 }
 
 // -------------------------------------------------------------------------

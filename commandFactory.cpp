@@ -38,10 +38,10 @@ CommandFactory::CommandFactory(BookDatabase* books, PatronDatabase* patrons) {
    bookDB = books;
    patronDB = patrons;
 
-   commandTypes[CHECKOUT_CODE] = new CheckoutBook();
-   commandTypes[RETURN_CODE] = new ReturnBook();
-   commandTypes[DISPLAY_LIB_CODE] = new DisplayLibrary();
-   commandTypes[DISPLAY_PAT_CODE] = new DisplayPatronHistory();
+   commandTypes[CHECKOUT_CODE - HASH_START] = new CheckoutBook(books, patrons);
+   commandTypes[RETURN_CODE - HASH_START] = new ReturnBook(books, patrons);
+   commandTypes[DISPLAY_LIB_CODE - HASH_START] = new DisplayLibrary(books, patrons);
+   commandTypes[DISPLAY_PAT_CODE - HASH_START] = new DisplayPatronHistory(books, patrons);
 
 }
 
@@ -75,10 +75,18 @@ CommandFactory::~CommandFactory() {
 LibraryCommand* CommandFactory::createCommand(istream& is) {
    LibraryCommand* comm = nullptr;
    char type = is.get();
-   comm = commandTypes[type - HASH_START]->create();
-   if (comm == nullptr) { //ERROR: command type doesnt exist
-      return comm;
+   string line;
+   int index = type - HASH_START;
+   if (index < 0 || index >= HASH_SIZE) { //ERROR
+      getline(is, line);
+      return nullptr; //character is out of range
    }
+   if (commandTypes[index] == nullptr) { //ERROR
+      getline(is, line);
+      return nullptr; //no command type doesnt exist
+   }
+   comm = commandTypes[index]->create();
+
    is.get();
    comm->initialize(is);
 

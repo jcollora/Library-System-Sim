@@ -1,7 +1,3 @@
-D
-H 1000
-H 1111
-H 5000
 C 8000 F H Kerouac Jack, On the Road,
 C 1000 F H Muller Marcia, Edwin of the Iron Shoes,
 C 8888 F H Forster E. M., The Longest Journey,

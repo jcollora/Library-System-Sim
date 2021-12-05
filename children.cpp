@@ -14,6 +14,8 @@
 #include <string>
 #include <iomanip>
 #include <string>
+#include <regex>
+#include <sstream>
 
 using namespace std;
 
@@ -202,26 +204,26 @@ bool Children::setData(istream& is) {
    } else {
       is.unget();
    }
-
-   getline(is, author, ',');
-   if (author.empty()) {
-      getline(is, line);
-      return false;
-   }
+   string s1 ="";
+   string s2 = "";
+   getline(is, s1, ',');
    is.get();
-   getline(is, title, ',');
-   if (title.empty()) {
-      getline(is, line);
-      return false;
-   }
+   getline(is, s2, ',');
+   regex bookReg("\\s\\d{4}");
+   stringstream data;
 
-   is >> year;
-   if (year < 0) {
-      getline(is, line);
-      return false;
-   }
+   getline(is, line);
 
-   getline(is, line); // clear line for next data input
+   if (regex_match(line, bookReg)) { //book
+      data.str(line);
+      author = s1;
+      title = s2;
+
+      data >> year;
+   } else { //command
+      title = s1;
+      author = s2;
+   }
 
    return true;
 }

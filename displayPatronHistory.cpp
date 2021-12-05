@@ -18,7 +18,9 @@
 
 using namespace std;
 
-DisplayPatronHistory::DisplayPatronHistory() {
+DisplayPatronHistory::DisplayPatronHistory(BookDatabase* books, PatronDatabase* patrons) {
+   bookDB = books;
+   patronDB = patrons;
    type = TYPE_DISPLAY_PATRON;
    commandCode = DISPLAY_PAT_CODE;
 }
@@ -28,7 +30,7 @@ void DisplayPatronHistory::execute() {
 }
 
 LibraryCommand* DisplayPatronHistory::create() const {
-   return new DisplayPatronHistory();
+   return new DisplayPatronHistory(bookDB, patronDB);
 }
 
 bool DisplayPatronHistory::initialize(istream& is) { //put errors here

@@ -60,7 +60,7 @@ bool PatronDatabase::insertNewPatron(istream& is) {
     if(!patronBST->insert(newPatron)) {
         return false;
     }
-
+    
     return true;
 }
 

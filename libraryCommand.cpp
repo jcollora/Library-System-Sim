@@ -17,6 +17,7 @@
 #include <iomanip>
 #include "book.h"
 #include "bookDatabase.h"
+#include "patronDatabase.h"
 #include "patron.h"
 
 // -------------------------------------------------------------------------
@@ -30,7 +31,8 @@
 LibraryCommand::LibraryCommand() {
    patron = nullptr;
    book = nullptr;
-   
+   patronDB = nullptr;
+   bookDB = nullptr;
    type = "";
    commandCode = 0;
 }

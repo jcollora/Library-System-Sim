@@ -19,14 +19,16 @@
 #include "bookDatabase.h"
 #include "constants.h"
 
-ReturnBook::ReturnBook()
+ReturnBook::ReturnBook(BookDatabase* books, PatronDatabase* patrons)
 {
 
+   patronDB = patrons;
+   bookDB = books;
    type = TYPE_RETURN;
    commandCode = RETURN_CODE;
 }
 
-LibraryCommand* ReturnBook::create() const { return new ReturnBook(); }
+LibraryCommand* ReturnBook::create() const { return new ReturnBook(bookDB, patronDB); }
 
 
 void ReturnBook::execute()

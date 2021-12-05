@@ -17,9 +17,12 @@
 
 using namespace std;
 
-DisplayLibrary::DisplayLibrary() {
+DisplayLibrary::DisplayLibrary(BookDatabase* books, PatronDatabase* patrons) {
+   patronDB = patrons;
+   bookDB = books;
    type = TYPE_DISPLAY_LIB;
    commandCode = DISPLAY_LIB_CODE;
+
 }
 
 void DisplayLibrary::execute() {
@@ -27,7 +30,7 @@ void DisplayLibrary::execute() {
 }
 
 LibraryCommand* DisplayLibrary::create() const {
-   return new DisplayLibrary();
+   return new DisplayLibrary(bookDB, patronDB);
 }
 
 bool DisplayLibrary::initialize(istream& is) {

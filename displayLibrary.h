@@ -29,7 +29,7 @@ public:
     * @pre None.
     * @post DisplayLibrary command object exists
     */
-   DisplayLibrary();
+   DisplayLibrary(BookDatabase* books, PatronDatabase* patrons);
 
    // -------------------------------------------------------------------------
    /** execute()
