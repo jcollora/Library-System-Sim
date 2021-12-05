@@ -14,5 +14,12 @@
 #include "BSTData.h"
 
 using namespace std;
-
+// -------------------------------------------------------------------------
+/** ~BSTData
+ * Destructor
+ * 
+ * Deletes BSTData from memory
+ * @pre None.
+ * @post BSTData instance is deleted
+ */
 BSTData::~BSTData() {}
