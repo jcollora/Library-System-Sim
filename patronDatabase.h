@@ -11,10 +11,12 @@
  *   - Database of patrons exists as a "BSTree"
  * 
  */
+
 #ifndef PATRONDATABASE_H
 #define PATRONDATABASE_H
 
 #include "constants.h"
+
 #include <istream>
 #include <vector>
 
@@ -26,7 +28,6 @@ class BSTree;
 class PatronDatabase
 {
 public:
-    /** 
     // -------------------------------------------------------------------------
     /** PatronDatabase()
      * Default Constructor
