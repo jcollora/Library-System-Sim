@@ -53,15 +53,15 @@ BookDatabase::~BookDatabase() {
 }
 
 //-------------------------------------------------------------------------
-    /** insertNewBook()
-     * Insert Method
-     *
-     * Inserts the given book into the correct BST
-     * @param is book input
-     * @pre None
-     * @post newBook is added to the right BST, if successful
-     * @return true if newBook was successfully inserted
-     */
+/** insertNewBook()
+ * Insert Method
+ *
+ * Inserts the given book into the correct BST
+ * @param is book input
+ * @pre None
+ * @post newBook is added to the right BST, if successful
+ * @return true if newBook was successfully inserted
+ */
 bool BookDatabase::insertNewBook(istream& is) {
    Book* newBook = bookFactory.createBook(is);
    if (newBook == nullptr) {
