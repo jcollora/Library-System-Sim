@@ -1,4 +1,4 @@
-/** @file bookfactory.h
+   /** @file bookfactory.h
  * @author Joseph Collora and Josh Helzerman
  * 
  * Description:
@@ -74,6 +74,15 @@ public:
     */
    int getHash(const Book& book) const;
 
+   // -------------------------------------------------------------------------
+   /** getType()
+    * get book type
+    * 
+    * Return the type of book
+    * @pre None
+    * @post None. const
+    * @return char representing book type
+    */
    string getType(char type) const;
 
 private:
