@@ -77,12 +77,12 @@ Book* BookFactory::createBook(istream& is) const {
    string line;
    int index = type - HASH_START;
    if (index < 0 || index >= HASH_SIZE) { //ERROR
-      //cout << "BOOK INPUT ERROR: " << type << " is not a recognized type." << endl;
+      cout << "BOOK INPUT ERROR: not a recognized type." << endl;
       getline(is, line);
       return nullptr; //character is out of range
    }
    if (bookTypes[index] == nullptr) { //ERROR
-      //cout << "BOOK INPUT ERROR: " << type << " is not a recognized type." << endl;
+      cout << "BOOK INPUT ERROR: " << type << " is not a recognized type." << endl;
       getline(is, line);
       return nullptr; //no booktype exists
    }

@@ -35,5 +35,7 @@ LibraryCommand* DisplayLibrary::create() const {
 }
 
 bool DisplayLibrary::initialize(istream& is) {
+   string line;
+   getline(is, line);
    return true;
 }

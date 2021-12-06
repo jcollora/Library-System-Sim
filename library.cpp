@@ -19,6 +19,7 @@
 #include "patronDatabase.h"
 #include <queue>
 #include <iostream>
+#include <sstream>
 
 using namespace std;
 
@@ -62,11 +63,20 @@ Library::~Library() {
  */
 void Library::processCommands(istream& is) {
    queue<LibraryCommand*> commandQueue;
+   
+   
    while (!is.eof()) {
-      LibraryCommand* comm = commandFactory->createCommand(is);
+      
+      string line;
+      stringstream inputLine;
+      getline(is, line);
+      inputLine.str(line);
+      LibraryCommand* comm = commandFactory->createCommand(inputLine);
       if (comm != nullptr) {
          commandQueue.push(comm);
-      } 
+      } else {
+         cout << endl;
+      }
          
 
    }

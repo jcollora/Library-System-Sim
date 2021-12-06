@@ -17,6 +17,7 @@
 #include "bookDatabase.h"
 #include "patronDatabase.h"
 #include "commandFactory.h"
+#include <sstream>
 
 using namespace std;
 
@@ -38,14 +39,22 @@ Library* LibraryBuilder::createLibrary(istream& books, istream& patrons) {
    BookDatabase* newBookDB = new BookDatabase();
    
    while (!books.eof()) {
-      newBookDB->insertNewBook(books);      
+      string line;
+      stringstream inputLine;
+      getline(books, line);
+      inputLine.str(line);
+      newBookDB->insertNewBook(inputLine);      
    }
    
    
    PatronDatabase* newPatronDB = new PatronDatabase();
 
    while (!patrons.eof()) {
-      if(!newPatronDB->insertNewPatron(patrons)) {
+      string line;
+      stringstream inputLine;
+      getline(patrons, line);
+      inputLine.str(line);
+      if(!newPatronDB->insertNewPatron(inputLine)) {
          
       }
    }
