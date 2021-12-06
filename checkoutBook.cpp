@@ -37,7 +37,7 @@ void CheckoutBook::execute() {
       cout << "ERROR: Patron " << patron->getID()
            << "Can't checkout book, library contains no books left titled: "
            << book->getTitle() << endl;
-
+      delete this;
       return;
    }
    patron->addBook(book);

@@ -64,7 +64,9 @@ Patron::Patron(string newID) {
  * @post Patron instance is deleted
  */
 Patron::~Patron() {
-
+      for (const LibraryCommand* comm : commandHistory) {
+         delete comm;
+      }
 }
 
 // -------------------------------------------------------------------------
@@ -222,6 +224,9 @@ bool Patron::operator>=(const BSTData& rhs) const {
 BSTData& Patron::operator=(const BSTData& rhs) {
    const Patron& right = static_cast<const Patron&>(rhs);
    if (this != &right) {
+      for (const LibraryCommand* comm : commandHistory) {
+         delete comm;
+      }
       id = right.id;
       lastName = right.lastName;
       firstName = right.firstName;

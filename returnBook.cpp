@@ -39,7 +39,7 @@ void ReturnBook::execute()
       cout << "ERROR: Patron " << patron->getID()
            << "Can't return book, library contains max books titled: "
            << book->getTitle() << endl;
-      
+      delete this;
       return;
    }
    if (!patron->removeBook(book)) {
@@ -48,6 +48,7 @@ void ReturnBook::execute()
            << book->getTitle() << endl;
       
       book->removeBook(); // undo addBook
+      delete this;
       return;
    }
    patron->addCommand(this); //if all functions successfull, store command

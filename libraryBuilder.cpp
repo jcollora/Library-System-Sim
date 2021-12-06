@@ -43,7 +43,9 @@ Library* LibraryBuilder::createLibrary(istream& books, istream& patrons) {
       stringstream inputLine;
       getline(books, line);
       inputLine.str(line);
-      newBookDB->insertNewBook(inputLine);      
+      if (!newBookDB->insertNewBook(inputLine)) {
+         cout << endl;
+      }     
    }
    
    
@@ -55,7 +57,7 @@ Library* LibraryBuilder::createLibrary(istream& books, istream& patrons) {
       getline(patrons, line);
       inputLine.str(line);
       if(!newPatronDB->insertNewPatron(inputLine)) {
-         
+         cout << endl;
       }
    }
    
