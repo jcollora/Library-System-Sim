@@ -78,10 +78,12 @@ LibraryCommand* CommandFactory::createCommand(istream& is) {
    string line;
    int index = type - HASH_START;
    if (index < 0 || index >= HASH_SIZE) { //ERROR
+      cout << "COMMAND INPUT ERROR: Command type " << type << " does not exist." << endl;
       getline(is, line);
       return nullptr; //character is out of range
    }
    if (commandTypes[index] == nullptr) { //ERROR
+      cout << "COMMAND INPUT ERROR: Command type " << type << " does not exist." << endl;
       getline(is, line);
       return nullptr; //no command type doesnt exist
    }

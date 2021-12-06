@@ -63,7 +63,9 @@ Patron::Patron(string newID) {
  * @pre None.
  * @post Patron instance is deleted
  */
-Patron::~Patron() {}
+Patron::~Patron() {
+
+}
 
 // -------------------------------------------------------------------------
 /** compare()
@@ -95,6 +97,7 @@ int Patron::compare(const Patron& rhs) const {
  */
 bool Patron::addBook(Book* book) {
    currentCheckouts[book]++;
+   
    return true;
 }
 
@@ -109,9 +112,6 @@ bool Patron::addBook(Book* book) {
  */
 bool Patron::removeBook(Book* book) {
    if (currentCheckouts[book] <= 0) {
-      cout << "ERROR: Patron " << id
-           << "tried to return a book it did not have titled "
-           << book->getTitle() << endl;
 
       return false;
    }
@@ -246,7 +246,7 @@ bool Patron::setData(istream& is) { //put errors HERE
       return false;
    }
    is >> id;
-   if (is.eof()) {
+      if (is.eof()) {
       return false;
    }
    is >> lastName;

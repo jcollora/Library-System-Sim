@@ -67,6 +67,7 @@ void Library::processCommands(istream& is) {
       if (comm != nullptr) {
          commandQueue.push(comm);
       } 
+         
 
    }
 
@@ -78,5 +79,6 @@ void Library::executeCommands(queue<LibraryCommand*>& commands) {
       LibraryCommand* comm = commands.front();
       commands.pop();
       comm->execute();
+      
    }
 }

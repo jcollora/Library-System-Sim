@@ -26,7 +26,9 @@ DisplayPatronHistory::DisplayPatronHistory(BookDatabase* books, PatronDatabase* 
 }
 
 void DisplayPatronHistory::execute() {
+   cout << endl;
    patron->display(cout);
+   delete this;
 }
 
 LibraryCommand* DisplayPatronHistory::create() const {

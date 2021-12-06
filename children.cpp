@@ -196,6 +196,7 @@ bool Children::setData(istream& is) {
    char form = is.get();
    if (is.peek() == ' ') {
       if (form != format) {
+         cout << type << " BOOK INPUT ERROR: " << form << " is not a recognized format." << endl;
          getline(is, line);
          return false;
       }

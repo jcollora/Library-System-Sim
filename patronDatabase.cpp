@@ -76,5 +76,6 @@ Patron* PatronDatabase::getPatron(string patronId) const {
     Patron patronFinder(patronId);
     BSTData* foundPatron = nullptr;
     patronBST->retrieve(patronFinder, foundPatron);
+    
     return (Patron*)foundPatron;
 }

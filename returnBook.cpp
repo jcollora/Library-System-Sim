@@ -44,7 +44,7 @@ void ReturnBook::execute()
    }
    if (!patron->removeBook(book)) {
       cout << "ERROR: Patron " << patron->getID()
-           << "Does not hold the book they want to return titled: " 
+           << " Can't return book, because they did not checkout book titled: " 
            << book->getTitle() << endl;
       
       book->removeBook(); // undo addBook

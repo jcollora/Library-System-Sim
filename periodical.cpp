@@ -28,7 +28,7 @@ using namespace std;
  */
 Periodical::Periodical() 
 {
-    maxCount = 5;
+    maxCount = 1;
     count = maxCount;
     type = TYPE_PERIODICAL;
     typeCode = PERIODICAL_CODE;
@@ -199,6 +199,7 @@ bool Periodical::setData(istream& is) { //ERRORS
    char form = is.get();
    if (is.peek() == ' ') {
       if (form != format) {
+         cout << type << "BOOK INPUT ERROR: " << form << " is not a recognized format." << endl;
          getline(is, line);
          return false;
       }
@@ -210,12 +211,14 @@ bool Periodical::setData(istream& is) { //ERRORS
    getline(is, line);
    regex commandReg("\\d{4}\\s\\d\\d?\\s.+");
    stringstream data;
+   
    if (regex_match(line, commandReg)) { //command
       
       
       data.str(line);
        data >> year;
        data >> month;
+       data.get();
        getline(data, title, ',');
 
    } else {

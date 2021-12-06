@@ -27,6 +27,7 @@ DisplayLibrary::DisplayLibrary(BookDatabase* books, PatronDatabase* patrons) {
 
 void DisplayLibrary::execute() {
    bookDB->displayAll();
+   delete this;
 }
 
 LibraryCommand* DisplayLibrary::create() const {

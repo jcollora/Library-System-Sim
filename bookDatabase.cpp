@@ -92,7 +92,7 @@ Book* BookDatabase::getBook(istream& is) const {
 
    int index = bookFactory.getHash(*bookToFind);
    bookShelf[index]->retrieve(*bookToFind, bookFound);
-
+   delete bookToFind;
    return (Book*)bookFound;
 
 }
