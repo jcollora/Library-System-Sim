@@ -34,7 +34,7 @@ void CheckoutBook::execute() {
    
 
    if (!book->removeBook()) {
-      cout << "ERROR: Patron " << patron->getID()
+      cout << "CHECKOUT COMMAND EXECUTIONERROR: Patron " << patron->getID()
            << "Can't checkout book, library contains no books left titled: "
            << book->getTitle() << endl;
       delete this;

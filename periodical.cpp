@@ -209,7 +209,7 @@ bool Periodical::setData(istream& is) { //ERRORS
    }
 
    getline(is, line);
-   regex commandReg("\\d{4}\\s\\d\\d?\\s.+");
+   regex commandReg("\\d{1,4}\\s\\d\\d?\\s.*");
    stringstream data;
    
    if (regex_match(line, commandReg)) { //command

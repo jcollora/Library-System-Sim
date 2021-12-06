@@ -41,6 +41,8 @@ bool DisplayPatronHistory::initialize(istream& is) { //put errors here
    patron = patronDB->getPatron(patronID);
    getline(is, line);
    if (patron == nullptr) {
+      cout << "PATRON HISTORY COMMAND INPUT ERROR: PATRON " << patronID
+           << " does not exist." << endl;
       return false;
    }
    

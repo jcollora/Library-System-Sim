@@ -214,10 +214,6 @@ bool Children::setData(istream& is) {
    getline(data, s2, ',');
    data >> year;
    
-      
-   
-
-      
 
       if (year) { //book
          

@@ -36,14 +36,14 @@ void ReturnBook::execute()
    
    
    if (!book->addBook()) {
-      cout << "ERROR: Patron " << patron->getID()
+      cout << "RETURN COMMAND EXECUTION ERROR: Patron " << patron->getID()
            << "Can't return book, library contains max books titled: "
            << book->getTitle() << endl;
       delete this;
       return;
    }
    if (!patron->removeBook(book)) {
-      cout << "ERROR: Patron " << patron->getID()
+      cout << "RETURN COMMAND EXECUTION ERROR: Patron " << patron->getID()
            << " Can't return book, because they did not checkout book titled: " 
            << book->getTitle() << endl;
       
