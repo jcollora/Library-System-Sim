@@ -63,7 +63,7 @@ bool LibraryCommand::initialize(istream& is) //put errors here
       getline(is, line);
       return false;
    }
-   getline(is, line);
+   
    return true;
 }
 

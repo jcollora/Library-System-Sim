@@ -192,7 +192,6 @@ BSTData& Children::operator=(const BSTData& rhs) {
  */
 bool Children::setData(istream& is) {
    string line;
-
    is.get();
    char form = is.get();
    if (is.peek() == ' ') {
@@ -204,26 +203,33 @@ bool Children::setData(istream& is) {
    } else {
       is.unget();
    }
+   stringstream data;
+   getline(is, line);
+   data.str(line);
    string s1 ="";
    string s2 = "";
-   getline(is, s1, ',');
-   is.get();
-   getline(is, s2, ',');
-   regex bookReg("\\s\\d{4}");
-   stringstream data;
+   getline(data, s1, ',');
+   data.get();
+   getline(data, s2, ',');
+   data >> year;
+   
+      
+   
 
-   getline(is, line);
+      
 
-   if (regex_match(line, bookReg)) { //book
-      data.str(line);
-      author = s1;
-      title = s2;
+      if (year) { //book
+         
+         author = s1;
+         title = s2;
 
-      data >> year;
-   } else { //command
-      title = s1;
-      author = s2;
-   }
+         
+      } 
+     else { //command
+         title = s1;
+         author = s2;
+      }
+   
 
    return true;
 }

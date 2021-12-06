@@ -211,19 +211,17 @@ bool Fiction::setData(istream& is) {
    } else {
       is.unget();
    }
-   
-   getline(is, author, ',');
-   is.get();
-   getline(is, title, ',');
-   
-   getline(is, line);
-
-   regex yearRule("\\s\\d{4}");
    stringstream data;
-   if (regex_match(line, yearRule)) {
-      data.str(line);
-      data >> year;
-   }
+   getline(is, line);
+   data.str(line);
+   
+   getline(data, author, ',');
+   data.get();
+   getline(data, title, ',');
+   
+   
+   data >> year;
+   
    
    
 
