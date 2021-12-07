@@ -38,7 +38,7 @@ public:
     * @pre The library object should have books inputed
     * @post None. library is unchanged
     */
-   virtual void execute();
+   virtual bool execute();
 
    /** create()
     * Create Library Command (factory)

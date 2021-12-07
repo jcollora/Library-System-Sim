@@ -74,7 +74,7 @@ BookFactory::~BookFactory()
  */
 Book* BookFactory::createBook(istream& is) const
 {
-   char type = toupper(is.get());
+   char type = is.get();
 
    string line;
    int index = type - HASH_START;

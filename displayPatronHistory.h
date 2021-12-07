@@ -40,7 +40,7 @@ public:
     * @pre The patron should exist in the system
     * @post None. patron is unchanged
     */
-   virtual void execute();
+   virtual bool execute();
 
    /** create()
     * Create Library Command (factory)

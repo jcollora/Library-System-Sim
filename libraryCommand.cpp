@@ -56,15 +56,15 @@ bool LibraryCommand::initialize(istream& is) // put errors here
    patron = patronDB->getPatron(patronID);
    is.get();
    if (patron == nullptr) {
-      cout << "COMMAND INPUT ERROR: In command " << type << ", " << patronID
+      cout << type << " COMMAND INPUT ERROR: " << patronID
            << " is not a recognized patron." << endl;
       getline(is, line);
       return false;
    }
    book = bookDB->getBook(is);
    if (book == nullptr) {
-      cout << "COMMAND INPUT ERROR: "
-           << "In command, " << type << ", the Book is not recognized."
+      cout << type << " COMMAND INPUT ERROR: "
+           << "The Book is not recognized."
            << endl;
 
       return false;

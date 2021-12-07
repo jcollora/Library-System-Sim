@@ -43,26 +43,29 @@ ReturnBook::ReturnBook(BookDatabase* books, PatronDatabase* patrons)
  * @pre The patron and book should exist in the system
  * @post patron and book are updated accordingly
  */
-void ReturnBook::execute()
+bool ReturnBook::execute()
 {
 
-   if (!book->addBook()) {
-      cout << "RETURN COMMAND EXECUTION ERROR: Patron " << patron->getID()
-           << "Can't return book, library contains max books titled: "
-           << book->getTitle() << endl;
-      delete this;
-      return;
-   }
    if (!patron->removeBook(book)) {
       cout << "RETURN COMMAND EXECUTION ERROR: Patron " << patron->getID()
-           << " Can't return book, because they did not checkout book titled: "
-           << book->getTitle() << endl;
+           << " Can't return book" << endl
+           << "because they did not checkout book titled: " << endl
+           << book->getTitle().substr(0, TITLE_MAX_LENGTH) << endl;
 
-      book->removeBook(); // undo addBook
+      
       delete this;
-      return;
+      return false;
+   }
+   if (!book->addBook()) { //this error should never happen.
+      cout << "RETURN COMMAND EXECUTION ERROR: Patron " << patron->getID()
+           << "Can't return book, library contains max books titled: " << endl
+           << book->getTitle().substr(0, TITLE_MAX_LENGTH) << endl;
+      patron->addBook(book); //undo patron remove book.
+      delete this;
+      return false;
    }
    patron->addCommand(this); // if all functions successfull, store command
+   return true;
 }
 
 /** create()

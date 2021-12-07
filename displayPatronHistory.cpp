@@ -44,11 +44,13 @@ DisplayPatronHistory::DisplayPatronHistory(BookDatabase* books,
  * @pre The patron should exist in the system
  * @post None. patron is unchanged
  */
-void DisplayPatronHistory::execute()
+bool DisplayPatronHistory::execute()
 {
-   cout << endl;
+   
    patron->display(cout);
+   cout << endl;
    delete this;
+   return true;
 }
 
 /** create()

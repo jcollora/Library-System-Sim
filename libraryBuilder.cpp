@@ -16,6 +16,7 @@
 #include "commandFactory.h"
 #include "library.h"
 #include "patronDatabase.h"
+#include <string>
 #include <iostream>
 #include <sstream>
 
@@ -43,6 +44,9 @@ Library* LibraryBuilder::createLibrary(istream& books, istream& patrons)
       string line;
       stringstream inputLine;
       getline(books, line);
+      if (line.empty()) {
+         continue;
+      }
       inputLine.str(line);
       if (!newBookDB->insertNewBook(inputLine)) {
          cout << endl;
@@ -55,6 +59,9 @@ Library* LibraryBuilder::createLibrary(istream& books, istream& patrons)
       string line;
       stringstream inputLine;
       getline(patrons, line);
+      if (line.empty()) {
+         continue;
+      }
       inputLine.str(line);
       if (!newPatronDB->insertNewPatron(inputLine)) {
          cout << endl;

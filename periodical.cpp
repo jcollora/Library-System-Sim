@@ -205,7 +205,7 @@ bool Periodical::setData(istream& is)
    char form = is.get();
    if (is.peek() == ' ') {
       if (form != format) {
-         cout << type << "BOOK INPUT ERROR: " << form
+         cout << type << " BOOK INPUT ERROR: " << form
               << " is not a recognized format." << endl;
          getline(is, line);
          return false;
@@ -232,6 +232,18 @@ bool Periodical::setData(istream& is)
       getline(data, title, ',');
       data >> month;
       data >> year;
+   }
+   if (month < 1 || month > 12) {
+      cout << TYPE_PERIODICAL << " BOOK INPUT ERROR: For book titled " << endl
+           << title.substr(0, TITLE_MAX_LENGTH) << "," 
+           << " month " << month << " is not a valid month." << endl;
+      return false;
+   }
+   if (year < 0) {
+      cout << TYPE_PERIODICAL << " BOOK INPUT ERROR: For book titled" << endl
+           << title.substr(0, TITLE_MAX_LENGTH) << "," 
+           << " year " << year << " is not a valid year." << endl;
+      return false;
    }
 
    return true;

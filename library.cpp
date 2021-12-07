@@ -70,6 +70,9 @@ void Library::processCommands(istream& is)
       string line;
       stringstream inputLine;
       getline(is, line);
+      if (line.empty()) {
+         continue;
+      }
       inputLine.str(line);
       LibraryCommand* comm = commandFactory->createCommand(inputLine);
       if (comm != nullptr) {
@@ -87,6 +90,9 @@ void Library::executeCommands(queue<LibraryCommand*>& commands)
    while (!commands.empty()) {
       LibraryCommand* comm = commands.front();
       commands.pop();
-      comm->execute();
+      if(!comm->execute()) {
+         cout << endl;
+      }
+      
    }
 }

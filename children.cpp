@@ -231,6 +231,12 @@ bool Children::setData(istream& is)
       title = s1;
       author = s2;
    }
+   if (year < 0) {
+      cout << TYPE_CHILDREN << " BOOK INPUT ERROR: For book titled" << endl
+           << title.substr(0, TITLE_MAX_LENGTH) << "," 
+           << " year " << year << " is not a valid year." << endl;
+      return false;
+   }
 
    return true;
 }

@@ -41,10 +41,12 @@ DisplayLibrary::DisplayLibrary(BookDatabase* books, PatronDatabase* patrons)
  * @pre The library object should have books inputed
  * @post None. library is unchanged
  */
-void DisplayLibrary::execute()
+bool DisplayLibrary::execute()
 {
    bookDB->displayAll();
+   cout << endl;
    delete this;
+   return true;
 }
 
 /** create()

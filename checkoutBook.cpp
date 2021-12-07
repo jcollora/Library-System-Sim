@@ -43,19 +43,21 @@ CheckoutBook::CheckoutBook(BookDatabase* books, PatronDatabase* patrons)
  * @pre The patron and book should exist in the system
  * @post patron and book are updated accordingly
  */
-void CheckoutBook::execute()
+bool CheckoutBook::execute()
 {
 
    if (!book->removeBook()) {
       cout << "CHECKOUT COMMAND EXECUTION ERROR (for patron "
-           << patron->getID() << "): "
-           << "Can't checkout book. Library contains no books left titled: "
+           << patron->getID() << "): " << endl
+           << "Can't checkout book. Library contains no books left titled:"
+           << endl
            << book->getTitle() << endl;
       delete this;
-      return;
+      return false;
    }
    patron->addBook(book);
    patron->addCommand(this); // if all functions successfull, store command
+   return true;
 }
 
 /** create()

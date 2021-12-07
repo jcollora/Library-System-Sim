@@ -43,7 +43,7 @@ public:
     * @pre The patron and book should exist in the system
     * @post patron and book are updated accordingly
     */
-   virtual void execute();
+   virtual bool execute();
 
    /** create()
     * Create Library Command (factory)

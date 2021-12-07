@@ -230,6 +230,13 @@ bool Fiction::setData(istream& is)
 
    data >> year;
 
+   if (year < 0) {
+      cout << TYPE_FICTION << " BOOK INPUT ERROR: For book titled " << endl
+      << title.substr(0, TITLE_MAX_LENGTH) << "," 
+      << " year " << year << " is not a valid year." << endl;
+      return false;
+   }
+
    return true;
 }
 

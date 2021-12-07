@@ -47,7 +47,7 @@ public:
     * @pre TBD
     * @post TBD
     */
-   virtual void execute() = 0;
+   virtual bool execute() = 0;
 
    /** create()
     * Create Library Command (factory)
