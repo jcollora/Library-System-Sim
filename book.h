@@ -3,7 +3,7 @@
  *
  * Description:
  *   - A book object represents a unique book and the number of copies
- * available for that book at any given time
+ *     available for that book at any given time
  *   - Can be queried to display its information
  *   - Can be queried to see if there are any available copies
  *   - Can be compared with other books
