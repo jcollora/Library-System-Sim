@@ -69,8 +69,12 @@ bool BookDatabase::insertNewBook(istream& is) {
    }
    int index = bookFactory.getHash(*newBook);
    
-   return bookShelf[index]->insert(newBook);
-
+   if (!bookShelf[index]->insert(newBook)) {
+      cout << "BOOK INPUT ERROR (DUPLICATE BOOK): " << newBook->getTitle()
+           << " already exists in this library." << endl;
+      return false;
+   }
+   return true;
 }
 
 //-------------------------------------------------------------------------

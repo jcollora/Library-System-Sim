@@ -53,12 +53,15 @@ bool PatronDatabase::insertNewPatron(istream& is) {
     Patron* newPatron = new Patron();
     
     if (!newPatron->setData(is)) {
-        delete newPatron;
-        return false;
+       cout << "PATRON INPUT ERROR: IMPROPER PATRON FORMAT." << endl;
+       delete newPatron;
+       return false;
     }
     
     if(!patronBST->insert(newPatron)) {
-        return false;
+       cout << "PATRON INPUT ERROR (DUPLICATE PATRON): Patron "
+            << newPatron->getID() << " already exists in library." << endl;
+       return false;
     }
     
     return true;

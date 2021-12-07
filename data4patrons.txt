@@ -11,3 +11,5 @@
 5000 Moose Bullwinkle
 3000 Lizard Larry
 2000 Bear Bertha
+2000 Bear Bertha
+2000 Bear Bertha

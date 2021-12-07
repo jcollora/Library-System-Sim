@@ -12,6 +12,7 @@ C Lobel Arnold, Martha the Movie Mouse, 1966
 C Seuss Dr., Horton hears a Who, 1954
 C Numeroff Laura, If you give a mouse a cookie, 1985
 F Tolkien J.R.R., The Hobbit, 1937
+F Tolkien J.R.R., The Hobbit, 1937
 F Walker Alice, The Color Purple, 1982
 F Daheim Mary, The Alpine Advocate, 1992
 C Peet Bill, Smokey, 1962
