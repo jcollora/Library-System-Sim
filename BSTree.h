@@ -2,10 +2,18 @@
  * @author Josh Helzerman
  *
  * Description:
- *   - ...
+ *   - Binary Search Tree data structure that stores items of BSTData type
+ *   - Can be queueried to determine if empty
+ *   - Can empty itself
+ *   - Can insert given items
+ *   - Can retrieve a desired node 
+ *   - Can be queueried for the root node
+ *   - Can be displayed to the screen
+ *   - Can be converted into an array 
  *
  * Implementation:
- *   - ...
+ *   - Uses nodes with left and right pointers to children nodes
+ *   - When converted to an array, stored inorder
  *
  */
 
@@ -151,6 +159,15 @@ public:
     */
    void arrayToBSTree(BSTData* arr[]);
 
+   //--------------------------------------------------------------------------
+   /** getRoot()
+    * Return Root
+    * 
+    * Simply returns a pointer to the root of the binary search tree
+    * @pre None.
+    * @post None.
+    * @return const BSTData* 
+    */
    const BSTData* getRoot() const;
 
 private:
