@@ -12,13 +12,15 @@ C Lobel Arnold, Martha the Movie Mouse, 1966
 C Seuss Dr., Horton hears a Who, 1954
 C Numeroff Laura, If you give a mouse a cookie, 1985
 F Tolkien J.R.R., The Hobbit, 1937
+F Tolkien J.R.R., The Hobbit, 1937
 F Walker Alice, The Color Purple, 1982
 F Daheim Mary, The Alpine Advocate, 1992
 C Peet Bill, Smokey, 1962
 C Seuss Dr., Yertle the Turtle, 1950
 F Daheim Mary, The Alpine Betrayal, 1993
 F Kerouac Jack, On the Road, 1955
-F Pirsig Robert, Zen & the Art of Motorcycle Maint, 1974
+F Pirsig Robert, Zen & the Art of Motorcycle Maintenance, 1974
+F Pirsig Robert, Zen & the Art of Motorcycle Maintenance, 1974
 C Magnus Erica, Old Lars, 1984
 F Lawrence D. H., Sons and Lovers, 1913
 F Lewis Sinclair, Babbitt, 1922
@@ -34,12 +36,12 @@ P Communications of the ACM, 2 2009
 C Allen Jeffrey, The Secret Life of Mr. Weird, 1982
 C Litterick Ian, Robots and Intelligent Machines, 1984
 C Peterson Esther Allen, Penelope Gets Wheels, 1982
-P Communications of the ACM, 2 2010
+P Communications of the ACM, 24 2010
 Z Communications of the ACM, 2 2010
 P Communications of the ACM, 1 2010
 P Communications of the ACM, 5 2009
 F Kerouac Jack, The Dharma Bums, 1958
-P Vegetarian Times, 12 2010
+P Vegetarian Times, -12 -2010
 F Forster E. M., The Longest Journey, 1922
 F Lawrence D. H., Lady Chatterley's Lover, 1928
 P Sigart Bulletin, 7 2009

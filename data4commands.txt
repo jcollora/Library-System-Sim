@@ -2,6 +2,7 @@ D
 H 1000
 H 1111
 H 5000
+
 C 8000 F H Kerouac Jack, On the Road,
 C 1000 F H Muller Marcia, Edwin of the Iron Shoes,
 C 8888 F H Forster E. M., The Longest Journey,
@@ -33,7 +34,7 @@ C 5000 C H Smokey, Peet Bill,
 C 6000 P H 2009 7 Sigart Bulletin,
 C 5000 C H Yertle the Turtle, Seuss Dr.,
 C 8000 F H Kerouac Jack, The Dharma Bums,
-C 2000 F H Pirsig Robert, Zen & the Art of Motorcycle Maint,
+
 C 5000 F H Higgins Colin, Harold and Maude,
 R 3000 C H Danny Dunn & the Homework Machine, Williams Jay,
 C 5000 F H Lewis Sinclair, Babbitt,
@@ -51,8 +52,16 @@ C 3000 F H Higgins Colin, Harold and Maude,
 C 6000 F H Higgins Colin, Harold and Maude,
 C 2000 F H Higgins Colin, Harold and Maude,
 R 2222 F H Higgins Colin, Harold and Maude,
+
+R 2222 F H Pirsig Robert, Zen & the Art of Motorcycle Maintenance, 1974
+C 2222 F H Pirsig Robert, Zen & the Art of Motorcycle Maintenance, 1974
+C 2222 F H Pirsig Robert, Zen & the Art of Motorcycle Maintenance, 1974
+C 2222 F H Pirsig Robert, Zen & the Art of Motorcycle Maintenance, 1974
+C 2222 F H Pirsig Robert, Zen & the Art of Motorcycle Maintenance, 1974
+C 2222 F H Pirsig Robert, Zen & the Art of Motorcycle Maintenance, 1974
 D
 H 1000
 H 1111
 H 5000
 H 8888
+H 2222
