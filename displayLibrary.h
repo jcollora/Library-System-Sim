@@ -54,6 +54,7 @@ public:
     * initialize command with data
     *
     * Uses a string to put data into the command
+    * @param is incoming stream containing the line of data for display
     * @pre string must be formatted properly
     * @post the command now contains the data from the string
     * @return string is not formmatedd correctly return false,
