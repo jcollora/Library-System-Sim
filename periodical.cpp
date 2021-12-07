@@ -258,6 +258,25 @@ ostream& Periodical::display(ostream& os) const {
 }
 
 // -------------------------------------------------------------------------
+   /** display Countless
+    * display without count
+    * 
+    * returns the data inside node as a string, excludes count
+    * @param os ostream that will contain string to print
+    * @pre None
+    * @post None
+    * @return string representing data inside node
+    */
+   ostream& Periodical::displayCountless(ostream& os) const {
+      os.setf(ios::left, ios::adjustfield);
+   os << setw(MONTH_BUFFER) << month
+      << setw(YEAR_BUFFER) << year
+      << setw(TITLE_BUFFER) << title.substr(0, TITLE_MAX_LENGTH);
+   
+   return os;
+   }
+
+// -------------------------------------------------------------------------
 /** displayHeader()
  * Header Display
  * 

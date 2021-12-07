@@ -127,6 +127,7 @@ public:
     * display data
     * 
     * returns the data inside node as a string
+    * @param os ostream that will contain string to print
     * @pre None
     * @post None
     * @return string representing data inside node

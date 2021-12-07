@@ -255,6 +255,25 @@ ostream& Children::display(ostream& os) const {
 }
 
 // -------------------------------------------------------------------------
+   /** display Countless
+    * display without count
+    * 
+    * returns the data inside node as a string, excludes count
+    * @param os ostream that will contain string to print
+    * @pre None
+    * @post None
+    * @return string representing data inside node
+    */
+   ostream& Children::displayCountless(ostream& os) const {
+      os.setf(ios::left, ios::adjustfield);
+   os << setw(TITLE_BUFFER) << title.substr(0, TITLE_MAX_LENGTH)
+      << setw(AUTHOR_BUFFER) << author.substr(0, AUTHOR_MAX_LENGTH)
+      << setw(YEAR_BUFFER) << year;
+
+   return os;
+   }
+
+// -------------------------------------------------------------------------
 /** displayHeader()
  * Header Display
  * 

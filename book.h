@@ -117,6 +117,18 @@ public:
    string getType() const; 
 
    // -------------------------------------------------------------------------
+   /** display Countless
+    * display without count
+    * 
+    * returns the data inside node as a string, excludes count
+    * @param os ostream that will contain string to print
+    * @pre None
+    * @post None
+    * @return string representing data inside node
+    */
+   virtual ostream& displayCountless(ostream& os) const = 0;
+
+   // -------------------------------------------------------------------------
    /** displayHeader()
     * Header Display
     * 

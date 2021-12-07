@@ -96,5 +96,5 @@ void LibraryCommand::display(ostream& os) const{
    
    os.setf(ios::left, ios::adjustfield);
    os << "  " << setw(COMMAND_BUFFER) << type;
-   book->display(os);
+   book->displayCountless(os);
 }
