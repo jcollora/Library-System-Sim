@@ -54,7 +54,7 @@ public:
     *
     * Reads the file, creating LibraryCommands and storing them
     * into a CommandQueue
-    * @param file Pointer to an input file containing text form of commands
+    * @param is Pointer to an input file containing text form of commands
     * @pre file must be properly formatted
     * @post CommandQueue is initialized and filled. Library unchanged.
     * @return A filled CommandQueue object
