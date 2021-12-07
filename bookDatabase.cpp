@@ -77,6 +77,7 @@ bool BookDatabase::insertNewBook(istream& is)
       cout << "BOOK INPUT ERROR (DUPLICATE BOOK): Book titled " << endl
            << newBook->getTitle().substr(0, TITLE_MAX_LENGTH)
            << " already exists in this library." << endl;
+      delete newBook;
       return false;
    }
    return true;
