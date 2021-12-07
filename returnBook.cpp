@@ -19,6 +19,14 @@
 #include "bookDatabase.h"
 #include "constants.h"
 
+// -------------------------------------------------------------------------
+   /** ReturnBook()
+    * Default Constructor
+    *
+    * Constructs a return book command object with default values
+    * @pre None.
+    * @post ReturnBook command object exists
+    */
 ReturnBook::ReturnBook(BookDatabase* books, PatronDatabase* patrons)
 {
 
@@ -28,9 +36,14 @@ ReturnBook::ReturnBook(BookDatabase* books, PatronDatabase* patrons)
    commandCode = RETURN_CODE;
 }
 
-LibraryCommand* ReturnBook::create() const { return new ReturnBook(bookDB, patronDB); }
-
-
+// -------------------------------------------------------------------------
+   /** execute()
+    * Execute return book command
+    *
+    * updates the patron's current books and increments the book's count
+    * @pre The patron and book should exist in the system
+    * @post patron and book are updated accordingly
+    */
 void ReturnBook::execute()
 {
    
@@ -53,3 +66,13 @@ void ReturnBook::execute()
    }
    patron->addCommand(this); //if all functions successfull, store command
 }
+
+/** create()
+    * Create Library Command (factory)
+    *
+    * Create a library command of the appropriate type
+    * this function is pure virtual
+    * @pre None
+    * @post a new library command exists
+    */
+LibraryCommand* ReturnBook::create() const { return new ReturnBook(bookDB, patronDB); }

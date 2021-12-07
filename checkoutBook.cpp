@@ -19,6 +19,14 @@
 
 using namespace std;
 
+// ------------------------------------------------------------------------
+   /** CheckoutBook()
+    * Default Constructor
+    *
+    * Constructs a checkout book command object with default values
+    * @pre None.
+    * @post CheckoutBook command object exists
+    */
 CheckoutBook::CheckoutBook(BookDatabase* books, PatronDatabase* patrons) {
    bookDB = books;
    patronDB = patrons;
@@ -26,10 +34,16 @@ CheckoutBook::CheckoutBook(BookDatabase* books, PatronDatabase* patrons) {
    commandCode = CHECKOUT_CODE;
 }
 
-LibraryCommand* CheckoutBook::create() const {
-   return new CheckoutBook(bookDB, patronDB);
-}
-
+// -------------------------------------------------------------------------
+   /** execute()
+    * Execute checkout book command
+    *
+    * adds selected book to the patron's current books and decrements the
+    * book's count. It searches for the book by creating a book with the
+    * bookID. then comparing that to books in the BST
+    * @pre The patron and book should exist in the system
+    * @post patron and book are updated accordingly
+    */
 void CheckoutBook::execute() {
    
 
@@ -42,4 +56,16 @@ void CheckoutBook::execute() {
    }
    patron->addBook(book);
    patron->addCommand(this); //if all functions successfull, store command
+}
+
+/** create()
+    * Create Library Command (factory)
+    *
+    * Create a library command of the appropriate type
+    * this function is pure virtual
+    * @pre None
+    * @post a new library command exists
+    */
+LibraryCommand* CheckoutBook::create() const {
+   return new CheckoutBook(bookDB, patronDB);
 }

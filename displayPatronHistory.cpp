@@ -18,6 +18,15 @@
 
 using namespace std;
 
+// -------------------------------------------------------------------------
+   /** DisplayPatronHistory()
+    * Default Constructor
+    *
+    * Constructs a display patron book history command object with default
+    * values
+    * @pre None.
+    * @post DisplayPatronHistory command object exists
+    */
 DisplayPatronHistory::DisplayPatronHistory(BookDatabase* books, PatronDatabase* patrons) {
    bookDB = books;
    patronDB = patrons;
@@ -25,16 +34,41 @@ DisplayPatronHistory::DisplayPatronHistory(BookDatabase* books, PatronDatabase* 
    commandCode = DISPLAY_PAT_CODE;
 }
 
+// -------------------------------------------------------------------------
+   /** execute()
+    * Execute display patron history command
+    *
+    * Prints patron history
+    * @pre The patron should exist in the system
+    * @post None. patron is unchanged
+    */
 void DisplayPatronHistory::execute() {
    cout << endl;
    patron->display(cout);
    delete this;
 }
 
+/** create()
+    * Create Library Command (factory)
+    *
+    * Create a library command of the appropriate type
+    * this function is pure virtual
+    * @pre None
+    * @post a new library command exists
+    */
 LibraryCommand* DisplayPatronHistory::create() const {
    return new DisplayPatronHistory(bookDB, patronDB);
 }
 
+/** initialize()
+    * initialize command with data
+    *
+    * Uses a string to put data into the command
+    * @pre string must be formatted properly
+    * @post the command now contains the data from the string
+    * @return string is not formmatedd correctly return false,
+    * else return true
+    */
 bool DisplayPatronHistory::initialize(istream& is) { //put errors here
    string patronID, line;
    is >> patronID;
