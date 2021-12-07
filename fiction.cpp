@@ -247,7 +247,7 @@ bool Fiction::setData(istream& is)
  * Display book information in easy-to-read columns.
  * Displayed in order: Title, author, type, month published, year published
  * Virtual function, can be overridden
- * @param ostream outstream for book information
+ * @param os outstream for book information
  * @pre None.
  * @post None. const function
  * @return ostream&
@@ -287,7 +287,7 @@ ostream& Fiction::displayCountless(ostream& os) const
  * Header Display
  *
  * Displays the header preceeding other displays
- * @param ostream outstream for header
+ * @param os outstream for header
  * @pre None.
  * @post None.
  * @return ostream&
