@@ -1,12 +1,12 @@
 /** @file BSTree.h
  * @author Josh Helzerman
- * 
+ *
  * Description:
  *   - ...
- *  
+ *
  * Implementation:
  *   - ...
- * 
+ *
  */
 
 #ifndef BSTREE_H
@@ -98,8 +98,8 @@ public:
     * @pre data should be a node that holds data that can be compared with the
     * data already in the tree.
     * @post The tree now contains the data node given in proper sorted position
-    * @return True if datanode was inserted, false if the data already exists in
-    * the tree
+    * @return True if datanode was inserted, false if the data already exists
+    * in the tree
     */
    bool insert(BSTData* dataptr);
 
@@ -115,8 +115,8 @@ public:
     * @param foundNode A reference to a data node pointer. This initially
     * contains nothing of importance to this function, but if the node is found
     * within the tree, this pointer in this parameter will point to the node.
-    * @pre must have a node that contains the data you wish to search for in the
-    * tree (to be passed into the nodeToFind param). Must also have a node
+    * @pre must have a node that contains the data you wish to search for in
+    * the tree (to be passed into the nodeToFind param). Must also have a node
     * pointer (for foundNode param) to point to the node if it is found in the
     * tree. This pointer should not be pointing to something important.
     * And if it if is the sole pointer to something in the heap, it should not
@@ -185,7 +185,7 @@ private:
     * @post cout may or may not have a new value printed to it
     */
    void sidewaysHelper(Node* current, int level) const;
-   
+
    //--------------------------------------------------------------------------
    /** makeEmptyHelper
     * Helper for makeEmpty()
@@ -228,10 +228,10 @@ private:
     * @post all arr pointers are nullptr. The tree is now balanced and contains
     * all nodes from the array
     */
-   void arrayToBSTreeHelper(BSTData* arr[], Node*& current, int start, int end);
+   void arrayToBSTreeHelper(BSTData* arr[], Node*& current, int start,
+                            int end);
 
    void inorderHelper(ostream& os, const Node* node) const;
-
 };
 
 #endif

@@ -1,16 +1,16 @@
 /** @file patron.h
  * @author  Joseph Collora and Josh Helzerman
- * 
+ *
  * Description:
  * - A patron object represents a unique customer + its id, name, and history
  * - History can be updated (removal and addition)
  * - Can be queried to display its information
  * - Can be compared with other patrons
- * 
+ *
  * Implementation:
  * - Some functions are virtual -of BSTData
  * - Patron History stored in a list of strings
- * 
+ *
  */
 
 #ifndef PATRON_H
@@ -18,18 +18,18 @@
 
 using namespace std;
 
-#include "constants.h"
 #include "BSTData.h"
+#include "constants.h"
 
 #include <iostream>
+#include <list>
 #include <string>
 #include <unordered_map>
-#include <list>
 
 class LibraryCommand;
 class Book;
 
-class Patron : public BSTData 
+class Patron : public BSTData
 {
 public:
    // -------------------------------------------------------------------------
@@ -47,10 +47,10 @@ public:
    // -------------------------------------------------------------------------
    /** Patron(ID)
     * Constructor with ID
-    * 
-    * Alternate constructor for patron that instantiates ID field to the given 
+    *
+    * Alternate constructor for patron that instantiates ID field to the given
     * string value.
-    * 
+    *
     * @param id string of characters that make up the desired patron ID
     * @pre None.
     * @post Patron object exists with given ID value
@@ -60,7 +60,7 @@ public:
    // -------------------------------------------------------------------------
    /** ~Patron()
     * Destructor
-    * 
+    *
     * Deletes Patron from memory. It's empty, but apparently helps to delete
     * strings
     * @pre None.
@@ -72,10 +72,10 @@ public:
    /** addBook()
     * Add book to currentCheckouts
     * @param book the book to checkout
-    * @pre Book object must exist and should have available copies, 
+    * @pre Book object must exist and should have available copies,
     * Book's count will need to be updated if this is successful
     * @post if successful, the book is added to the set of currentCheckouts
-    * (notes for command: book will decrease in count if success, book points 
+    * (notes for command: book will decrease in count if success, book points
     * to patron command
     * will add itself to the patron command history if success)
     * @return True only if patron does not already have the book
@@ -109,7 +109,7 @@ public:
    /** operator>()
     * Operator greater than overload
     *
-    * Compares this patron to right-hand patron to see if this is greater than 
+    * Compares this patron to right-hand patron to see if this is greater than
     * rhs
     * @param rhs patron to be compared
     * @pre None.
@@ -133,7 +133,7 @@ public:
    // -------------------------------------------------------------------------
    /** operator!=
     * Inequality Operator
-    * 
+    *
     * Determines if right and left items are not equivelent
     * @pre Both items being compared exist
     * @post None.
@@ -144,7 +144,7 @@ public:
    // -------------------------------------------------------------------------
    /** operator<=()
     *  Less than or equal operator
-    * 
+    *
     * Determines if the right and left items are equivelent or less than
     * @pre Both items being compared exist
     * @post None.
@@ -156,7 +156,7 @@ public:
    // -------------------------------------------------------------------------
    /** operator>=()
     *  greater than or equal operator
-    * 
+    *
     * Determines if the right and left items are equivelent or greater than
     * @pre Both items being compared exist
     * @post None.
@@ -168,18 +168,18 @@ public:
    // -------------------------------------------------------------------------
    /** operator=()
     * Copy assignment operator
-    * 
+    *
     * Copy data from right hand item to left hand item.
     * @pre Items should not be the same item
     * @post left item contains data from rhs, right item is const
     * @return reference to left item
     */
    virtual BSTData& operator=(const BSTData& rhs);
-    
+
    // -------------------------------------------------------------------------
    /** setData()
     * input data into node
-    * 
+    *
     * Take data from inputStream and put into node members
     * @pre must have a properly formatted input file
     * @post line of input is read. BSTData contains line data
@@ -190,7 +190,7 @@ public:
    // -------------------------------------------------------------------------
    /** display()
     * display data
-    * 
+    *
     * returns the data inside node as a string
     * @pre None
     * @post None
@@ -201,18 +201,18 @@ public:
    // -------------------------------------------------------------------------
    /** getID()
     * get ID
-    * 
+    *
     * returns the string id of the current patron instance
     * @pre None
     * @post None
-    * @return string representing patron's unique ID 
+    * @return string representing patron's unique ID
     */
    string getID() const;
 
    // -------------------------------------------------------------------------
    /** addCommand
-    * add command 
-    * 
+    * add command
+    *
     * Adds the command item to the forward list of commands that represent the
     * current patron's history of attempted commands
     * @param command command item to be inserted into the patron's history
@@ -222,7 +222,7 @@ public:
     */
    void addCommand(LibraryCommand* command);
 
- private:
+private:
    // -------------------------------------------------------------------------
    /** compare()
     * Compare patrons
@@ -249,4 +249,4 @@ public:
    unordered_map<const Book*, int> currentCheckouts;
 };
 
-#endif 
+#endif

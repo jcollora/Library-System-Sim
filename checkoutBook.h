@@ -45,7 +45,7 @@ public:
     */
    virtual void execute();
 
-      /** create()
+   /** create()
     * Create Library Command (factory)
     *
     * Create a library command of the appropriate type
@@ -54,8 +54,6 @@ public:
     * @post a new library command exists
     */
    virtual LibraryCommand* create() const;
-
-
 };
 
 #endif

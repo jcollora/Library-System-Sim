@@ -12,13 +12,13 @@
  */
 
 #include "libraryCommand.h"
-#include <iostream>
-#include <string>
-#include <iomanip>
 #include "book.h"
 #include "bookDatabase.h"
-#include "patronDatabase.h"
 #include "patron.h"
+#include "patronDatabase.h"
+#include <iomanip>
+#include <iostream>
+#include <string>
 
 // -------------------------------------------------------------------------
 /** LibraryCommand()
@@ -28,7 +28,8 @@
  * @pre None.
  * @post LibraryCommand object exists
  */
-LibraryCommand::LibraryCommand() {
+LibraryCommand::LibraryCommand()
+{
    patron = nullptr;
    book = nullptr;
    patronDB = nullptr;
@@ -48,31 +49,34 @@ LibraryCommand::~LibraryCommand() {}
  * @return string is not formmatedd correctly return false,
  * else return true
  */
-bool LibraryCommand::initialize(istream& is) //put errors here
+bool LibraryCommand::initialize(istream& is) // put errors here
 {
    string patronID, line;
    is >> patronID;
    patron = patronDB->getPatron(patronID);
    is.get();
    if (patron == nullptr) {
-      cout << "COMMAND INPUT ERROR: In command " << type << ", " << patronID << " is not a recognized patron." << endl;
+      cout << "COMMAND INPUT ERROR: In command " << type << ", " << patronID
+           << " is not a recognized patron." << endl;
       getline(is, line);
       return false;
    }
    book = bookDB->getBook(is);
    if (book == nullptr) {
-      cout << "COMMAND INPUT ERROR: " << "In command, " << type << ", the Book is not recognized." << endl;
-      
+      cout << "COMMAND INPUT ERROR: "
+           << "In command, " << type << ", the Book is not recognized."
+           << endl;
+
       return false;
    }
-   
+
    return true;
 }
 
 // -------------------------------------------------------------------------
 /** getType()
  * get command type
- * 
+ *
  * Return the type of book
  * @pre None
  * @post None. const
@@ -89,11 +93,12 @@ string LibraryCommand::getType() const { return type; }
  * @pre None.
  * @post None. const function
  */
-void LibraryCommand::display(ostream& os) const{ 
+void LibraryCommand::display(ostream& os) const
+{
    if (book == nullptr) {
       return;
    }
-   
+
    os.setf(ios::left, ios::adjustfield);
    os << "  " << setw(COMMAND_BUFFER) << type;
    book->displayCountless(os);

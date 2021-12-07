@@ -2,8 +2,8 @@
  * @author Joseph Collora and Josh Helzerman
  *
  * Description:
- *   - A book object represents a unique book and the number of copies available
- *     for that book at any given time
+ *   - A book object represents a unique book and the number of copies
+ * available for that book at any given time
  *   - Can be queried to display its information
  *   - Can be queried to see if there are any available copies
  *   - Can be compared with other books
@@ -18,7 +18,6 @@
  */
 
 #include "book.h"
-
 
 using namespace std;
 
@@ -42,8 +41,6 @@ Book::Book()
    maxCount = -1;
    format = 'H';
    type = '0';
-  
-   
 }
 
 // -------------------------------------------------------------------------
@@ -85,15 +82,14 @@ bool Book::addBook()
  * @post count--
  * @return true if book was available, false otherwise
  */
-bool Book::removeBook() {
+bool Book::removeBook()
+{
    if (count > 0) {
       count--;
       return true;
    }
    return false;
 }
-
-
 
 // -------------------------------------------------------------------------
 /** checkAvailability()
@@ -120,7 +116,7 @@ string Book::getType() const { return type; }
 // -------------------------------------------------------------------------
 /** getTitle()
  * get book title
- * 
+ *
  * Return the title of current book
  * @pre None
  * @post None. const

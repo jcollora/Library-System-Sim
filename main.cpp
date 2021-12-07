@@ -1,20 +1,19 @@
 
 
-
-
 #include <cassert>
 
-#include "bookDatabase.h"
 #include "BSTree.h"
+#include "bookDatabase.h"
 #include "fiction.h"
-#include "libraryBuilder.h"
 #include "library.h"
-#include <iostream>
+#include "libraryBuilder.h"
 #include <fstream>
+#include <iostream>
 
 using namespace std;
 
-int main() {
+int main()
+{
 
    ifstream inBooks("data4books.txt");
    if (!inBooks) {
@@ -40,9 +39,7 @@ int main() {
 
    lib->processCommands(inCommands);
 
-
    delete lib;
 
    return 0;
 }
-

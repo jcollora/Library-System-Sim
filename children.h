@@ -12,8 +12,8 @@
 #define CHILDREN_H
 
 #include "book.h"
-#include <string>
 #include "constants.h"
+#include <string>
 
 using namespace std;
 
@@ -84,7 +84,7 @@ public:
    // -------------------------------------------------------------------------
    /** operator!=
     * Inequality Operator
-    * 
+    *
     * Determines if right and left items are not equivelent
     * @param rhs Book to be compared
     * @pre Compare function works
@@ -96,7 +96,7 @@ public:
    // -------------------------------------------------------------------------
    /** operator<=()
     *  Less than or equal operator
-    * 
+    *
     * Determines if the right and left items are equivelent or less than
     * @param rhs Book to be compared
     * @pre Compare function works
@@ -109,7 +109,7 @@ public:
    // -------------------------------------------------------------------------
    /** operator>=()
     *  greater than or equal operator
-    * 
+    *
     * Determines if the right and left items are equivelent or greater than
     * @param rhs Book to be compared
     * @pre Compare function works
@@ -122,7 +122,7 @@ public:
    // -------------------------------------------------------------------------
    /** operator=()
     * Copy assignment operator
-    * 
+    *
     * Copy data from right hand item to left hand item.
     * @param rhs Book who's data will be duplicated
     * @pre Items should not be the same item
@@ -134,7 +134,7 @@ public:
    // -------------------------------------------------------------------------
    /** setData()
     * input data into node
-    * 
+    *
     * Take data from inputStream and put into node members
     * @param is stream line of data for book
     * @pre must have a properly formatted input file
@@ -142,7 +142,7 @@ public:
     * @return true if line of data was read, false if no line or bad format
     */
    virtual bool setData(istream& is);
-   
+
    // -------------------------------------------------------------------------
    /** display()
     * Display book information
@@ -160,7 +160,7 @@ public:
    // -------------------------------------------------------------------------
    /** display Countless
     * display without count
-    * 
+    *
     * returns the data inside node as a string, excludes count
     * @param os ostream that will contain string to print
     * @pre None
@@ -172,15 +172,15 @@ public:
    // -------------------------------------------------------------------------
    /** displayHeader()
     * Header Display
-    * 
+    *
     * Displays the header preceeding other displays
     * @param ostream outstream containing header string
     * @pre None.
     * @post None.
-    * @return ostream& 
+    * @return ostream&
     */
    virtual ostream& displayHeader(ostream&) const;
-   
+
 private:
    // -------------------------------------------------------------------------
    /** compare()

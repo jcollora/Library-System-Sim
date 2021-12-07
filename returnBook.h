@@ -52,11 +52,6 @@ public:
     * @post a new library command exists
     */
    virtual LibraryCommand* create() const;
-
-
-
-
-
 };
 
 #endif

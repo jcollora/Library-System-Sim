@@ -79,7 +79,6 @@ void BSTree::makeEmptyHelper(Node* current)
  */
 bool BSTree::isEmpty() const { return root == nullptr; }
 
-
 //--------------------------------------------------------------------------
 /** insert
  * Insert data node into tree
@@ -149,13 +148,14 @@ bool BSTree::insert(BSTData* dataptr)
  */
 ostream& operator<<(ostream& os, const BSTree& BSTree)
 {
-   
+
    BSTree.inorderHelper(os, BSTree.root);
-   
+
    return os;
 }
 
-void BSTree::inorderHelper(ostream&os, const Node* node) const {
+void BSTree::inorderHelper(ostream& os, const Node* node) const
+{
    if (node == nullptr) {
       return;
    }
@@ -164,7 +164,6 @@ void BSTree::inorderHelper(ostream&os, const Node* node) const {
    cout << endl;
    inorderHelper(os, node->right);
 }
-
 
 //--------------------------------------------------------------------------
 /** retrieve
@@ -210,7 +209,7 @@ bool BSTree::retrieve(const BSTData& nodeToFind, BSTData*& foundNode) const
  * @return the node we were looking for. return nullptr if not found.
  */
 const BSTree::Node* BSTree::findNode(const BSTData& nodeToFind,
-                                       const Node* current) const
+                                     const Node* current) const
 {
    if (current == nullptr) {
       return nullptr;
@@ -295,21 +294,21 @@ void BSTree::arrayToBSTree(BSTData* arr[])
  * Helper function for arrayToBSTree
  *
  * Builds a BST by taking the center of the array as a root, then makes it's
- * left and right subtrees halfway from mid to end and halfway from mid to start
- * and etcetra. Like a binary search, but where N nodes are reached. N being the
- * llength of the array with good values. The array is emptied and the current
- * tree is replaced by the balanced tree from this array
+ * left and right subtrees halfway from mid to end and halfway from mid to
+ * start and etcetra. Like a binary search, but where N nodes are reached. N
+ * being the llength of the array with good values. The array is emptied and
+ * the current tree is replaced by the balanced tree from this array
  * @param arr An array of BSTData*
  * @param current The current node we are building
  * @param start the starting index for this subtree
  * @param end the ending index for this subtree
  * @pre start > 0. end < size of arr. arr should point to BSTData objects in
  * free store
- * @post all arr pointers are nullptr. The tree is now balanced and contains all
- * nodes from the array
+ * @post all arr pointers are nullptr. The tree is now balanced and contains
+ * all nodes from the array
  */
 void BSTree::arrayToBSTreeHelper(BSTData* arr[], Node*& current, int start,
-                                  int end)
+                                 int end)
 {
    if (end < start || start > end) {
       return;
@@ -328,6 +327,4 @@ void BSTree::arrayToBSTreeHelper(BSTData* arr[], Node*& current, int start,
    arrayToBSTreeHelper(arr, current->right, currentIndex + 1, end);
 }
 
-const BSTData* BSTree::getRoot() const {
-   return root->data;
-}
+const BSTData* BSTree::getRoot() const { return root->data; }

@@ -9,12 +9,12 @@
  * class
  */
 
-#include "BSTData.h"
 #include "fiction.h"
+#include "BSTData.h"
 #include "book.h"
-#include <iostream>
-#include <iomanip>
 #include "constants.h"
+#include <iomanip>
+#include <iostream>
 #include <sstream>
 
 #include <regex>
@@ -35,9 +35,8 @@ Fiction::Fiction()
 {
    maxCount = 5;
    count = maxCount;
-   type = TYPE_FICTION; //ACII = 70
+   type = TYPE_FICTION; // ACII = 70
    typeCode = FICTION_CODE;
-   
 }
 
 // -------------------------------------------------------------------------
@@ -50,9 +49,7 @@ Fiction::Fiction()
  * @return reference to new children's book
  *
  */
-Book* Fiction::create() const {
-   return new Fiction();
-}
+Book* Fiction::create() const { return new Fiction(); }
 
 // -------------------------------------------------------------------------
 /** compare()
@@ -65,7 +62,8 @@ Book* Fiction::create() const {
  * @return negative int if left book < right.
  * return 0 if equal, return positive int if left > right
  */
-int Fiction::compare(const Fiction& rhs) const {
+int Fiction::compare(const Fiction& rhs) const
+{
    int comparison = author.compare(rhs.author);
    if (comparison == 0) {
       comparison = title.compare(rhs.title);
@@ -78,13 +76,15 @@ int Fiction::compare(const Fiction& rhs) const {
 /** operator<()
  * Operator less than overload
  *
- * Compares this book to right-hand fiction book to see if this is less than rhs
+ * Compares this book to right-hand fiction book to see if this is less than
+ * rhs
  * @param rhs Book to be compared
  * @pre Compare function works
  * @post None. const
  * @return true if this book is less than rhs, else false
  */
-bool Fiction::operator<(const BSTData& rhs) const {
+bool Fiction::operator<(const BSTData& rhs) const
+{
    const Fiction& right = static_cast<const Fiction&>(rhs);
    return compare(right) < 0;
 }
@@ -93,13 +93,15 @@ bool Fiction::operator<(const BSTData& rhs) const {
 /** operator>()
  * Operator greater than overload
  *
- * Compares this book to right-hand fiction book to see if this is greater than rhs
+ * Compares this book to right-hand fiction book to see if this is greater than
+ * rhs
  * @param rhs Book to be compared
  * @pre Compare function works
  * @post None. const
  * @return true if this book is greater than rhs, else false
  */
-bool Fiction::operator>(const BSTData& rhs) const {
+bool Fiction::operator>(const BSTData& rhs) const
+{
    const Fiction& right = static_cast<const Fiction&>(rhs);
    return compare(right) > 0;
 }
@@ -114,7 +116,8 @@ bool Fiction::operator>(const BSTData& rhs) const {
  * @post None. const
  * @return true if this book is equal to rhs, else false
  */
-bool Fiction::operator==(const BSTData& rhs) const {
+bool Fiction::operator==(const BSTData& rhs) const
+{
    const Fiction& right = static_cast<const Fiction&>(rhs);
    return compare(right) == 0;
 }
@@ -122,14 +125,15 @@ bool Fiction::operator==(const BSTData& rhs) const {
 // -------------------------------------------------------------------------
 /** operator!=
  * Inequality Operator
- * 
+ *
  * Determines if right and left items are not equivelent
  * @param rhs Book to be compared
  * @pre Compare function works
  * @post None.
  * @return false returned when left is equal to right, true otherwise
  */
-bool Fiction::operator!=(const BSTData& rhs) const {
+bool Fiction::operator!=(const BSTData& rhs) const
+{
    const Fiction& right = static_cast<const Fiction&>(rhs);
    return compare(right) != 0;
 }
@@ -137,7 +141,7 @@ bool Fiction::operator!=(const BSTData& rhs) const {
 // -------------------------------------------------------------------------
 /** operator<=()
  *  Less than or equal operator
- * 
+ *
  * Determines if the right and left items are equivelent or less than
  * @param rhs Book to be compared
  * @pre Compare function works
@@ -145,7 +149,8 @@ bool Fiction::operator!=(const BSTData& rhs) const {
  * @return true returned when left is equal to right or
  * if left is less than right, false otherwise
  */
-bool Fiction::operator<=(const BSTData& rhs) const {
+bool Fiction::operator<=(const BSTData& rhs) const
+{
    const Fiction& right = static_cast<const Fiction&>(rhs);
    return compare(right) <= 0;
 }
@@ -153,7 +158,7 @@ bool Fiction::operator<=(const BSTData& rhs) const {
 // -------------------------------------------------------------------------
 /** operator>=()
  *  greater than or equal operator
- * 
+ *
  * Determines if the right and left items are equivelent or greater than
  * @param rhs Book to be compared
  * @pre Compare function works
@@ -161,7 +166,8 @@ bool Fiction::operator<=(const BSTData& rhs) const {
  * @return true returned when left is equal to right or
  * if left is greater than right, false otherwise
  */
-bool Fiction::operator>=(const BSTData& rhs) const {
+bool Fiction::operator>=(const BSTData& rhs) const
+{
    const Fiction& right = static_cast<const Fiction&>(rhs);
    return compare(right) >= 0;
 }
@@ -169,20 +175,20 @@ bool Fiction::operator>=(const BSTData& rhs) const {
 // -------------------------------------------------------------------------
 /** operator=()
  * Copy assignment operator
- * 
+ *
  * Copy data from right hand item to left hand item.
  * @param rhs Book to be compared
  * @pre Items should not be the same item
  * @post left item contains data from rhs, right item is const
  * @return reference to left item
  */
-BSTData& Fiction::operator=(const BSTData& rhs) {
+BSTData& Fiction::operator=(const BSTData& rhs)
+{
    const Fiction& right = static_cast<const Fiction&>(rhs);
    if (this != &right) {
       author = right.author;
       title = right.title;
       year = right.year;
-      
    }
    return *this;
 }
@@ -190,21 +196,23 @@ BSTData& Fiction::operator=(const BSTData& rhs) {
 // -------------------------------------------------------------------------
 /** setData()
  * input data into node
- * 
+ *
  * Take data from inputStream and put into node members
  * @param is line of fiction book data
  * @pre must have a properly formatted input file
  * @post line of input is read. BSTData contains line data
  * @return true if line of data was read, false if no line or bad format
  */
-bool Fiction::setData(istream& is) {
-   string line; 
-   
+bool Fiction::setData(istream& is)
+{
+   string line;
+
    is.get();
    char form = is.get();
    if (is.peek() == ' ') {
       if (form != format) {
-         cout << type << "BOOK INPUT ERROR: " << form << " is not a recognized format." << endl;
+         cout << type << "BOOK INPUT ERROR: " << form
+              << " is not a recognized format." << endl;
          getline(is, line);
          return false;
       }
@@ -215,19 +223,14 @@ bool Fiction::setData(istream& is) {
    stringstream data;
    getline(is, line);
    data.str(line);
-   
+
    getline(data, author, ',');
    data.get();
    getline(data, title, ',');
-   
-   
+
    data >> year;
-   
-   
-   
 
    return true;
-
 }
 
 // -------------------------------------------------------------------------
@@ -242,55 +245,53 @@ bool Fiction::setData(istream& is) {
  * @post None. const function
  * @return ostream&
  */
-ostream& Fiction::display(ostream& os) const {
-      os.setf(ios::left, ios::adjustfield);
-   os << setw(COUNT_BUFFER) << count
-      << setw(AUTHOR_BUFFER) << author.substr(0, AUTHOR_MAX_LENGTH)
-      << setw(TITLE_BUFFER) << title.substr(0, TITLE_MAX_LENGTH)
-      << setw(YEAR_BUFFER) << year;
+ostream& Fiction::display(ostream& os) const
+{
+   os.setf(ios::left, ios::adjustfield);
+   os << setw(COUNT_BUFFER) << count << setw(AUTHOR_BUFFER)
+      << author.substr(0, AUTHOR_MAX_LENGTH) << setw(TITLE_BUFFER)
+      << title.substr(0, TITLE_MAX_LENGTH) << setw(YEAR_BUFFER) << year;
 
    return os;
 }
 
 // -------------------------------------------------------------------------
-   /** display Countless
-    * display without count
-    * 
-    * returns the data inside node as a string, excludes count
-    * @param os ostream that will contain string to print
-    * @pre None
-    * @post None
-    * @return string representing data inside node
-    */
-   ostream& Fiction::displayCountless(ostream& os) const {
-      os.setf(ios::left, ios::adjustfield);
+/** display Countless
+ * display without count
+ *
+ * returns the data inside node as a string, excludes count
+ * @param os ostream that will contain string to print
+ * @pre None
+ * @post None
+ * @return string representing data inside node
+ */
+ostream& Fiction::displayCountless(ostream& os) const
+{
+   os.setf(ios::left, ios::adjustfield);
    os << setw(AUTHOR_BUFFER) << author.substr(0, AUTHOR_MAX_LENGTH)
       << setw(TITLE_BUFFER) << title.substr(0, TITLE_MAX_LENGTH)
       << setw(YEAR_BUFFER) << year;
 
    return os;
-   }
+}
 
 // -------------------------------------------------------------------------
 /** displayHeader()
  * Header Display
- * 
+ *
  * Displays the header preceeding other displays
  * @param ostream outstream for header
  * @pre None.
  * @post None.
- * @return ostream& 
+ * @return ostream&
  */
-ostream& Fiction::displayHeader(ostream& os) const {
-         os.setf(ios::left, ios::adjustfield);
+ostream& Fiction::displayHeader(ostream& os) const
+{
+   os.setf(ios::left, ios::adjustfield);
 
-         os << type << " BOOKS" << endl;
-         os << setw(COUNT_BUFFER) << "AVAIL"
-      << setw(AUTHOR_BUFFER) << "AUTHOR"
-      << setw(TITLE_BUFFER) << "TITLE"
-      << setw(YEAR_BUFFER) << "YEAR";
+   os << type << " BOOKS" << endl;
+   os << setw(COUNT_BUFFER) << "AVAIL" << setw(AUTHOR_BUFFER) << "AUTHOR"
+      << setw(TITLE_BUFFER) << "TITLE" << setw(YEAR_BUFFER) << "YEAR";
 
-      return os;
+   return os;
 }
-
-

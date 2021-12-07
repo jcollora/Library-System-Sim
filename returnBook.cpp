@@ -10,23 +10,22 @@
  */
 
 #include "returnBook.h"
-#include "libraryCommand.h"
-#include <iostream>
-#include <string>
-#include "patron.h"
-#include "constants.h"
 #include "book.h"
 #include "bookDatabase.h"
 #include "constants.h"
+#include "libraryCommand.h"
+#include "patron.h"
+#include <iostream>
+#include <string>
 
 // -------------------------------------------------------------------------
-   /** ReturnBook()
-    * Default Constructor
-    *
-    * Constructs a return book command object with default values
-    * @pre None.
-    * @post ReturnBook command object exists
-    */
+/** ReturnBook()
+ * Default Constructor
+ *
+ * Constructs a return book command object with default values
+ * @pre None.
+ * @post ReturnBook command object exists
+ */
 ReturnBook::ReturnBook(BookDatabase* books, PatronDatabase* patrons)
 {
 
@@ -37,17 +36,16 @@ ReturnBook::ReturnBook(BookDatabase* books, PatronDatabase* patrons)
 }
 
 // -------------------------------------------------------------------------
-   /** execute()
-    * Execute return book command
-    *
-    * updates the patron's current books and increments the book's count
-    * @pre The patron and book should exist in the system
-    * @post patron and book are updated accordingly
-    */
+/** execute()
+ * Execute return book command
+ *
+ * updates the patron's current books and increments the book's count
+ * @pre The patron and book should exist in the system
+ * @post patron and book are updated accordingly
+ */
 void ReturnBook::execute()
 {
-   
-   
+
    if (!book->addBook()) {
       cout << "RETURN COMMAND EXECUTION ERROR: Patron " << patron->getID()
            << "Can't return book, library contains max books titled: "
@@ -57,22 +55,25 @@ void ReturnBook::execute()
    }
    if (!patron->removeBook(book)) {
       cout << "RETURN COMMAND EXECUTION ERROR: Patron " << patron->getID()
-           << " Can't return book, because they did not checkout book titled: " 
+           << " Can't return book, because they did not checkout book titled: "
            << book->getTitle() << endl;
-      
+
       book->removeBook(); // undo addBook
       delete this;
       return;
    }
-   patron->addCommand(this); //if all functions successfull, store command
+   patron->addCommand(this); // if all functions successfull, store command
 }
 
 /** create()
-    * Create Library Command (factory)
-    *
-    * Create a library command of the appropriate type
-    * this function is pure virtual
-    * @pre None
-    * @post a new library command exists
-    */
-LibraryCommand* ReturnBook::create() const { return new ReturnBook(bookDB, patronDB); }
+ * Create Library Command (factory)
+ *
+ * Create a library command of the appropriate type
+ * this function is pure virtual
+ * @pre None
+ * @post a new library command exists
+ */
+LibraryCommand* ReturnBook::create() const
+{
+   return new ReturnBook(bookDB, patronDB);
+}

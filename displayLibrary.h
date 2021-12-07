@@ -12,7 +12,6 @@
 #ifndef DISPLAYLIBRARY_H
 #define DISPLAYLIBRARY_H
 
-
 #include "libraryCommand.h"
 #include <string>
 

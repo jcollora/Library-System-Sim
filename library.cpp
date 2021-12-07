@@ -3,22 +3,22 @@
  *
  * Description:
  *   - Library class is an object that includes pointers to both the patron and
- *     the book database. 
+ *     the book database.
  *   - The class processes all of the commands that are come
  *     from an input data stream
- *  
+ *
  * Implementation:
  *   - ...
- *   
- */ 
+ *
+ */
 
 #include "library.h"
+#include "bookDatabase.h"
 #include "commandFactory.h"
 #include "libraryCommand.h"
-#include "bookDatabase.h"
 #include "patronDatabase.h"
-#include <queue>
 #include <iostream>
+#include <queue>
 #include <sstream>
 
 using namespace std;
@@ -30,12 +30,11 @@ using namespace std;
  * @pre None.
  * @post Library object exists
  */
-Library::Library() {
+Library::Library()
+{
    bookDB = nullptr;
    patronDB = nullptr;
    commandFactory = nullptr;
-   
-   
 }
 
 // -------------------------------------------------------------------------
@@ -45,10 +44,11 @@ Library::Library() {
  * @pre None.
  * @post Library object and member variables deleted
  */
-Library::~Library() {
+Library::~Library()
+{
    delete bookDB;
    delete patronDB;
-   
+
    delete commandFactory;
 }
 
@@ -61,12 +61,12 @@ Library::~Library() {
  *                 a stream of data used for reading input from a file
  * @post commands are executed based on the parameter
  */
-void Library::processCommands(istream& is) {
+void Library::processCommands(istream& is)
+{
    queue<LibraryCommand*> commandQueue;
-   
-   
+
    while (!is.eof()) {
-      
+
       string line;
       stringstream inputLine;
       getline(is, line);
@@ -77,18 +77,16 @@ void Library::processCommands(istream& is) {
       } else {
          cout << endl;
       }
-         
-
    }
 
    executeCommands(commandQueue);
 }
 
-void Library::executeCommands(queue<LibraryCommand*>& commands) {
+void Library::executeCommands(queue<LibraryCommand*>& commands)
+{
    while (!commands.empty()) {
       LibraryCommand* comm = commands.front();
       commands.pop();
       comm->execute();
-      
    }
 }

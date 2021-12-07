@@ -14,10 +14,8 @@
 #ifndef LIBRARYCOMMAND_H
 #define LIBRARYCOMMAND_H
 
-
 #include "patronDatabase.h"
 #include <iostream>
-
 
 class PatronDatabase;
 class BookDatabase;
@@ -74,28 +72,26 @@ public:
 
    // -------------------------------------------------------------------------
    /** getType()
-   * get command type
-   * 
-   * Return the type of book
-   * @pre None
-   * @post None. const
-   * @return char representing command type
-   */
+    * get command type
+    *
+    * Return the type of book
+    * @pre None
+    * @post None. const
+    * @return char representing command type
+    */
    string getType() const;
 
    // -------------------------------------------------------------------------
    /** display()
-   * Display book information
-   *
-   * Display command information in east to read columns
-   * @param ostream outstream containing commands to display
-   * @pre None.
-   */ 
+    * Display book information
+    *
+    * Display command information in east to read columns
+    * @param ostream outstream containing commands to display
+    * @pre None.
+    */
    virtual void display(ostream& os) const;
 
 protected:
-
-
    // patron and book databases
    PatronDatabase* patronDB;
    BookDatabase* bookDB;
@@ -111,9 +107,6 @@ protected:
 
    // ID of book this command uses
    Book* book;
-
-
-   
 };
 
 #endif

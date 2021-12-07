@@ -14,9 +14,8 @@
 #ifndef COMMANDFACTORY_H
 #define COMMANDFACTORY_H
 
-
-#include <iostream>
 #include "constants.h"
+#include <iostream>
 
 using namespace std;
 
@@ -63,13 +62,12 @@ public:
    LibraryCommand* createCommand(istream& is);
 
 private:
-   
    BookDatabase* bookDB;
 
    PatronDatabase* patronDB;
 
    // hash-map to determine command type to build
-   const LibraryCommand* commandTypes[HASH_SIZE] {};
+   const LibraryCommand* commandTypes[HASH_SIZE]{};
 };
 
 #endif

@@ -1,6 +1,6 @@
-   /** @file bookfactory.h
+/** @file bookfactory.h
  * @author Joseph Collora and Josh Helzerman
- * 
+ *
  * Description:
  *   - A BookFactory object represents the factory class that creates Book
  *     objects in their different subtypes to be stored in the books database.
@@ -20,8 +20,8 @@
 #define BOOKFACTORY_H
 
 #include "book.h"
-#include <iostream>
 #include "constants.h"
+#include <iostream>
 
 using namespace std;
 
@@ -31,7 +31,7 @@ public:
    // -------------------------------------------------------------------------
    /** BookFactory()
     * Default constructor
-    * 
+    *
     * Constructs BookFactory instance, instantiates hashmap
     * @pre None.
     * @post BookFactory exists
@@ -41,10 +41,10 @@ public:
    // -------------------------------------------------------------------------
    /** ~BookFactory()
     * Destructor
-    * 
+    *
     * Deletes the books in the hashmap before deleting self
     * @pre None.
-    * @post this BookFactory, its hashmap, and the Books it pointed to are 
+    * @post this BookFactory, its hashmap, and the Books it pointed to are
     * deleted
     */
    ~BookFactory();
@@ -65,7 +65,7 @@ public:
    // -------------------------------------------------------------------------
    /** getHash()
     * get hash
-    * 
+    *
     * turn the type of book into a hash key.
     * @param book the book that we want to get the key for
     * @pre None
@@ -77,7 +77,7 @@ public:
    // -------------------------------------------------------------------------
    /** getType()
     * get book type
-    * 
+    *
     * Return the type of book
     * @pre None
     * @post None. const
@@ -88,8 +88,7 @@ public:
 private:
    // Array of subclasses of Book object to classify each book as its correct
    //  type.
-   const Book* bookTypes[HASH_SIZE] {};
-
+   const Book* bookTypes[HASH_SIZE]{};
 };
 
 #endif

@@ -2,8 +2,8 @@
  * @author Joseph Collora and Josh Helzerman
  *
  * Description:
- *   - A book object represents a unique book and the number of copies available
- *     for that book at any given time
+ *   - A book object represents a unique book and the number of copies
+ * available for that book at any given time
  *   - Can be queried to display its information
  *   - Can be queried to see if there are any available copies
  *   - Can be compared with other books
@@ -22,7 +22,6 @@
 
 #include "BSTData.h"
 #include <string>
-
 
 class BSTData;
 class Patron;
@@ -47,13 +46,13 @@ public:
    Book();
 
    // -------------------------------------------------------------------------
-    /** ~Book()
-     * Destructor
-     * 
-     * Deletes book from memory. It's empty, but apparently helps to delete
-     * strings
-     * @pre None.
-     * @post Book instance is deleted
+   /** ~Book()
+    * Destructor
+    *
+    * Deletes book from memory. It's empty, but apparently helps to delete
+    * strings
+    * @pre None.
+    * @post Book instance is deleted
     */
    virtual ~Book();
 
@@ -79,8 +78,6 @@ public:
     * @return true if book was available, false otherwise
     */
    bool removeBook();
-
-
 
    // -------------------------------------------------------------------------
    /** checkAvailability()
@@ -108,18 +105,18 @@ public:
    // -------------------------------------------------------------------------
    /** getType()
     * get book type
-    * 
+    *
     * Return the type of book
     * @pre None
     * @post None. const
     * @return char representing book type
     */
-   string getType() const; 
+   string getType() const;
 
    // -------------------------------------------------------------------------
    /** display Countless
     * display without count
-    * 
+    *
     * returns the data inside node as a string, excludes count
     * @param os ostream that will contain string to print
     * @pre None
@@ -131,19 +128,19 @@ public:
    // -------------------------------------------------------------------------
    /** displayHeader()
     * Header Display
-    * 
+    *
     * Displays the header preceeding other displays
     * @param ostream outstream containing header string
     * @pre None.
     * @post None.
-    * @return ostream& 
+    * @return ostream&
     */
    virtual ostream& displayHeader(ostream&) const = 0;
 
    // -------------------------------------------------------------------------
    /** getTitle()
     * get book title
-    * 
+    *
     * Return the title of current book
     * @pre None
     * @post None. const
@@ -177,8 +174,6 @@ protected:
    string type;
 
    char typeCode;
-
-
 };
 
 #endif

@@ -13,15 +13,14 @@
 
 #include "commandFactory.h"
 
-#include <forward_list>
-#include "libraryCommand.h"
-#include "constants.h"
-#include <iostream>
 #include "checkoutBook.h"
-#include "returnBook.h"
+#include "constants.h"
 #include "displayLibrary.h"
 #include "displayPatronHistory.h"
-
+#include "libraryCommand.h"
+#include "returnBook.h"
+#include <forward_list>
+#include <iostream>
 
 using namespace std;
 
@@ -34,15 +33,17 @@ using namespace std;
  * @pre None
  * @post Stores private pointer to library
  */
-CommandFactory::CommandFactory(BookDatabase* books, PatronDatabase* patrons) {
+CommandFactory::CommandFactory(BookDatabase* books, PatronDatabase* patrons)
+{
    bookDB = books;
    patronDB = patrons;
 
    commandTypes[CHECKOUT_CODE - HASH_START] = new CheckoutBook(books, patrons);
    commandTypes[RETURN_CODE - HASH_START] = new ReturnBook(books, patrons);
-   commandTypes[DISPLAY_LIB_CODE - HASH_START] = new DisplayLibrary(books, patrons);
-   commandTypes[DISPLAY_PAT_CODE - HASH_START] = new DisplayPatronHistory(books, patrons);
-
+   commandTypes[DISPLAY_LIB_CODE - HASH_START] =
+       new DisplayLibrary(books, patrons);
+   commandTypes[DISPLAY_PAT_CODE - HASH_START] =
+       new DisplayPatronHistory(books, patrons);
 }
 
 // -------------------------------------------------------------------------
@@ -53,7 +54,8 @@ CommandFactory::CommandFactory(BookDatabase* books, PatronDatabase* patrons) {
  * @pre None
  * @post Returns CommandFactory to memory, nothing else
  */
-CommandFactory::~CommandFactory() {
+CommandFactory::~CommandFactory()
+{
    for (const LibraryCommand* comm : commandTypes) {
       if (comm != nullptr) {
          delete comm;
@@ -71,21 +73,24 @@ CommandFactory::~CommandFactory() {
  * @pre file must be properly formatted
  * @post CommandQueue is initialized and filled. Library unchanged.
  * @return A filled CommandQueue object
-*/
-LibraryCommand* CommandFactory::createCommand(istream& is) {
+ */
+LibraryCommand* CommandFactory::createCommand(istream& is)
+{
    LibraryCommand* comm = nullptr;
    char type = is.get();
    string line;
    int index = type - HASH_START;
-   if (index < 0 || index >= HASH_SIZE) { //ERROR
-      cout << "COMMAND INPUT ERROR: Command type " << type << " does not exist." << endl;
+   if (index < 0 || index >= HASH_SIZE) { // ERROR
+      cout << "COMMAND INPUT ERROR: Command type " << type
+           << " does not exist." << endl;
       getline(is, line);
-      return nullptr; //character is out of range
+      return nullptr; // character is out of range
    }
-   if (commandTypes[index] == nullptr) { //ERROR
-      cout << "COMMAND INPUT ERROR: Command type " << type << " does not exist." << endl;
+   if (commandTypes[index] == nullptr) { // ERROR
+      cout << "COMMAND INPUT ERROR: Command type " << type
+           << " does not exist." << endl;
       getline(is, line);
-      return nullptr; //no command type doesnt exist
+      return nullptr; // no command type doesnt exist
    }
    comm = commandTypes[index]->create();
 
@@ -96,6 +101,4 @@ LibraryCommand* CommandFactory::createCommand(istream& is) {
    }
 
    return comm;
-
 }
-
