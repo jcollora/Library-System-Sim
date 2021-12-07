@@ -75,15 +75,16 @@ public:
    int getHash(const Book& book) const;
 
    // -------------------------------------------------------------------------
-   /** getType()
+   /** getType()           DELETE??????
     * get book type
     *
     * Return the type of book
+    * @param type character corresponding to book's type
     * @pre None
     * @post None. const
     * @return char representing book type
-    */
-   string getType(char type) const;
+    
+   string getType(char type) const; */
 
 private:
    // Array of subclasses of Book object to classify each book as its correct
