@@ -72,9 +72,19 @@ private:
    PatronDatabase* patronDB;
 
    // Factory for creating commands and queue for execution order
-
    CommandFactory* commandFactory;
 
+   // -------------------------------------------------------------------------
+   /** executeCommands()
+    * Execute Command Queue
+    * 
+    * Takes a command out of the front of the queue and invokes its execute 
+    * method, thereby simmulating the natural order of patron command 
+    * execution.
+    * @param commands queue of commands to be iteratively executed
+    * @pre None.
+    * @post Commandqueue is empty
+    */
    void executeCommands(queue<LibraryCommand*>& commands);
 };
 
