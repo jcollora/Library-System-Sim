@@ -8,7 +8,10 @@
  *     from an input data stream
  *
  * Implementation:
- *   - ...
+ *   - Books, patrons, and commands stored in: a BookDatabase, PatronDatabase, 
+ *     and CommandFactory respectively
+ *   - Executes commands with a queue to simmulate patrons entering commands
+ *     in a set order
  *
  */
 
