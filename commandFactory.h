@@ -32,7 +32,8 @@ public:
     * Command Factory Constructor
     *
     * Builds a CommandFactory for the inputted library
-    * @param library The library to create commands for
+    * @param books book DB command uses
+    * @param patrons patron DB command usesr
     * @pre None
     * @post Stores private pointer to library
     */

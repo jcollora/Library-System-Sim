@@ -8,7 +8,7 @@
  *     from an input data stream
  *
  * Implementation:
- *   - Books, patrons, and commands stored in: a BookDatabase, PatronDatabase, 
+ *   - Books, patrons, and commands stored in: a BookDatabase, PatronDatabase,
  *     and CommandFactory respectively
  *   - Executes commands with a queue to simmulate patrons entering commands
  *     in a set order
@@ -77,9 +77,9 @@ private:
    // -------------------------------------------------------------------------
    /** executeCommands()
     * Execute Command Queue
-    * 
-    * Takes a command out of the front of the queue and invokes its execute 
-    * method, thereby simmulating the natural order of patron command 
+    *
+    * Takes a command out of the front of the queue and invokes its execute
+    * method, thereby simmulating the natural order of patron command
     * execution.
     * @param commands queue of commands to be iteratively executed
     * @pre None.
