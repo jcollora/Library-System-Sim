@@ -90,9 +90,8 @@ void Library::executeCommands(queue<LibraryCommand*>& commands)
    while (!commands.empty()) {
       LibraryCommand* comm = commands.front();
       commands.pop();
-      if(!comm->execute()) {
+      if (!comm->execute()) {
          cout << endl;
       }
-      
    }
 }

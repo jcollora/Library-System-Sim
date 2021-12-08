@@ -52,15 +52,14 @@ bool ReturnBook::execute()
            << "because they did not checkout book titled: " << endl
            << book->getTitle().substr(0, TITLE_MAX_LENGTH) << endl;
 
-      
       delete this;
       return false;
    }
-   if (!book->addBook()) { //this error should never happen.
+   if (!book->addBook()) { // this error should never happen.
       cout << "RETURN COMMAND EXECUTION ERROR: Patron " << patron->getID()
            << "Can't return book, library contains max books titled: " << endl
            << book->getTitle().substr(0, TITLE_MAX_LENGTH) << endl;
-      patron->addBook(book); //undo patron remove book.
+      patron->addBook(book); // undo patron remove book.
       delete this;
       return false;
    }

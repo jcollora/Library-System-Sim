@@ -269,7 +269,7 @@ bool Patron::setData(istream& is)
       getline(is, line);
       return false;
    }
-   for (char c : id) { //check if id is number (remove if u want to use str)
+   for (char c : id) { // check if id is number (remove if u want to use str)
       if (!isdigit(c)) {
          cout << "PATRON INPUT ERROR: ID not a number." << endl;
          getline(is, line);

@@ -6,10 +6,10 @@
  *   - Can be queueried to determine if empty
  *   - Can empty itself
  *   - Can insert given items
- *   - Can retrieve a desired node 
+ *   - Can retrieve a desired node
  *   - Can be queueried for the root node
  *   - Can be displayed to the screen
- *   - Can be converted into an array 
+ *   - Can be converted into an array
  *
  * Implementation:
  *   - Uses nodes with left and right pointers to children nodes
@@ -162,11 +162,11 @@ public:
    //--------------------------------------------------------------------------
    /** getRoot()
     * Return Root
-    * 
+    *
     * Simply returns a pointer to the root of the binary search tree
     * @pre None.
     * @post None.
-    * @return const BSTData* 
+    * @return const BSTData*
     */
    const BSTData* getRoot() const;
 

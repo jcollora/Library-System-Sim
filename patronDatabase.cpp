@@ -50,8 +50,7 @@ bool PatronDatabase::insertNewPatron(istream& is)
    Patron* newPatron = new Patron();
 
    if (!newPatron->setData(is)) {
-      
-   
+
       delete newPatron;
       return false;
    }

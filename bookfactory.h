@@ -83,7 +83,7 @@ public:
     * @pre None
     * @post None. const
     * @return char representing book type
-    
+
    string getType(char type) const; */
 
 private:

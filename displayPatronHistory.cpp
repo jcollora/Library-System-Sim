@@ -46,7 +46,7 @@ DisplayPatronHistory::DisplayPatronHistory(BookDatabase* books,
  */
 bool DisplayPatronHistory::execute()
 {
-   
+
    patron->display(cout);
    cout << endl;
    delete this;

@@ -235,13 +235,13 @@ bool Periodical::setData(istream& is)
    }
    if (month < 1 || month > 12) {
       cout << TYPE_PERIODICAL << " BOOK INPUT ERROR: For book titled " << endl
-           << title.substr(0, TITLE_MAX_LENGTH) << "," 
+           << title.substr(0, TITLE_MAX_LENGTH) << ","
            << " month " << month << " is not a valid month." << endl;
       return false;
    }
    if (year < 0) {
       cout << TYPE_PERIODICAL << " BOOK INPUT ERROR: For book titled" << endl
-           << title.substr(0, TITLE_MAX_LENGTH) << "," 
+           << title.substr(0, TITLE_MAX_LENGTH) << ","
            << " year " << year << " is not a valid year." << endl;
       return false;
    }

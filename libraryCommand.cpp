@@ -64,8 +64,7 @@ bool LibraryCommand::initialize(istream& is) // put errors here
    book = bookDB->getBook(is);
    if (book == nullptr) {
       cout << type << " COMMAND INPUT ERROR: "
-           << "The Book is not recognized."
-           << endl;
+           << "The Book is not recognized." << endl;
 
       return false;
    }
