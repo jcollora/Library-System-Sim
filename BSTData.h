@@ -9,7 +9,7 @@
  *
  *  Implementation:
  *  - Methods implemented and overwritten by books/types and patrons (pure
- * virtual)
+ *    virtual)
  */
 
 #ifndef BSTDATA_H

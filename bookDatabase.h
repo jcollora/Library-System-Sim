@@ -61,6 +61,7 @@ public:
 
    //-------------------------------------------------------------------------
    /** getBook(String bookId)
+    * Get Book
     *
     * Return a book object based on the information that is passed in if it is
     * in a BST
