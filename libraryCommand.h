@@ -36,6 +36,14 @@ public:
     */
    LibraryCommand();
 
+   // -------------------------------------------------------------------------
+   /** ~LibraryCommand()
+    * Destructor
+    *
+    * Deletes command from memory. It's empty, but apparently helps to delete
+    * @pre None.
+    * @post LibraryCommand instance is deleted
+    */
    virtual ~LibraryCommand();
 
    // -------------------------------------------------------------------------
