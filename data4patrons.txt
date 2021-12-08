@@ -1,8 +1,6 @@
 9999 Duck Donald
 3333 Witch Wicked
-3333 asdf asdf
 8888 Pig Porky
-1234 asdf asdf
 2222 Rella Cindy
 7777 Spider Sammy
 1111 Mouse Mickey
@@ -13,7 +11,3 @@
 5000 Moose Bullwinkle
 3000 Lizard Larry
 2000 Bear Bertha
-asdf asdf asd
-12345
-12
-1234
