@@ -105,6 +105,11 @@ Book* BookDatabase::getBook(istream& is) const
 
    int index = bookFactory.getHash(*bookToFind);
    bookShelf[index]->retrieve(*bookToFind, bookFound);
+   if ((Book*)bookFound == nullptr) {
+      cout << bookToFind->getType() << " BOOK RETRIEVE ERROR: Book titled "
+           << endl << bookToFind->getTitle().substr(0, TITLE_MAX_LENGTH)
+           << " was not found in this library." << endl;
+   }
    delete bookToFind;
    return (Book*)bookFound;
 }

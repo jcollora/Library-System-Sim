@@ -261,20 +261,25 @@ BSTData& Patron::operator=(const BSTData& rhs)
  */
 bool Patron::setData(istream& is)
 { // put errors HERE
-   if (is.eof()) {
+   string line;
+   is >> id;
+
+   if (id.length() != 4) {
+      cout << "PATRON INPUT ERROR: ID length not 4." << endl;
+      getline(is, line);
       return false;
    }
-   is >> id;
-   if (is.eof()) {
-      return false;
+   for (char c : id) { //check if id is number (remove if u want to use str)
+      if (!isdigit(c)) {
+         cout << "PATRON INPUT ERROR: ID not a number." << endl;
+         getline(is, line);
+         return false;
+      }
    }
    is >> lastName;
-   if (is.eof()) {
-      return false;
-   }
+
    is >> firstName;
 
-   string line;
    getline(is, line);
 
    return true;
