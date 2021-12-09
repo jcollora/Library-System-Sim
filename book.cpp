@@ -109,7 +109,7 @@ bool Book::checkAvailability() const { return count > 0; }
  * Return the type of book
  * @pre None
  * @post None. const
- * @re
+ * @return the book type as a string
  */
 string Book::getType() const { return type; }
 

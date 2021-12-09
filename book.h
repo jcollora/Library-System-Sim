@@ -173,6 +173,7 @@ protected:
    // book type;
    string type;
 
+   // book type code
    char typeCode;
 };
 
